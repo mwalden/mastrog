@@ -12,6 +12,7 @@ public class GameScript : MonoBehaviour {
 	private bool justMoved;
 	private int currentPlatformLevel;
 
+
 	Bounds bounds;
 	// Use this for initialization
 	void Start () {
@@ -19,6 +20,8 @@ public class GameScript : MonoBehaviour {
 		cameraScript = cam.GetComponent<CameraScript> ();
 		bounds = CameraExtensions.OrthographicBounds (cam);
 	}
+
+
 	
 	void Update () {
 		if (player == null) {
@@ -33,6 +36,17 @@ public class GameScript : MonoBehaviour {
 		if (Input.GetKeyUp(KeyCode.RightArrow)){
 			cameraAndPlayer (false);
 		}
+	}
+
+	public void setStartingLane(int startingLane){
+		//player is being set inside of the level builder. consider moving this there. makes more sense but you wont get the moving camera feel.
+		distanceToMove = (bounds.max.x * 2f);
+		float dist = distanceToMove * startingLane;
+		Vector3 cameraDestination = new Vector3 (cam.transform.position.x + dist, cam.transform.position.y, cam.transform.position.z);
+//		Vector3 playerDestination = new Vector3 (player.transform.position.x + dist, player.transform.position.y, player.transform.position.z);
+//		playerScript.moveToPosition (playerDestination);
+		cameraScript.moveCameraToPosition (cameraDestination);
+		justMoved = true;
 	}
 
 	void cameraAndPlayer(bool isLeft){

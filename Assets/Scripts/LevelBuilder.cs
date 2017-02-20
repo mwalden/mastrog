@@ -5,14 +5,13 @@ using System;
 public class LevelBuilder : MonoBehaviour {
 
 	public GameObject platform;
-//	public GameObject[] obstacles;
-
+	public GameScript gameScript;
 	public GameObject playerPrefab;
 	private int numberOfLanes;
-	private int startingLane;
 
 	void Start() {
 		GameObject currentLevelGO = GameObject.FindGameObjectWithTag ("CurrentLevel");
+		gameScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameScript> ();
 		CurrentLevelScript currentLevelScript = null;
 		if (currentLevelGO != null) {
 			currentLevelScript = currentLevelGO.GetComponent<CurrentLevelScript> ();
@@ -26,6 +25,9 @@ public class LevelBuilder : MonoBehaviour {
 				level = parser.getLevels ().levels [0];
 			}
 		}
+		int startingLane = level.startingLane;
+		gameScript.setStartingLane (startingLane);
+
 		numberOfLanes = level.numberOfLanes;
 		Obstacle[] obstacles = level.obstacles;
 
@@ -43,10 +45,5 @@ public class LevelBuilder : MonoBehaviour {
 			}
 		}
 		Instantiate (playerPrefab, new Vector3 (bounds.center.x + (bounds.size.x * startingLane), bounds.min.y + 1.7f, 10f), Quaternion.identity);
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
 	}
 }

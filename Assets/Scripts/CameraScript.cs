@@ -23,7 +23,9 @@ public class CameraScript : MonoBehaviour {
 	}
 
 	public void moveCameraToPosition(Vector3 position){
-//		Debug.Log ("Setting position");
+		if (moving)
+			return;	
+		Debug.Log ("Setting position");
 //
 //		Debug.Log ("from : " + transform.position);
 //		Debug.Log ("to : " + positionMovingTo);
