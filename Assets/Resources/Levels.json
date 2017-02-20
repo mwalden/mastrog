@@ -18,6 +18,10 @@
         {
           "name": "square",
           "speed": 100
+        },
+        {
+          "name": "square",
+          "speed": 100
         }
       ]
     },

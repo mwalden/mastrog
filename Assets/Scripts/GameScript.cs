@@ -6,11 +6,16 @@ public class GameScript : MonoBehaviour {
 	GameObject player;
 	Rigidbody2D playerRigidbody;
 	PlayerScript playerScript;
+	AudioScript audioScript;
 	Camera cam;
 	CameraScript cameraScript;
 	public float distanceToMove;
 	private bool justMoved;
+	//going up the game
 	private int currentPlatformLevel;
+	//going left/right on the platforms
+	private int currentLaneId;
+	private Level currentGameLevel;
 
 
 	Bounds bounds;
@@ -19,10 +24,9 @@ public class GameScript : MonoBehaviour {
 		cam = Camera.main;
 		cameraScript = cam.GetComponent<CameraScript> ();
 		bounds = CameraExtensions.OrthographicBounds (cam);
+		audioScript = GameObject.FindGameObjectWithTag ("AudioController").GetComponent<AudioScript> ();
 	}
 
-
-	
 	void Update () {
 		if (player == null) {
 			player = GameObject.FindGameObjectWithTag ("Player");
@@ -30,15 +34,28 @@ public class GameScript : MonoBehaviour {
 			playerScript = player.GetComponent<PlayerScript> ();
 		}
 
-		if (Input.GetKeyUp(KeyCode.LeftArrow)){
+		if (Input.GetKeyUp(KeyCode.LeftArrow) && currentLaneId > 0){
+			setCurrentLaneId (currentLaneId - 1);
 			cameraAndPlayer (true);
 		}
-		if (Input.GetKeyUp(KeyCode.RightArrow)){
+		if (Input.GetKeyUp(KeyCode.RightArrow)&& currentLaneId + 1 < currentGameLevel.numberOfLanes){
+			setCurrentLaneId (currentLaneId + 1);
 			cameraAndPlayer (false);
 		}
 	}
 
+	public void setCurrentGameLevel(Level gameLevel){
+		this.currentGameLevel = gameLevel;
+		audioScript.setGameLevel (gameLevel);
+	}
+
+	private void setCurrentLaneId(int id){
+		currentLaneId = id;
+		audioScript.setCurrentLane (currentLaneId);
+	}
+
 	public void setStartingLane(int startingLane){
+		setCurrentLaneId (startingLane);
 		//player is being set inside of the level builder. consider moving this there. makes more sense but you wont get the moving camera feel.
 		distanceToMove = (bounds.max.x * 2f);
 		float dist = distanceToMove * startingLane;
