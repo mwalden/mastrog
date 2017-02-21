@@ -12,8 +12,10 @@ public class GameScript : MonoBehaviour {
 	CameraScript cameraScript;
 	public float distanceToMove;
 	private bool justMoved;
-	//going up the game
+	//going up the game. counts how many platforms youve gone up.
 	public int currentPlatformLevel;
+	//keeps track of what progression sound to make
+	public int platformProgression;
 	//going left/right on the platforms
 	private int currentLaneId;
 	private Level currentGameLevel;
@@ -36,13 +38,15 @@ public class GameScript : MonoBehaviour {
 			playerScript = player.GetComponent<PlayerScript> ();
 		}
 
-		if (Input.GetKeyUp(KeyCode.LeftArrow) && currentLaneId > 0){
+		if (Input.GetKeyUp(KeyCode.LeftArrow) && currentLaneId > 0 && !playerScript.isMoving()){
 			setCurrentLaneId (currentLaneId - 1);
 			cameraAndPlayer (true);
+			platformProgression = 0;
 		}
-		if (Input.GetKeyUp(KeyCode.RightArrow)&& currentLaneId + 1 < currentGameLevel.numberOfLanes){
+		if (Input.GetKeyUp(KeyCode.RightArrow)&& currentLaneId + 1 < currentGameLevel.numberOfLanes && !playerScript.isMoving()){
 			setCurrentLaneId (currentLaneId + 1);
 			cameraAndPlayer (false);
+			platformProgression = 0;
 		}
 	}
 
@@ -77,14 +81,16 @@ public class GameScript : MonoBehaviour {
 		cameraScript.moveCameraToPosition (cameraDestination);
 		justMoved = true;
 
+
 	}
 
 	private void movedOneLevelUp(){
 		currentPlatformLevel++;
-		soundEffectScript.playLevelProgression (currentPlatformLevel);
-		if (currentPlatformLevel % 3 == 0) {
+		platformProgression++;
+		soundEffectScript.playLevelProgression (platformProgression);
+		if (platformProgression % 3 == 0) {
 			audioScript.lockDownLane (currentLaneId);
-			currentPlatformLevel = 0;
+			platformProgression = 0;
 		}
 		
 	}
