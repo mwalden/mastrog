@@ -9,6 +9,7 @@ public class Level
 	public int numberOfLanes;
 	public int startingLane;
 	public Obstacle[] obstacles;
+	public int numberOfLevels;	
 
 }
 

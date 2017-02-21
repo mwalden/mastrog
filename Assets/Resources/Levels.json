@@ -5,7 +5,8 @@
       "lengthInSeconds": 202,
       "title": "HackDay Song",
       "numberOfLanes": 4,
-      "startingLane":2,      
+      "startingLane":2,  
+      "numberOfLevels":4,    
       "obstacles": [
         {
           "name": "circle",
@@ -30,6 +31,7 @@
       "lengthInSeconds": 202,
       "title": "First Song",
       "numberOfLanes": 3,
+      "numberOfLevels":100,
       "startingLane":2,
       "obstacles": [
         {

@@ -8,6 +8,7 @@ public class GameScript : MonoBehaviour {
 	PlayerScript playerScript;
 	AudioScript audioScript;
 	SoundEffectsScript soundEffectScript;
+	public LevelBuilder levelBuilder;
 	Camera cam;
 	CameraScript cameraScript;
 	public float distanceToMove;
@@ -37,7 +38,9 @@ public class GameScript : MonoBehaviour {
 			playerRigidbody = player.GetComponent<Rigidbody2D> ();
 			playerScript = player.GetComponent<PlayerScript> ();
 		}
-
+		if (Input.GetKeyUp (KeyCode.C)) {
+			levelBuilder.cleanUpObstacles ();
+		}
 		if (Input.GetKeyUp(KeyCode.LeftArrow) && currentLaneId > 0 && !playerScript.isMoving()){
 			setCurrentLaneId (currentLaneId - 1);
 			cameraAndPlayer (true);
@@ -112,6 +115,10 @@ public class GameScript : MonoBehaviour {
 			Vector3 cameraDestination = new Vector3 (cam.transform.position.x, platform.transform.position.y + 2, cam.transform.position.z);
 			cameraScript.moveCameraToPosition (cameraDestination);
 		}
+	}
+
+	public void cleanUpLevel(){
+		levelBuilder.cleanUpObstacles ();
 	}
 
 	public void resetPlayer(){
