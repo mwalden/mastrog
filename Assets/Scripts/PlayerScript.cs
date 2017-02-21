@@ -34,6 +34,7 @@ public class PlayerScript : MonoBehaviour {
 	}
 
 	public void moveToPosition(Vector3 position){
+		
 		positionMovingTo = position;
 		moving = true;
 		rigidbody.isKinematic = true;

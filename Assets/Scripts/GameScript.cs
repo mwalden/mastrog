@@ -7,12 +7,13 @@ public class GameScript : MonoBehaviour {
 	Rigidbody2D playerRigidbody;
 	PlayerScript playerScript;
 	AudioScript audioScript;
+	SoundEffectsScript soundEffectScript;
 	Camera cam;
 	CameraScript cameraScript;
 	public float distanceToMove;
 	private bool justMoved;
 	//going up the game
-	private int currentPlatformLevel;
+	public int currentPlatformLevel;
 	//going left/right on the platforms
 	private int currentLaneId;
 	private Level currentGameLevel;
@@ -25,6 +26,7 @@ public class GameScript : MonoBehaviour {
 		cameraScript = cam.GetComponent<CameraScript> ();
 		bounds = CameraExtensions.OrthographicBounds (cam);
 		audioScript = GameObject.FindGameObjectWithTag ("AudioController").GetComponent<AudioScript> ();
+		soundEffectScript = GameObject.FindGameObjectWithTag ("SoundEffectsController").GetComponent<SoundEffectsScript> ();
 	}
 
 	void Update () {
@@ -79,6 +81,12 @@ public class GameScript : MonoBehaviour {
 
 	private void movedOneLevelUp(){
 		currentPlatformLevel++;
+		soundEffectScript.playLevelProgression (currentPlatformLevel);
+		if (currentPlatformLevel % 3 == 0) {
+			audioScript.lockDownLane (currentLaneId);
+//			currentPlatformLevel = 0;
+		}
+		
 	}
 
 	public void setCurrentPlatform(GameObject platform){
@@ -89,7 +97,7 @@ public class GameScript : MonoBehaviour {
 				return;
 			}
 			if (currentPlatform != null) {
-				if (playerScript.isMoving ()) {
+				if (!playerScript.isMoving ()) {
 					movedOneLevelUp ();
 				}
 			}
@@ -101,6 +109,7 @@ public class GameScript : MonoBehaviour {
 	}
 
 	public void resetPlayer(){
+		soundEffectScript.playError ();
 		playerRigidbody.velocity = new Vector2(0.0f,0.0f);
 		player.transform.position = currentPlatform.transform.position;
 	}

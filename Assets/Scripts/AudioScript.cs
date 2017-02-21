@@ -34,11 +34,15 @@ public class AudioScript : MonoBehaviour {
 	}
 
 	public void setCurrentLane(int lane){
-		Debug.Log ("On lane : " + lane);
 		if (!lockedAudioTracks [currentLane]) {
 			audioSources [currentLane].volume = 0;
 		}
 		currentLane = lane;
 		audioSources [lane].volume = 100;
+	}
+
+	public void lockDownLane(int lane){
+		lockedAudioTracks[lane] = true;
+		lockedAudioTracksDuration [lane] = lockDownDuration;
 	}
 }
