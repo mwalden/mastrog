@@ -84,7 +84,7 @@ public class GameScript : MonoBehaviour {
 		soundEffectScript.playLevelProgression (currentPlatformLevel);
 		if (currentPlatformLevel % 3 == 0) {
 			audioScript.lockDownLane (currentLaneId);
-//			currentPlatformLevel = 0;
+			currentPlatformLevel = 0;
 		}
 		
 	}
