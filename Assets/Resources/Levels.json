@@ -31,7 +31,7 @@
       "lengthInSeconds": 202,
       "title": "First Song",
       "numberOfLanes": 3,
-      "numberOfLevels":100,
+      "numberOfLevels":4,
       "startingLane":2,
       "obstacles": [
         {
@@ -44,6 +44,28 @@
         },
         {
           "name": "pyramid",
+          "speed": 100
+        }
+      ]
+    },
+    {
+      "folderName": "Song 2",
+      "lengthInSeconds": 202,
+      "title": "Song 2",
+      "numberOfLanes": 3,
+      "numberOfLevels":4,
+      "startingLane":2,
+      "obstacles": [
+        {
+          "name": "circle",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 100
+        },
+        {
+          "name": "circle",
           "speed": 100
         }
       ]

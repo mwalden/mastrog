@@ -12,7 +12,9 @@ public class PlatformControllerScript : MonoBehaviour {
 		if (playerRigidbody2d == null) {
 			playerRigidbody2d = GameObject.FindGameObjectWithTag ("Player").GetComponent<Rigidbody2D> ();
 		} else {
+			
 			if (playerRigidbody2d.velocity.y  <.03f)
+				
 				enablePlatforms ();
 			else
 				disablePlatforms ();
@@ -27,6 +29,7 @@ public class PlatformControllerScript : MonoBehaviour {
 
 
 	public void disablePlatforms(){
+		platforms = GameObject.FindGameObjectsWithTag ("platform");
 		foreach (GameObject go in platforms) {
 			go.GetComponent<BoxCollider2D> ().enabled = false;
 		}

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class GameScript : MonoBehaviour {
 	GameObject currentPlatform;
@@ -8,6 +9,7 @@ public class GameScript : MonoBehaviour {
 	PlayerScript playerScript;
 	AudioScript audioScript;
 	SoundEffectsScript soundEffectScript;
+	public ParticleScript particleSystemScript;
 	public LevelBuilder levelBuilder;
 	Camera cam;
 	CameraScript cameraScript;
@@ -17,10 +19,13 @@ public class GameScript : MonoBehaviour {
 	public int currentPlatformLevel;
 	//keeps track of what progression sound to make
 	public int platformProgression;
+
 	//going left/right on the platforms
 	private int currentLaneId;
 	private Level currentGameLevel;
 
+	public TouchGesture.GestureSettings GestureSetting;
+	private TouchGesture touch;
 
 	Bounds bounds;
 	// Use this for initialization
@@ -30,16 +35,41 @@ public class GameScript : MonoBehaviour {
 		bounds = CameraExtensions.OrthographicBounds (cam);
 		audioScript = GameObject.FindGameObjectWithTag ("AudioController").GetComponent<AudioScript> ();
 		soundEffectScript = GameObject.FindGameObjectWithTag ("SoundEffectsController").GetComponent<SoundEffectsScript> ();
+		#if UNITY_ANDROID
+		touch = new TouchGesture(this.GestureSetting);
+		StartCoroutine(touch.CheckHorizontalSwipes(
+			onLeftSwipe: () => {  moveRight(); },
+			onRightSwipe: () => {moveLeft(); }
+		));
+		#endif
+
 	}
 
+
+
+	void moveLeft(){
+		if (currentLaneId > 0 && !playerScript.isMoving ()) {
+			setCurrentLaneId (currentLaneId - 1);
+			cameraAndPlayer (isLeft:true);
+			platformProgression = 0;
+		}
+	}
+	void moveRight(){
+		if (currentLaneId + 1 < currentGameLevel.numberOfLanes && !playerScript.isMoving ()) {
+			setCurrentLaneId (currentLaneId + 1);
+			cameraAndPlayer (isLeft:false);
+			platformProgression = 0;
+		}
+	}
 	void Update () {
 		if (player == null) {
 			player = GameObject.FindGameObjectWithTag ("Player");
 			playerRigidbody = player.GetComponent<Rigidbody2D> ();
 			playerScript = player.GetComponent<PlayerScript> ();
 		}
+		#if UNITY_5
 		if (Input.GetKeyUp (KeyCode.C)) {
-			levelBuilder.cleanUpObstacles ();
+			levelBuilder.cleanUpObstacles (platformProgression);
 		}
 		if (Input.GetKeyUp(KeyCode.LeftArrow) && currentLaneId > 0 && !playerScript.isMoving()){
 			setCurrentLaneId (currentLaneId - 1);
@@ -51,6 +81,8 @@ public class GameScript : MonoBehaviour {
 			cameraAndPlayer (false);
 			platformProgression = 0;
 		}
+		#endif
+
 	}
 
 	public void setCurrentGameLevel(Level gameLevel){
@@ -91,9 +123,11 @@ public class GameScript : MonoBehaviour {
 		currentPlatformLevel++;
 		platformProgression++;
 		soundEffectScript.playLevelProgression (platformProgression);
-		if (platformProgression % 3 == 0) {
+		if (platformProgression % 4 == 0) {
 			audioScript.lockDownLane (currentLaneId);
 			platformProgression = 0;
+			particleSystemScript.playParticleSystem ();
+			soundEffectScript.playWoosh ();
 		}
 		
 	}
@@ -118,7 +152,7 @@ public class GameScript : MonoBehaviour {
 	}
 
 	public void cleanUpLevel(){
-		levelBuilder.cleanUpObstacles ();
+		levelBuilder.cleanUpObstacles (currentPlatformLevel/2);
 	}
 
 	public void resetPlayer(){

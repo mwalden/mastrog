@@ -13,6 +13,8 @@ public class LevelBuilder : MonoBehaviour {
 	public Level level;
 	public Bounds bounds;
 
+	private int maxLevelBuilt;
+
 //	private List<GameObject> obstacles;
 	private Dictionary<string,List<GameObject>> obstacles = new Dictionary<string,List<GameObject>>();
 
@@ -43,13 +45,16 @@ public class LevelBuilder : MonoBehaviour {
 
 		bounds = CameraExtensions.OrthographicBounds (Camera.main);
 
-		for (int i = 0; i < numberOfLanes ; i++) {
+		for (int i = 0; i < numberOfLevels ; i++) {
+			maxLevelBuilt++;
 //			float y = bounds.center.y + (bounds.size.y * i);
 			float y = 8 * i;
 			for (int j=0;j < obstacles.Length;j++){
 				Obstacle obstacle = obstacles [j];
 				GameObject go =  Instantiate(Resources.Load("Obstacles/"+obstacle.name, typeof(GameObject))) as GameObject;
 				go.tag = obstacle.name;
+				ObstacleID id = go.GetComponent<ObstacleID> ();
+				id.levelId = i;
 				setObstacleInDictionary (go.tag, go);
 				go.transform.position = new Vector3 (bounds.center.x + (bounds.size.x * j), y, 10);
 
@@ -57,20 +62,30 @@ public class LevelBuilder : MonoBehaviour {
 			}
 
 		}
-		Instantiate (playerPrefab, new Vector3 (bounds.center.x + (bounds.size.x * startingLane), bounds.min.y + 1.7f, 10f), Quaternion.identity);
+		GameObject player = Instantiate (playerPrefab, new Vector3 (bounds.center.x + (bounds.size.x * startingLane), bounds.min.y + 1.7f, 10f), Quaternion.identity) as GameObject;
+		player.tag = "Player";
 		gameScript.setCurrentGameLevel (level);
+
 		gameScript.setStartingLane (startingLane);
 	}
 
-	public void cleanUpObstacles(){
-//		foreach (string key in obstacles.Keys) {
-//			List<GameObject> list = obstacles [key];
-//			foreach (GameObject obstacle in list) {
-////				if (obstacle.transform.position.y < mainCamera.transform.position.y + bounds.min.y) {
-//					obstacle.SetActive (false);
-////				}
-//			}
-//		}
+	public void cleanUpObstacles(int currentLevel){
+		int y = (maxLevelBuilt * 8);
+		bool updateMaxLevel = false;
+		foreach (string key in obstacles.Keys) {
+			List<GameObject> list = obstacles [key];
+			foreach (GameObject obstacle in list) {
+				ObstacleID id = obstacle.GetComponent<ObstacleID> ();
+				if (currentLevel - id.levelId >= 2) {
+					obstacle.transform.position = new Vector3 (obstacle.transform.position.x, y, 10);
+					updateMaxLevel = true;
+					id.levelId = maxLevelBuilt + 1;
+					Instantiate(platform,new Vector3(obstacle.transform.position.x,bounds.min.y+1+y,10),Quaternion.identity);
+				}
+			}
+		}
+		if (updateMaxLevel)
+			maxLevelBuilt++;
 	}
 
 	private void setObstacleInDictionary(string name, GameObject obstacle){

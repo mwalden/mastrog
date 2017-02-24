@@ -6,8 +6,9 @@ using System.IO;
 public class ParseJsonLevels {
 	public Levels levels;
 	public ParseJsonLevels(){
-		string path = Application.dataPath + "/Resources/levels.json";
-		levels = JsonUtility.FromJson<Levels> (File.ReadAllText (path));
+		string path = Application.dataPath + "/levels";
+		TextAsset targetFile = Resources.Load<TextAsset>("levels");
+		levels = JsonUtility.FromJson<Levels> (targetFile.text);
 	}
 
 	public Levels getLevels(){

@@ -15,6 +15,8 @@ public class LevelSelectScript : MonoBehaviour {
 	private Level[] levels;
 	private List<GameObject> panels;
 	private CurrentLevelScript currentLevelScript;
+	public TouchGesture.GestureSettings GestureSetting;
+	private TouchGesture touch;
 
 	// Use this for initialization
 	void Start () {
@@ -33,6 +35,24 @@ public class LevelSelectScript : MonoBehaviour {
 		levels = gameLevels.levels;
 		panels [selectedLevel].GetComponent<Image> ().color = Color.red;
 		PlayMusic ();
+
+		#if UNITY_ANDROID
+		touch = new TouchGesture(this.GestureSetting);
+		StartCoroutine(touch.CheckVerticleSwipes(
+			onSwipeUp: () => { onSwipeUp(); },
+			onSwipeDown: () => { onSwipeDown(); }
+		));
+		#endif
+	}
+
+	void onSwipeUp(){
+		if (selectedLevel > 0)
+			UpdateSelection (selectedLevel - 1);
+	}
+	void onSwipeDown(){
+		if (selectedLevel + 1 < panels.Count) {
+			UpdateSelection (selectedLevel + 1);
+		}
 	}
 
 	void UpdateSelection(int newLevel){
@@ -55,6 +75,11 @@ public class LevelSelectScript : MonoBehaviour {
  			currentLevelScript.level = levels [selectedLevel];
 			SceneManager.LoadScene (1);
 		}
+	}
+
+	public void onClick(){
+		currentLevelScript.level = levels [selectedLevel];
+		SceneManager.LoadScene (1);
 	}
 
 	void PlayMusic(){
