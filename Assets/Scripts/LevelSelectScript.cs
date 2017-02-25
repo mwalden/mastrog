@@ -84,8 +84,8 @@ public class LevelSelectScript : MonoBehaviour {
 
 	void PlayMusic(){
 		Level level = levels [selectedLevel];
-		string folder = level.folderName;
-		song = Resources.Load<AudioClip> ("Audio/"+folder+"/Song");
+		string previewName = level.preview;
+		song = Resources.Load<AudioClip> ("Audio/Previews/"+previewName);
 		audioSource.clip = song;
 		audioSource.Play ();
 	}

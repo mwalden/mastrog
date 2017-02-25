@@ -12,7 +12,7 @@ public class LevelBuilder : MonoBehaviour {
 	public Camera mainCamera;
 	public Level level;
 	public Bounds bounds;
-
+	public float offset = 2.5f;
 	private int maxLevelBuilt;
 
 //	private List<GameObject> obstacles;
@@ -56,9 +56,9 @@ public class LevelBuilder : MonoBehaviour {
 				ObstacleID id = go.GetComponent<ObstacleID> ();
 				id.levelId = i;
 				setObstacleInDictionary (go.tag, go);
-				go.transform.position = new Vector3 (bounds.center.x + (bounds.size.x * j), y, 10);
+				go.transform.position = new Vector3 (bounds.center.x  + (bounds.size.x * j), y, 10);
 
-				Instantiate(platform,new Vector3(bounds.center.x + (bounds.size.x * j),bounds.min.y+1+y,10),Quaternion.identity);
+				Instantiate(platform,new Vector3(bounds.center.x + (bounds.size.x * j)  ,bounds.min.y+1+y,10),Quaternion.identity);
 			}
 
 		}
