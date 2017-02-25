@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 
 public class EndGameScript : MonoBehaviour {
@@ -7,9 +8,14 @@ public class EndGameScript : MonoBehaviour {
 	private Vector3 destination;
 	private Camera cam;
 	private GameObject player;
+
 	public float speed;
 	private bool moving;
 	private float playerSpeed;
+
+	public Scores scores;
+	public Canvas scoreCanvas;
+	public DisplayScores displayScoresScript;
 
 	//the rate the player will move faster than the camera;
 	public float playerSpeedIncrement;
@@ -19,14 +25,15 @@ public class EndGameScript : MonoBehaviour {
 			player.transform.position = Vector3.MoveTowards(player.transform.position, destination,playerSpeed);
 			cam.transform.position = Vector3.MoveTowards(cam.transform.position, destination,speed);
 			Bounds bounds = CameraExtensions.OrthographicBounds (cam);
-			if (cam.transform.position.y + bounds.size.y + 10f < player.transform.position.y)
+			if (cam.transform.position.y + bounds.size.y + 10f < player.transform.position.y) {
 				moving = false;
+				displayScores ();
+			}
 //			if (cam.transform.position.y >= destination.y)
 //				moving = false;
 		}
 	}
 	public void PlayEndGame(GameObject player){
-		Debug.Log ("END GAME!");
 		playerSpeed = speed;
 		this.player = player;
 		Collider2D[] colliders = GameObject.FindObjectsOfType<Collider2D> ();
@@ -39,5 +46,15 @@ public class EndGameScript : MonoBehaviour {
 			player.transform.position.y + 100,
 			-10);
 		moving = true;
+
+	}
+
+	public void setScore(Scores scores){
+		this.scores = scores;
+	}
+
+	private void displayScores(){
+		displayScoresScript.setInfo (scores);
+		scoreCanvas.gameObject.SetActive (true);
 	}
 }

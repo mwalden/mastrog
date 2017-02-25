@@ -3,39 +3,50 @@ using System.Collections;
 using System;
 
 public class GameScript : MonoBehaviour {
-	GameObject currentPlatform;
-	GameObject player;
-	Rigidbody2D playerRigidbody;
-	PlayerScript playerScript;
-	AudioScript audioScript;
-	SoundEffectsScript soundEffectScript;
-	public ParticleScript particleSystemScript;
-	public LevelBuilder levelBuilder;
-	Camera cam;
-	CameraScript cameraScript;
-	public float distanceToMove;
+	private GameObject currentPlatform;
+	private GameObject player;
+	private Rigidbody2D playerRigidbody;
+	private PlayerScript playerScript;
+	//plays the song
+	private AudioScript audioScript;
+	//plays the jump success sound and error sound
+	private SoundEffectsScript soundEffectScript;
+	private Camera cam;
+	private CameraScript cameraScript;
 	private bool justMoved;
+	private float distanceToMoveX;
+
+	//going left/right on the platforms
+	private int currentLaneId;
+	//level the player has selected
+	private Level currentGameLevel;
+	//when the timer goes off, the game ends
+	private TimerController timerController;
+	//bounds of the camera. used to calculate distanceToMoveX 
+	private Bounds bounds;
+	private ScoreController scoreController;
+	//game has ended. call the end game script to move camera up
+	private bool gameOver;
+
 	//going up the game. counts how many platforms youve gone up.
 	public int currentPlatformLevel;
 	//keeps track of what progression sound to make
 	public int platformProgression;
-
-	//going left/right on the platforms
-	private int currentLaneId;
-	private Level currentGameLevel;
-
-
-	private bool gameOver;
-
-
+	public int score;
 	public EndGameScript endGameScript;
-	public TouchGesture.GestureSettings GestureSetting;
+	private TouchGesture.GestureSettings GestureSetting;
 	private TouchGesture touch;
-	TimerController timerController;
-	Bounds bounds;
+	//handles the red swiping particle system when locking down a level
+	public ParticleScript particleSystemScript;
+	public LevelBuilder levelBuilder;
+
+
+
 	// Use this for initialization
 	void Start () {
 		cam = Camera.main;
+		scoreController = new ScoreController ();
+		timerController = new TimerController (() => TimesUp ());
 		cameraScript = cam.GetComponent<CameraScript> ();
 		bounds = CameraExtensions.OrthographicBounds (cam);
 		audioScript = GameObject.FindGameObjectWithTag ("AudioController").GetComponent<AudioScript> ();
@@ -76,6 +87,7 @@ public class GameScript : MonoBehaviour {
 			playerScript = player.GetComponent<PlayerScript> ();
 		}
 		if (gameOver) {
+			endGameScript.setScore (scoreController.getScores ());
 			endGameScript.PlayEndGame (player);
 			gameOver = false;
 		}
@@ -98,8 +110,9 @@ public class GameScript : MonoBehaviour {
 
 	public void setCurrentGameLevel(Level gameLevel){
 		this.currentGameLevel = gameLevel;
+		scoreController.setCurrentLevel (gameLevel);
 		audioScript.setGameLevel (gameLevel);
-		timerController = new TimerController (currentGameLevel.lengthInSeconds * 1000, () => TimesUp ());
+		timerController.beginTimer(currentGameLevel.lengthInSeconds * 1000);
 	}
 
 	private void setCurrentLaneId(int id){
@@ -110,8 +123,8 @@ public class GameScript : MonoBehaviour {
 	public void setStartingLane(int startingLane){
 		setCurrentLaneId (startingLane);
 		//player is being set inside of the level builder. consider moving this there. makes more sense but you wont get the moving camera feel.
-		distanceToMove = (bounds.max.x * 2f);
-		float dist = distanceToMove * startingLane;
+		distanceToMoveX = (bounds.max.x * 2f);
+		float dist = distanceToMoveX * startingLane;
 		Vector3 cameraDestination = new Vector3 (cam.transform.position.x + dist, cam.transform.position.y, cam.transform.position.z);
 //		Vector3 playerDestination = new Vector3 (player.transform.position.x + dist, player.transform.position.y, player.transform.position.z);
 //		playerScript.moveToPosition (playerDestination);
@@ -120,22 +133,23 @@ public class GameScript : MonoBehaviour {
 	}
 
 	void cameraAndPlayer(bool isLeft){
-		distanceToMove = (bounds.max.x * 2f);
-		float dist = isLeft ? -distanceToMove : distanceToMove;
+		distanceToMoveX = (bounds.max.x * 2f);
+		float dist = isLeft ? -distanceToMoveX : distanceToMoveX;
 		Vector3 cameraDestination = new Vector3 (cam.transform.position.x + dist, cam.transform.position.y, cam.transform.position.z);
 		Vector3 playerDestination = new Vector3 (player.transform.position.x + dist, player.transform.position.y, player.transform.position.z);
 		playerScript.moveToPosition (playerDestination);
 		cameraScript.moveCameraToPosition (cameraDestination);
 		justMoved = true;
-
-
 	}
 
 	private void movedOneLevelUp(){
 		currentPlatformLevel++;
 		platformProgression++;
 		soundEffectScript.playLevelProgression (platformProgression);
+		scoreController.addPlatform ();
+		scoreController.addScore(score);
 		if (platformProgression % 4 == 0) {
+			scoreController.addLockDownLane ();
 			audioScript.lockDownLane (currentLaneId);
 			platformProgression = 0;
 			particleSystemScript.playParticleSystem ();
@@ -168,6 +182,8 @@ public class GameScript : MonoBehaviour {
 	}
 
 	public void resetPlayer(){
+		scoreController.removeScore (score);
+		scoreController.addError ();
 		soundEffectScript.playError ();
 		playerRigidbody.velocity = new Vector2(0.0f,0.0f);
 		player.transform.position = currentPlatform.transform.position;
