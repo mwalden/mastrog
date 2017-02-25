@@ -40,6 +40,8 @@ public class GameScript : MonoBehaviour {
 	public ParticleScript particleSystemScript;
 	public LevelBuilder levelBuilder;
 
+	private bool disableMovement;
+
 
 
 	// Use this for initialization
@@ -62,7 +64,6 @@ public class GameScript : MonoBehaviour {
 	}
 
 	private void TimesUp (){
- 		Debug.Log ("TIMES UP!!!!!");
 		gameOver = true;
 	}
 
@@ -81,15 +82,20 @@ public class GameScript : MonoBehaviour {
 		}
 	}
 	void Update () {
+		if (disableMovement)
+			return;
 		if (player == null) {
 			player = GameObject.FindGameObjectWithTag ("Player");
 			playerRigidbody = player.GetComponent<Rigidbody2D> ();
 			playerScript = player.GetComponent<PlayerScript> ();
 		}
 		if (gameOver) {
+			if (playerScript.isMoving () || justMoved) {
+				return;
+			}
 			endGameScript.setScore (scoreController.getScores ());
 			endGameScript.PlayEndGame (player);
-			gameOver = false;
+			disableMovement = true;
 		}
 		#if UNITY_5
 		if (Input.GetKeyUp (KeyCode.C)) {
@@ -148,6 +154,7 @@ public class GameScript : MonoBehaviour {
 		soundEffectScript.playLevelProgression (platformProgression);
 		scoreController.addPlatform ();
 		scoreController.addScore(score);
+
 		if (platformProgression % 4 == 0) {
 			scoreController.addLockDownLane ();
 			audioScript.lockDownLane (currentLaneId);
