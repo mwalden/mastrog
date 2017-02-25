@@ -24,9 +24,14 @@ public class GameScript : MonoBehaviour {
 	private int currentLaneId;
 	private Level currentGameLevel;
 
+
+	private bool gameOver;
+
+
+	public EndGameScript endGameScript;
 	public TouchGesture.GestureSettings GestureSetting;
 	private TouchGesture touch;
-
+	TimerController timerController;
 	Bounds bounds;
 	// Use this for initialization
 	void Start () {
@@ -45,7 +50,10 @@ public class GameScript : MonoBehaviour {
 
 	}
 
-
+	private void TimesUp (){
+ 		Debug.Log ("TIMES UP!!!!!");
+		gameOver = true;
+	}
 
 	void moveLeft(){
 		if (currentLaneId > 0 && !playerScript.isMoving ()) {
@@ -67,6 +75,10 @@ public class GameScript : MonoBehaviour {
 			playerRigidbody = player.GetComponent<Rigidbody2D> ();
 			playerScript = player.GetComponent<PlayerScript> ();
 		}
+		if (gameOver) {
+			endGameScript.PlayEndGame (player);
+			gameOver = false;
+		}
 		#if UNITY_5
 		if (Input.GetKeyUp (KeyCode.C)) {
 			levelBuilder.cleanUpObstacles (platformProgression);
@@ -82,12 +94,12 @@ public class GameScript : MonoBehaviour {
 			platformProgression = 0;
 		}
 		#endif
-
 	}
 
 	public void setCurrentGameLevel(Level gameLevel){
 		this.currentGameLevel = gameLevel;
 		audioScript.setGameLevel (gameLevel);
+		timerController = new TimerController (currentGameLevel.lengthInSeconds * 1000, () => TimesUp ());
 	}
 
 	private void setCurrentLaneId(int id){

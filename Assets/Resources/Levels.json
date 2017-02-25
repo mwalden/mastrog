@@ -3,7 +3,7 @@
     {
       "folderName": "HackDay",
       "preview": "Track 1",
-      "lengthInSeconds": 202,
+      "lengthInSeconds": 20,
       "title": "HackDay Song",
       "numberOfLanes": 4,
       "startingLane":2,  
@@ -30,7 +30,7 @@
     {
       "folderName": "First",
       "preview": "Track 2",
-      "lengthInSeconds": 202,
+      "lengthInSeconds": 20,
       "title": "First Song",
       "numberOfLanes": 3,
       "numberOfLevels":4,
@@ -53,7 +53,7 @@
     {
       "folderName": "Song 2",
       "preview": "Track 3",
-      "lengthInSeconds": 202,
+      "lengthInSeconds": 20,
       "title": "Song 2",
       "numberOfLanes": 3,
       "numberOfLevels":4,

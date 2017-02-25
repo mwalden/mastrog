@@ -19,7 +19,7 @@ public class JumpScript : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.Space)) {
 			//prevent double jump
 			if (rb.velocity.y <= 0.1) {
-				Debug.Log(force);
+//				Debug.Log(force);
 //				rb.AddForce (new Vector2 (0, force));
 				rb.velocity =  (new Vector2 (0, force));
 
@@ -49,7 +49,7 @@ public class JumpScript : MonoBehaviour {
 			float g = Physics.gravity.magnitude; // get the gravity value
 //			Debug.Log(distance);
 			force = Mathf.Sqrt(2 * g * distance) + hit.collider.bounds.size.y+.25f;
-			Debug.Log ("Force : " + force);
+//			Debug.Log ("Force : " + force);
 
 		}
 	}

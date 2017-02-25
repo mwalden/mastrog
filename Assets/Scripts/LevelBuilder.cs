@@ -15,6 +15,8 @@ public class LevelBuilder : MonoBehaviour {
 	public float offset = 2.5f;
 	private int maxLevelBuilt;
 
+
+
 //	private List<GameObject> obstacles;
 	private Dictionary<string,List<GameObject>> obstacles = new Dictionary<string,List<GameObject>>();
 
