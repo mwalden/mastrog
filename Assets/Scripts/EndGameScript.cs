@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class EndGameScript : MonoBehaviour {
@@ -56,5 +57,10 @@ public class EndGameScript : MonoBehaviour {
 	private void displayScores(){
 		displayScoresScript.setInfo (scores);
 		scoreCanvas.gameObject.SetActive (true);
+		displayScoresScript.showLine ();
+	}
+
+	public void onClick (){
+		SceneManager.LoadScene (0);
 	}
 }

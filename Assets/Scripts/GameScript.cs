@@ -195,4 +195,5 @@ public class GameScript : MonoBehaviour {
 		playerRigidbody.velocity = new Vector2(0.0f,0.0f);
 		player.transform.position = currentPlatform.transform.position;
 	}
+
 }
