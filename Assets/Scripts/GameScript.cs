@@ -34,7 +34,7 @@ public class GameScript : MonoBehaviour {
 	public int platformProgression;
 	public int score;
 	public EndGameScript endGameScript;
-	private TouchGesture.GestureSettings GestureSetting;
+	public TouchGesture.GestureSettings gestureSetting;
 	private TouchGesture touch;
 	//handles the red swiping particle system when locking down a level
 	public ParticleScript particleSystemScript;
@@ -54,11 +54,11 @@ public class GameScript : MonoBehaviour {
 		audioScript = GameObject.FindGameObjectWithTag ("AudioController").GetComponent<AudioScript> ();
 		soundEffectScript = GameObject.FindGameObjectWithTag ("SoundEffectsController").GetComponent<SoundEffectsScript> ();
 		#if UNITY_ANDROID
-		touch = new TouchGesture(this.GestureSetting);
-		StartCoroutine(touch.CheckHorizontalSwipes(
-			onLeftSwipe: () => {  moveRight(); },
+			touch = new TouchGesture(this.gestureSetting);
+			StartCoroutine(touch.CheckHorizontalSwipes(
+			onLeftSwipe: () => { moveRight();},
 			onRightSwipe: () => {moveLeft(); }
-		));
+			));
 		#endif
 
 	}

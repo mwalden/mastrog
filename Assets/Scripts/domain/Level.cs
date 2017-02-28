@@ -11,6 +11,7 @@ public class Level
 	public Obstacle[] obstacles;
 	public int numberOfLevels;	
 	public string preview;
+	public string backgroundImage;
 
 }
 

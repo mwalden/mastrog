@@ -30,6 +30,8 @@ public class LevelSelectScript : MonoBehaviour {
 		foreach (Level level in gameLevels.levels){
 			GameObject panel = Instantiate(levelSelectPrefab,new Vector3(0,0,10),Quaternion.identity) as GameObject;
 			panel.GetComponentInChildren<Text> ().text = level.title;
+			Sprite sprite = Resources.Load<Sprite> ("images/" + level.backgroundImage);
+			panel.GetComponent<Image> ().sprite = sprite;
 			scroll.AddChild (panel);
 //			panel.transform.SetParent (selectionCanvas.transform,false);
 //			panels.Add (panel);
