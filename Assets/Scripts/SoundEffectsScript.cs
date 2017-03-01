@@ -9,16 +9,14 @@ public class SoundEffectsScript : MonoBehaviour {
 	AudioSource woosh;
 	bool created;
 
-	void Awake() {
-		if (!created) {
-			// this is the first instance - make it persist
-			DontDestroyOnLoad(this.gameObject);
-			created = true;
-		} else {
-			// this must be a duplicate from a scene reload - DESTROY!
-			Destroy(this.gameObject);
-		} 
-	}
+//	void Awake() {
+//		GameObject created = GameObject.FindGameObjectWithTag (gameObject.tag);
+//		if (created == null) {
+//			DontDestroyOnLoad(this.gameObject);
+//		} else {
+//			Destroy(this.gameObject);
+//		} 
+//	}
 
 
 	void Start () {

@@ -54,7 +54,7 @@
     },
     {
       "folderName": "First",
-      "backgroundImage":"rainbowStars",
+      "backgroundImage":"dinosaur",
       "preview": "Track 3",
       "lengthInSeconds": 15,
       "title": "Song 2",
@@ -63,7 +63,7 @@
       "startingLane":2,
       "obstacles": [
         {
-          "name": "circle",
+          "name": "scalingsquare",
           "speed": 100
         },
         {

@@ -68,6 +68,9 @@ public class GameScript : MonoBehaviour {
 	}
 
 	void moveLeft(){
+
+		if (disableMovement)
+			return;
 		if (currentLaneId > 0 && !playerScript.isMoving ()) {
 			setCurrentLaneId (currentLaneId - 1);
 			cameraAndPlayer (isLeft:true);
@@ -75,6 +78,9 @@ public class GameScript : MonoBehaviour {
 		}
 	}
 	void moveRight(){
+
+		if (disableMovement)
+			return;
 		if (currentLaneId + 1 < currentGameLevel.numberOfLanes && !playerScript.isMoving ()) {
 			setCurrentLaneId (currentLaneId + 1);
 			cameraAndPlayer (isLeft:false);

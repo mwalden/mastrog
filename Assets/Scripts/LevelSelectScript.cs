@@ -18,10 +18,9 @@ public class LevelSelectScript : MonoBehaviour {
 	private Level[] levels;
 	private List<GameObject> panels;
 	private CurrentLevelScript currentLevelScript;
-	public TouchGesture.GestureSettings GestureSetting;
+	public TouchGesture.GestureSettings gestureSetting;
 	private TouchGesture touch;
 
-	// Use this for initialization
 	void Start () {
 		panels = new List<GameObject> ();
 		currentLevelScript = GameObject.FindGameObjectWithTag ("CurrentLevel").GetComponent<CurrentLevelScript> ();
@@ -33,52 +32,11 @@ public class LevelSelectScript : MonoBehaviour {
 			Sprite sprite = Resources.Load<Sprite> ("images/" + level.backgroundImage);
 			panel.GetComponent<Image> ().sprite = sprite;
 			scroll.AddChild (panel);
-//			panel.transform.SetParent (selectionCanvas.transform,false);
-//			panels.Add (panel);
 		}
 		levels = gameLevels.levels;
-//		panels [selectedLevel].GetComponent<Image> ().color = Color.red;
 		PlayMusic (0);
-//
-//		#if UNITY_ANDROID
-//		touch = new TouchGesture(this.GestureSetting);
-//		StartCoroutine(touch.CheckVerticleSwipes(
-//			onSwipeUp: () => { onSwipeUp(); },
-//			onSwipeDown: () => { onSwipeDown(); }
-//		));
-//		#endif
 	}
-
-//	void onSwipeUp(){
-//		if (selectedLevel > 0)
-//			UpdateSelection (selectedLevel - 1);
-//	}
-//	void onSwipeDown(){
-//		if (selectedLevel + 1 < panels.Count) {
-//			UpdateSelection (selectedLevel + 1);
-//		}
-//	}
-//
-//	void UpdateSelection(int newLevel){
-//		panels [selectedLevel].GetComponent<Image> ().color = Color.white;
-//		panels [newLevel].GetComponent<Image> ().color = Color.red;
-//		selectedLevel = newLevel;
-//		PlayMusic ();
-//	}
-	
-	// Update is called once per frame
 	void Update () {
-		
-//		if (Input.GetKeyUp (KeyCode.DownArrow) && selectedLevel + 1 < panels.Count) {
-//			UpdateSelection (selectedLevel + 1);
-//		}
-//		if (Input.GetKeyUp (KeyCode.UpArrow) && selectedLevel > 0) {
-//			UpdateSelection (selectedLevel - 1);
-//		}
-//		if (Input.GetKeyUp(KeyCode.Space)) {
-// 			currentLevelScript.level = levels [selectedLevel];
-//			SceneManager.LoadScene (1);
-//		}
 	}
 
 	public void onChange(){

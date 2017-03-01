@@ -54,7 +54,7 @@ public class LevelBuilder : MonoBehaviour {
 			for (int j=0;j < obstacles.Length;j++){
 				Obstacle obstacle = obstacles [j];
 				GameObject go =  Instantiate(Resources.Load("Obstacles/"+obstacle.name, typeof(GameObject))) as GameObject;
-				go.tag = obstacle.name;
+//				go.tag = obstacle.name;
 				ObstacleID id = go.GetComponent<ObstacleID> ();
 				id.levelId = i;
 				setObstacleInDictionary (go.tag, go);
