@@ -39,7 +39,7 @@ public class GameScript : MonoBehaviour {
 	//handles the red swiping particle system when locking down a level
 	public ParticleScript particleSystemScript;
 	public LevelBuilder levelBuilder;
-
+	public BarCounterController barCounterController;
 	private bool disableMovement;
 
 
@@ -111,11 +111,13 @@ public class GameScript : MonoBehaviour {
 			setCurrentLaneId (currentLaneId - 1);
 			cameraAndPlayer (true);
 			platformProgression = 0;
+			barCounterController.emptyBars ();
 		}
 		if (Input.GetKeyUp(KeyCode.RightArrow)&& currentLaneId + 1 < currentGameLevel.numberOfLanes && !playerScript.isMoving()){
 			setCurrentLaneId (currentLaneId + 1);
 			cameraAndPlayer (false);
 			platformProgression = 0;
+			barCounterController.emptyBars ();
 		}
 		#endif
 	}
@@ -158,12 +160,14 @@ public class GameScript : MonoBehaviour {
 		currentPlatformLevel++;
 		platformProgression++;
 		soundEffectScript.playLevelProgression (platformProgression);
+		barCounterController.addBar ();
 		scoreController.addPlatform ();
 		scoreController.addScore(score);
 
 		if (platformProgression % 4 == 0) {
 			scoreController.addLockDownLane ();
 			audioScript.lockDownLane (currentLaneId);
+			barCounterController.emptyBars ();
 			platformProgression = 0;
 			particleSystemScript.playParticleSystem ();
 			soundEffectScript.playWoosh ();
