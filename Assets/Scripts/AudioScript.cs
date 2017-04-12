@@ -13,11 +13,11 @@ public class AudioScript : MonoBehaviour {
 	public int currentLane;
 	public float lockDownDuration;
 	public int level;
-	private Level gameLevel;
+	private NewLevel gameLevel;
 
 	private int successAudioLevel;
 
-	public void setGameLevel(Level level){
+	public void setGameLevel(NewLevel level){
 		gameLevel = level;
 
 		for (int x = 0; x < level.numberOfLanes; x++) {

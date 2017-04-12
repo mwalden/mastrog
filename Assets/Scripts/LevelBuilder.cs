@@ -10,7 +10,7 @@ public class LevelBuilder : MonoBehaviour {
 	public GameObject playerPrefab;
 	private int numberOfLanes;
 	public Camera mainCamera;
-	public Level level;
+	public NewLevel level;
 	public Bounds bounds;
 	public float offset = 2.5f;
 	private int maxLevelBuilt;
@@ -35,7 +35,7 @@ public class LevelBuilder : MonoBehaviour {
 		} else {
 			//if its not there (IE: coming from editor), create it and pull song 0.
 			if (currentLevelScript == null) {
-				ParseJsonLevels parser = new ParseJsonLevels ();
+				LevelParser parser = new LevelParser ();
 				level = parser.getLevels ().levels [0];
 			}
 		}
@@ -43,11 +43,27 @@ public class LevelBuilder : MonoBehaviour {
 
 		numberOfLanes = level.numberOfLanes;
 		int numberOfLevels = level.numberOfLevels;
-		Obstacle[] obstacles = level.obstacles;
+		Obstacle[] obstacles = level.rows;
 
 		bounds = CameraExtensions.OrthographicBounds (Camera.main);
+		int obstaclePosition = 0;
+		for (int i = 0; i < numberOfLevels; i++) {
+			maxLevelBuilt++;
+			float y = 8 * i;
+			obstaclePosition = 0;
+			for (int j = i * numberOfLanes; j < i * numberOfLanes + numberOfLanes; j++) {
+				Obstacle obstacle = obstacles [j];
+				GameObject go =  Instantiate(Resources.Load("Obstacles/"+obstacle.name, typeof(GameObject))) as GameObject;
+				ObstacleID id = go.GetComponent<ObstacleID> ();
+				id.levelId = i;
+				setObstacleInDictionary (go.tag, go);
+				go.transform.position = new Vector3 (bounds.center.x  + (bounds.size.x * obstaclePosition), y, 10);
+				Instantiate(platform,new Vector3(bounds.center.x + (bounds.size.x * obstaclePosition)  ,bounds.min.y+1+y,10),Quaternion.identity);
+				obstaclePosition++;
+			}
+		}
 
-		for (int i = 0; i < numberOfLevels ; i++) {
+		/*for (int i = 0; i < numberOfLevels ; i++) {
 			maxLevelBuilt++;
 //			float y = bounds.center.y + (bounds.size.y * i);
 			float y = 8 * i;
@@ -63,7 +79,7 @@ public class LevelBuilder : MonoBehaviour {
 				Instantiate(platform,new Vector3(bounds.center.x + (bounds.size.x * j)  ,bounds.min.y+1+y,10),Quaternion.identity);
 			}
 
-		}
+		}*/
 		GameObject player = Instantiate (playerPrefab, new Vector3 (bounds.center.x + (bounds.size.x * startingLane), bounds.min.y + 1.7f, 10f), Quaternion.identity) as GameObject;
 		player.tag = "Player";
 		gameScript.setCurrentGameLevel (level);

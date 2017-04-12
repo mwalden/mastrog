@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class CurrentLevelScript : MonoBehaviour {
-	public Level level;
+	public NewLevel level;
 	bool created;
 
 	void Awake() {

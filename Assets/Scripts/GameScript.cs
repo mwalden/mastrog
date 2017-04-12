@@ -19,7 +19,7 @@ public class GameScript : MonoBehaviour {
 	//going left/right on the platforms
 	private int currentLaneId;
 	//level the player has selected
-	private Level currentGameLevel;
+	private NewLevel currentGameLevel;
 	//when the timer goes off, the game ends
 	private TimerController timerController;
 	//bounds of the camera. used to calculate distanceToMoveX 
@@ -46,6 +46,7 @@ public class GameScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		
 		cam = Camera.main;
 		scoreController = new ScoreController ();
 		timerController = new TimerController (() => TimesUp ());
@@ -122,7 +123,7 @@ public class GameScript : MonoBehaviour {
 		#endif
 	}
 
-	public void setCurrentGameLevel(Level gameLevel){
+	public void setCurrentGameLevel(NewLevel gameLevel){
 		this.currentGameLevel = gameLevel;
 		scoreController.setCurrentLevel (gameLevel);
 		audioScript.setGameLevel (gameLevel);

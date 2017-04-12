@@ -9,10 +9,10 @@ public class ScoreController{
 	private int lockDownLaneCount;
 	private int errorCount;
 	private int platformCount;
-	private Level level;
+	private NewLevel level;
 
 	public ScoreController (){}
-	public void setCurrentLevel(Level level){
+	public void setCurrentLevel(NewLevel level){
 		this.level = level;
 	}
 

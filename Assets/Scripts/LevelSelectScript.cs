@@ -15,25 +15,28 @@ public class LevelSelectScript : MonoBehaviour {
 
 	private AudioClip song;
 	private int selectedLevel;
-	private Level[] levels;
+	private NewLevel[] levels;
 	private List<GameObject> panels;
 	private CurrentLevelScript currentLevelScript;
 	public TouchGesture.GestureSettings gestureSetting;
 	private TouchGesture touch;
 
 	void Start () {
+		
 		panels = new List<GameObject> ();
 		currentLevelScript = GameObject.FindGameObjectWithTag ("CurrentLevel").GetComponent<CurrentLevelScript> ();
 		ParseJsonLevels parser = new ParseJsonLevels();
-		Levels gameLevels = parser.getLevels ();
-		foreach (Level level in gameLevels.levels){
+		LevelParser levelParser = new LevelParser ();
+		NewLevels newLevels = levelParser.getLevels ();
+//		Levels gameLevels = parser.getLevels ();
+		foreach (NewLevel level in newLevels.levels){
 			GameObject panel = Instantiate(levelSelectPrefab,new Vector3(0,0,10),Quaternion.identity) as GameObject;
 			panel.GetComponentInChildren<Text> ().text = level.title;
 			Sprite sprite = Resources.Load<Sprite> ("images/" + level.backgroundImage);
 			panel.GetComponent<Image> ().sprite = sprite;
 			scroll.AddChild (panel);
 		}
-		levels = gameLevels.levels;
+		levels = newLevels.levels;
 		PlayMusic (0);
 	}
 	void Update () {
@@ -56,7 +59,7 @@ public class LevelSelectScript : MonoBehaviour {
 
 
 	void PlayMusic(int selection){
-		Level level = levels [selection];
+		NewLevel level = levels [selection];
 		string previewName = level.preview;
 		song = Resources.Load<AudioClip> ("Audio/Previews/"+previewName);
 		audioSource.clip = song;

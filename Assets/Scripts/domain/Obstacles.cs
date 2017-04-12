@@ -3,6 +3,6 @@
 [Serializable]
 public class Obstacles
 {
-	public Obstacle[] obstacles;
+	public Rows obstacle;
 }
 

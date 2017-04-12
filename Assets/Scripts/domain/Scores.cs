@@ -6,9 +6,9 @@ public class Scores
 	private int platformsPassed;
 	private int lanesLockedDown;
 	private int errorCount;
-	private Level level;
+	private NewLevel level;
 
-	public Scores (int score, int platformsPassed, int lanesLockedDown, int errorCount, Level level)
+	public Scores (int score, int platformsPassed, int lanesLockedDown, int errorCount, NewLevel level)
 	{
 		this.scores = score;
 		this.platformsPassed = platformsPassed;
@@ -17,7 +17,7 @@ public class Scores
 		this.level = level;
 	}
 
-	public Level getLevel(){
+	public NewLevel getLevel(){
 		return level;
 	}
 		
