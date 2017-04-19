@@ -15,10 +15,9 @@ public class LevelBuilder : MonoBehaviour {
 	public float offset = 2.5f;
 	private int maxLevelBuilt;
 
-
-
-//	private List<GameObject> obstacles;
-	private Dictionary<string,List<GameObject>> obstacles = new Dictionary<string,List<GameObject>>();
+	public int obstacleArrayMarker = 0;
+	public Dictionary<string,List<GameObject>> obstaclePool = new Dictionary<string,List<GameObject>>();
+	List<GameObject> obstaclesInUse = new List<GameObject>();
 
 	void Start() {
 		mainCamera = Camera.main;
@@ -44,7 +43,7 @@ public class LevelBuilder : MonoBehaviour {
 		numberOfLanes = level.numberOfLanes;
 		int numberOfLevels = level.numberOfLevels;
 		Obstacle[] obstacles = level.rows;
-
+		initilizeObjectPool ();
 		bounds = CameraExtensions.OrthographicBounds (Camera.main);
 		int obstaclePosition = 0;
 		for (int i = 0; i < numberOfLevels; i++) {
@@ -53,15 +52,15 @@ public class LevelBuilder : MonoBehaviour {
 			obstaclePosition = 0;
 			for (int j = i * numberOfLanes; j < i * numberOfLanes + numberOfLanes; j++) {
 				Obstacle obstacle = obstacles [j];
-				GameObject go =  Instantiate(Resources.Load("Obstacles/"+obstacle.name, typeof(GameObject))) as GameObject;
-				ObstacleID id = go.GetComponent<ObstacleID> ();
-				id.levelId = i;
-				setObstacleInDictionary (go.tag, go);
+				GameObject go = getObjectFromPoolByName (obstacle.name, i);
+
+//				setObstacleInDictionary (go.tag, go);
 				go.transform.position = new Vector3 (bounds.center.x  + (bounds.size.x * obstaclePosition), y, 10);
 				Instantiate(platform,new Vector3(bounds.center.x + (bounds.size.x * obstaclePosition)  ,bounds.min.y+1+y,10),Quaternion.identity);
 				obstaclePosition++;
 			}
 		}
+
 
 		/*for (int i = 0; i < numberOfLevels ; i++) {
 			maxLevelBuilt++;
@@ -87,31 +86,69 @@ public class LevelBuilder : MonoBehaviour {
 		gameScript.setStartingLane (startingLane);
 	}
 
-	public void cleanUpObstacles(int currentLevel){
-		int y = (maxLevelBuilt * 8);
-		bool updateMaxLevel = false;
-		foreach (string key in obstacles.Keys) {
-			List<GameObject> list = obstacles [key];
-			foreach (GameObject obstacle in list) {
-				ObstacleID id = obstacle.GetComponent<ObstacleID> ();
-				if (currentLevel - id.levelId >= 2) {
-					obstacle.transform.position = new Vector3 (obstacle.transform.position.x, y, 10);
-					updateMaxLevel = true;
-					id.levelId = maxLevelBuilt + 1;
-					Instantiate(platform,new Vector3(obstacle.transform.position.x,bounds.min.y+1+y,10),Quaternion.identity);
+	private void initilizeObjectPool(){
+		foreach (string obstacleName in level.obstacleNames) {
+			for (int x = 0; x < 20; x++) {
+				GameObject go =  Instantiate(Resources.Load("Obstacles/"+obstacleName, typeof(GameObject))) as GameObject;
+				go.SetActive (false);
+				if (!obstaclePool.ContainsKey(obstacleName)) {
+					obstaclePool [obstacleName] = new List<GameObject> ();
 				}
+				go.name = obstacleName;
+				obstaclePool [obstacleName].Add (go);
 			}
-		}
-		if (updateMaxLevel)
-			maxLevelBuilt++;
+		}	
 	}
 
-	private void setObstacleInDictionary(string name, GameObject obstacle){
-		//probably best to create a few of these then disable them 
-		//vs creating them as they are read. will work for now.
-		if (!obstacles.ContainsKey(name)) {
-			obstacles [name] = new List<GameObject> ();
-		}
-		obstacles [name].Add (obstacle);
+	private void putItemBackInPool(GameObject go){
+		List<GameObject> objects = obstaclePool [go.name];
+		go.SetActive(false);
+		obstaclesInUse.Remove (go);
+		objects.Add (go);
 	}
+
+	private GameObject getObjectFromPoolByName(string name, int levelId){
+		List<GameObject> objects = obstaclePool [name];
+		GameObject go = objects[0];
+		ObstacleID id = go.GetComponent<ObstacleID> ();
+		id.levelId = levelId;
+		objects.Remove (go);
+		go.SetActive(true);
+		obstaclesInUse.Add (go);
+
+		obstacleArrayMarker++;
+		return go;
+	}
+
+	private void addRowToScene(int levelId){
+		int y = (levelId - 1) * 8;
+		for (int i = 0; i < numberOfLanes; i++) {
+			Obstacle obstacle = level.rows[obstacleArrayMarker];
+			GameObject go = getObjectFromPoolByName (obstacle.name, levelId);
+			go.transform.position = new Vector3 (bounds.center.x  + (bounds.size.x * i), y, 10);
+			Instantiate(platform,new Vector3(bounds.center.x + (bounds.size.x * i)  ,bounds.min.y+1+y,10),Quaternion.identity);
+		}
+		
+	}
+
+	public void cleanUpObstacles(int currentLevel){
+		bool drawNewRow = false;
+		List<GameObject> objectsToPutBack = new List<GameObject> ();
+		foreach (GameObject go in obstaclesInUse) {
+			if (mainCamera.transform.position.y + bounds.min.y - 2 > go.transform.position.y) {
+				go.SetActive (false);
+				objectsToPutBack.Add(go);
+				drawNewRow = true;
+			}
+		}
+
+		if (drawNewRow) {
+			for (int i = 0; i < objectsToPutBack.Count;i++){
+				putItemBackInPool (objectsToPutBack [i]);
+			}
+			maxLevelBuilt++;
+			addRowToScene (maxLevelBuilt);
+		}
+	}
+
 }

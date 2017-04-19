@@ -11,8 +11,6 @@ public class LevelParser
 	public LevelParser(){
 		TextAsset targetFile = Resources.Load<TextAsset>("Level2");
 		levels = JsonUtility.FromJson<NewLevels> (targetFile.text);
-		Debug.Log (levels.levels);
-		
 	}
 
 	public NewLevels getLevels(){
