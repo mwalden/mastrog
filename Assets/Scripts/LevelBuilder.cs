@@ -14,12 +14,16 @@ public class LevelBuilder : MonoBehaviour {
 	public Bounds bounds;
 	public float offset = 2.5f;
 	private int maxLevelBuilt;
+	private int lockedDownLane = -1;
 
 	public int obstacleArrayMarker = 0;
 	public Dictionary<string,List<GameObject>> obstaclePool = new Dictionary<string,List<GameObject>>();
 	List<GameObject> obstaclesInUse = new List<GameObject>();
 
 	void Start() {
+		Messenger.AddListener< int >( "enableLane", unlockLane );
+		Messenger.AddListener< int >( "disableLane", lockDownLane );
+
 		mainCamera = Camera.main;
 
 		//trying to pull alevel from level selection.
@@ -35,7 +39,7 @@ public class LevelBuilder : MonoBehaviour {
 			//if its not there (IE: coming from editor), create it and pull song 0.
 			if (currentLevelScript == null) {
 				LevelParser parser = new LevelParser ();
-				level = parser.getLevels ().levels [0];
+				level = parser.getLevels ().levels [2];
 			}
 		}
 		int startingLane = level.startingLane;
@@ -53,32 +57,12 @@ public class LevelBuilder : MonoBehaviour {
 			for (int j = i * numberOfLanes; j < i * numberOfLanes + numberOfLanes; j++) {
 				Obstacle obstacle = obstacles [j];
 				GameObject go = getObjectFromPoolByName (obstacle.name, i);
-
-//				setObstacleInDictionary (go.tag, go);
 				go.transform.position = new Vector3 (bounds.center.x  + (bounds.size.x * obstaclePosition), y, 10);
 				Instantiate(platform,new Vector3(bounds.center.x + (bounds.size.x * obstaclePosition)  ,bounds.min.y+1+y,10),Quaternion.identity);
 				obstaclePosition++;
 			}
 		}
 
-
-		/*for (int i = 0; i < numberOfLevels ; i++) {
-			maxLevelBuilt++;
-//			float y = bounds.center.y + (bounds.size.y * i);
-			float y = 8 * i;
-			for (int j=0;j < obstacles.Length;j++){
-				Obstacle obstacle = obstacles [j];
-				GameObject go =  Instantiate(Resources.Load("Obstacles/"+obstacle.name, typeof(GameObject))) as GameObject;
-//				go.tag = obstacle.name;
-				ObstacleID id = go.GetComponent<ObstacleID> ();
-				id.levelId = i;
-				setObstacleInDictionary (go.tag, go);
-				go.transform.position = new Vector3 (bounds.center.x  + (bounds.size.x * j), y, 10);
-
-				Instantiate(platform,new Vector3(bounds.center.x + (bounds.size.x * j)  ,bounds.min.y+1+y,10),Quaternion.identity);
-			}
-
-		}*/
 		GameObject player = Instantiate (playerPrefab, new Vector3 (bounds.center.x + (bounds.size.x * startingLane), bounds.min.y + 1.7f, 10f), Quaternion.identity) as GameObject;
 		player.tag = "Player";
 		gameScript.setCurrentGameLevel (level);
@@ -123,19 +107,22 @@ public class LevelBuilder : MonoBehaviour {
 	private void addRowToScene(int levelId){
 		int y = (levelId - 1) * 8;
 		for (int i = 0; i < numberOfLanes; i++) {
+			if (obstacleArrayMarker == level.rows.Length - 1)
+				obstacleArrayMarker = 0;
 			Obstacle obstacle = level.rows[obstacleArrayMarker];
 			GameObject go = getObjectFromPoolByName (obstacle.name, levelId);
+			if (i == lockedDownLane)
+				go.GetComponent<EnableDisableScript> ().disableObstacle ();
 			go.transform.position = new Vector3 (bounds.center.x  + (bounds.size.x * i), y, 10);
 			Instantiate(platform,new Vector3(bounds.center.x + (bounds.size.x * i)  ,bounds.min.y+1+y,10),Quaternion.identity);
 		}
-		
 	}
 
 	public void cleanUpObstacles(int currentLevel){
 		bool drawNewRow = false;
 		List<GameObject> objectsToPutBack = new List<GameObject> ();
 		foreach (GameObject go in obstaclesInUse) {
-			if (mainCamera.transform.position.y + bounds.min.y - 2 > go.transform.position.y) {
+			if (mainCamera.transform.position.y + bounds.min.y > go.transform.position.y) {
 				go.SetActive (false);
 				objectsToPutBack.Add(go);
 				drawNewRow = true;
@@ -150,5 +137,34 @@ public class LevelBuilder : MonoBehaviour {
 			addRowToScene (maxLevelBuilt);
 		}
 	}
+	private void enableLane(int laneLocked){
+		for (int x = 0; x < obstaclesInUse.Count; x++) {
+			GameObject go = obstaclesInUse [x];
+			if (x % level.numberOfLanes == laneLocked) {
+				EnableDisableScript script = go.GetComponent<EnableDisableScript> ();
+				if (script != null)
+					script.enableObstacle ();
+			}
+		}
+	}
+	private void disableLane(int laneLocked){
+		for (int x = 0; x < obstaclesInUse.Count; x++) {
+			GameObject go = obstaclesInUse [x];
+			if (x % level.numberOfLanes == laneLocked) {
+				EnableDisableScript script = go.GetComponent<EnableDisableScript> ();
+				if (script != null)
+					script.disableObstacle ();
+			}
+		}
+	}
+	public void lockDownLane(int laneLocked){
+		lockedDownLane = laneLocked;
+		disableLane (laneLocked);
+	}
+	public void unlockLane(int lane){
+		lockedDownLane = -1;
+		enableLane (lane);
+	}
+
 
 }

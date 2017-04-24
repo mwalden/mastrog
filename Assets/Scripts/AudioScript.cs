@@ -7,15 +7,17 @@ public class AudioScript : MonoBehaviour {
 	Dictionary<int,bool> lockedAudioTracks = new Dictionary<int,bool> ();
 	Dictionary<int,float> lockedAudioTracksDuration = new Dictionary<int,float> ();
 	List<AudioSource> audioSources = new List<AudioSource>();
-	List<AudioSource> successAudio = new List<AudioSource>();
+//	List<AudioSource> successAudio = new List<AudioSource>();
 	AudioSource error;
 	AudioSource woosh;
 	public int currentLane;
 	public float lockDownDuration;
 	public int level;
 	private NewLevel gameLevel;
+	
 
-	private int successAudioLevel;
+
+//	private int successAudioLevel;
 
 	public void setGameLevel(NewLevel level){
 		gameLevel = level;
@@ -33,6 +35,22 @@ public class AudioScript : MonoBehaviour {
 		}
 	}
 
+	void Update(){
+		float deltaTime = Time.deltaTime;
+		for (int x = 0; x < gameLevel.numberOfLevels; x++) {
+			if (lockedAudioTracks [x]) {
+				lockedAudioTracksDuration [x] -= deltaTime;
+				if (lockedAudioTracksDuration [x] <= 0) {
+					lockedAudioTracksDuration [x] = 0;
+					lockedAudioTracks [x] = false;
+					Messenger.Broadcast<int> ("enableLane", x);
+					if (currentLane != x) 
+						audioSources [x].volume = 0;
+				}
+			}
+		}
+	}
+
 	public void setCurrentLane(int lane){
 		if (!lockedAudioTracks [currentLane]) {
 			audioSources [currentLane].volume = 0;
@@ -44,5 +62,6 @@ public class AudioScript : MonoBehaviour {
 	public void lockDownLane(int lane){
 		lockedAudioTracks[lane] = true;
 		lockedAudioTracksDuration [lane] = lockDownDuration;
+
 	}
 }

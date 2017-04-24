@@ -1,214 +1,351 @@
 {
   "levels": [
     {
-      "folderName": "HackDay",
+      "folderName": "First",
       "preview": "Track 1",
       "lengthInSeconds": 200,
-      "backgroundImage":"rainbowStars",
+      "backgroundImage": "rainbowStars",
       "title": "HackDay Song",
-      "numberOfLanes": 4,
-      "startingLane":2,  
-      "numberOfLevels":3,  
-      "obstacleNames":["square","petal","circle"],
+      "numberOfLanes": 3,
+      "startingLane": 2,
+      "numberOfLevels": 3,
+      "obstacleNames": [
+        "square",
+        "petal",
+        "circle"
+      ],
       "rows": [
-                  {
-                    "name": "petal",
-                    "speed": 200
-                  },
-                  {
-                    "name": "square",
-                    "speed": 100
-                  },
-                  {
-                    "name": "petal",
-                    "speed": 200
-                  },  
-                  {
-                    "name": "square",
-                    "speed": 100
-                  },
-                  {
-                    "name": "circle",
-                    "speed": 100
-                  },                  
-                  {
-                    "name": "square",
-                    "speed": 100
-                  },
-                  {
-                    "name": "circle",
-                    "speed": 200
-                  },
-                  {
-                    "name": "square",
-                    "speed": 100
-                  },
-                  {
-                    "name": "circle",
-                    "speed": 100
-                  },
-                  {
-                    "name": "circle",
-                    "speed": 200
-                  },
-                  {
-                    "name": "petal",
-                    "speed": 100
-                  },
-                  {
-                    "name": "petal",
-                    "speed": 100
-                  },
-                  {
-                    "name": "petal",
-                    "speed": 200
-                  },
-                  {
-                    "name": "square",
-                    "speed": 100
-                  },
-                  {
-                    "name": "square",
-                    "speed": 100
-                  },
-                  {
-                    "name": "circle",
-                    "speed": 200
-                  },
-                  {
-                    "name": "petal",
-                    "speed": 100
-                  },
-                  {
-                    "name": "circle",
-                    "speed": 100
-                  },
-                  {
-                    "name": "square",
-                    "speed": 200
-                  },
-                  {
-                    "name": "petal",
-                    "speed": 100
-                  },
-                  {
-                    "name": "circle",
-                    "speed": 100
-                  },
-                  {
-                    "name": "circle",
-                    "speed": 200
-                  },
-                  {
-                    "name": "square",
-                    "speed": 100
-                  },
-                  {
-                    "name": "square",
-                    "speed": 100
-                  },
-                  {
-                    "name": "square",
-                    "speed": 200
-                  },
-                  {
-                    "name": "square",
-                    "speed": 100
-                  },
-                  {
-                    "name": "square",
-                    "speed": 100
-                  },
-                  {
-                    "name": "square",
-                    "speed": 200
-                  },
-                  {
-                    "name": "square",
-                    "speed": 100
-                  },
-                  {
-                    "name": "square",
-                    "speed": 100
-                  },
-                  {
-                    "name": "circle",
-                    "speed": 200
-                  },
-                  {
-                    "name": "square",
-                    "speed": 100
-                  },
-                  {
-                    "name": "circle",
-                    "speed": 100
-                  }
-              ]      
+        {
+          "name": "petal",
+          "speed": 200
+        },
+        {
+          "name": "petal",
+          "speed": 100
+        },
+        {
+          "name": "petal",
+          "speed": 200
+        },
+        {
+          "name": "petal",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 200
+        },
+        {
+          "name": "circle",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 200
+        },
+        {
+          "name": "petal",
+          "speed": 100
+        },
+        {
+          "name": "petal",
+          "speed": 100
+        },
+        {
+          "name": "petal",
+          "speed": 200
+        },
+        {
+          "name": "circle",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 200
+        },
+        {
+          "name": "petal",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 200
+        },
+        {
+          "name": "petal",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 200
+        },
+        {
+          "name": "circle",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 200
+        },
+        {
+          "name": "circle",
+          "speed": 100
+        },
+        {
+          "name": "petal",
+          "speed": 100
+        },
+        {
+          "name": "petal",
+          "speed": 200
+        },
+        {
+          "name": "petal",
+          "speed": 100
+        },
+        {
+          "name": "petal",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 200
+        },
+        {
+          "name": "petal",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 100
+        }
+      ]
     },
     {
       "folderName": "HackDay",
-      "preview": "Track 1",
+      "preview": "Track 2",
       "lengthInSeconds": 200,
-      "backgroundImage":"space",
+      "backgroundImage": "space",
       "title": "test Song",
       "numberOfLanes": 4,
-      "startingLane":2,  
-      "numberOfLevels":4,  
-      "obstacleNames":["square","petal","circle"],
+      "startingLane": 2,
+      "numberOfLevels": 4,
+      "obstacleNames": [
+        "square",
+        "petal",
+        "circle"
+      ],
       "rows": [
-                  {
-                    "name": "square",
-                    "speed": 100
-                  },
-                  {
-                    "name": "square",
-                    "speed": 100
-                  },
-                  {
-                    "name": "petal",
-                    "speed": 100
-                  },  
-                  {
-                    "name": "petal",
-                    "speed": 100
-                  },
-                  {
-                    "name": "circle",
-                    "speed": 100
-                  },                  
-                  {
-                    "name": "square",
-                    "speed": 100
-                  },
-                  {
-                    "name": "square",
-                    "speed": 100
-                  },
-                  {
-                    "name": "square",
-                    "speed": 100
-                  }
-              ]      
-    }   
+        {
+          "name": "square",
+          "speed": 100
+        },
+        {
+          "name": "square",
+          "speed": 100
+        },
+        {
+          "name": "petal",
+          "speed": 100
+        },
+        {
+          "name": "petal",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 100
+        },
+        {
+          "name": "square",
+          "speed": 100
+        },
+        {
+          "name": "square",
+          "speed": 100
+        },
+        {
+          "name": "square",
+          "speed": 100
+        }
+      ]
+    },
+    {
+      "folderName": "Song 2",
+      "preview": "Track 3",
+      "lengthInSeconds": 30,
+      "backgroundImage": "dinosaur",
+      "title": "HackDay Song",
+      "numberOfLanes": 3,
+      "startingLane": 2,
+      "numberOfLevels": 3,
+      "obstacleNames": [
+        "square",
+        "petal",
+        "circle"
+      ],
+      "rows": [
+        {
+          "name": "petal",
+          "speed": 200
+        },
+        {
+          "name": "square",
+          "speed": 100
+        },
+        {
+          "name": "petal",
+          "speed": 200
+        },
+        {
+          "name": "square",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 100
+        },
+        {
+          "name": "square",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 200
+        },
+        {
+          "name": "square",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 200
+        },
+        {
+          "name": "petal",
+          "speed": 100
+        },
+        {
+          "name": "petal",
+          "speed": 100
+        },
+        {
+          "name": "petal",
+          "speed": 200
+        },
+        {
+          "name": "square",
+          "speed": 100
+        },
+        {
+          "name": "square",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 200
+        },
+        {
+          "name": "petal",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 100
+        },
+        {
+          "name": "square",
+          "speed": 200
+        },
+        {
+          "name": "petal",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 200
+        },
+        {
+          "name": "square",
+          "speed": 100
+        },
+        {
+          "name": "square",
+          "speed": 100
+        },
+        {
+          "name": "square",
+          "speed": 200
+        },
+        {
+          "name": "square",
+          "speed": 100
+        },
+        {
+          "name": "square",
+          "speed": 100
+        },
+        {
+          "name": "square",
+          "speed": 200
+        },
+        {
+          "name": "square",
+          "speed": 100
+        },
+        {
+          "name": "square",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 200
+        },
+        {
+          "name": "square",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 100
+        }
+      ]
+    }
   ]
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using System.Collections;
 using System;
 
@@ -76,6 +77,7 @@ public class GameScript : MonoBehaviour {
 			setCurrentLaneId (currentLaneId - 1);
 			cameraAndPlayer (isLeft:true);
 			platformProgression = 0;
+			barCounterController.emptyBars ();
 		}
 	}
 	void moveRight(){
@@ -86,6 +88,7 @@ public class GameScript : MonoBehaviour {
 			setCurrentLaneId (currentLaneId + 1);
 			cameraAndPlayer (isLeft:false);
 			platformProgression = 0;
+			barCounterController.emptyBars ();
 		}
 	}
 	void Update () {
@@ -103,6 +106,9 @@ public class GameScript : MonoBehaviour {
 			endGameScript.setScore (scoreController.getScores ());
 			endGameScript.PlayEndGame (player);
 			disableMovement = true;
+		}
+		if (Input.GetKeyDown (KeyCode.Escape)) { 
+			SceneManager.LoadScene ("Level Selection");
 		}
 		#if UNITY_5
 		if (Input.GetKeyUp (KeyCode.C)) {
@@ -171,6 +177,8 @@ public class GameScript : MonoBehaviour {
 			barCounterController.emptyBars ();
 			platformProgression = 0;
 			particleSystemScript.playParticleSystem ();
+//			levelBuilder.lockDownLane (currentLaneId);
+			Messenger.Broadcast<int> ("disableLane", currentLaneId);
 			soundEffectScript.playWoosh ();
 		}
 		
