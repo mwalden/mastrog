@@ -202,7 +202,7 @@
     {
       "folderName": "Song 2",
       "preview": "Track 3",
-      "lengthInSeconds": 2,
+      "lengthInSeconds": 200,
       "backgroundImage": "dinosaur",
       "title": "HackDay Song",
       "numberOfLanes": 3,

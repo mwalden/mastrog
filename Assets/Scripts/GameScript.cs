@@ -163,8 +163,7 @@ public class GameScript : MonoBehaviour {
 		justMoved = true;
 	}
 
-	private void movedOneLevelUp(){
-		playerScript.playSpark ();
+	private void movedOneLevelUp(){		
 		currentPlatformLevel++;
 		platformProgression++;
 		soundEffectScript.playLevelProgression (platformProgression);
@@ -195,6 +194,7 @@ public class GameScript : MonoBehaviour {
 			}
 			if (currentPlatform != null) {
 				if (!playerScript.isMoving ()) {
+					Messenger.Broadcast<GameObject> ("showStars", platform);
 					movedOneLevelUp ();
 				}
 			}
