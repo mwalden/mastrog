@@ -164,12 +164,14 @@ public class GameScript : MonoBehaviour {
 	}
 
 	private void movedOneLevelUp(){
+		playerScript.playSpark ();
 		currentPlatformLevel++;
 		platformProgression++;
 		soundEffectScript.playLevelProgression (platformProgression);
 		barCounterController.addBar ();
 		scoreController.addPlatform ();
 		scoreController.addScore(score);
+
 
 		if (platformProgression % 4 == 0) {
 			scoreController.addLockDownLane ();

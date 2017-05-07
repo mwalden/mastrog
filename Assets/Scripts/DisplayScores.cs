@@ -9,20 +9,18 @@ public class DisplayScores : MonoBehaviour {
 	public Text lanesLockedDown;
 	public Text errorCount;
 	public Text title;
-
 	public Text[] levels;
-	private int line;
 	public float lineTime;
 	public bool showLines;
-
-
+	public Animator burstAnimator;
 	private float timeToZero;
-
+	private int line;
 
 	public TimerController timerController;
 
 	void Start(){
 		timeToZero = lineTime;
+
 	}
 
 	public DisplayScores(){
@@ -59,6 +57,11 @@ public class DisplayScores : MonoBehaviour {
 	}
 
 	public void showLine(){
+		Vector3 cPos = Camera.main.transform.position;
+		Vector3 burstPosition = new Vector3 (cPos.x, cPos.y + 1.5f, cPos.z);
+		burstAnimator.gameObject.transform.position = burstPosition;
+		burstAnimator.gameObject.SetActive (true);
+		burstAnimator.Play ("burst");
 		showLines = true;
 	}
 }

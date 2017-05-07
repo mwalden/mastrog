@@ -1,0 +1,1355 @@
+fileFormatVersion: 2
+guid: 1b25ef37457824d4cb63a8b8012f3399
+timeCreated: 1493178951
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: thing2_0
+    21300002: thing2_1
+    21300004: thing2_2
+    21300006: thing2_3
+    21300008: thing2_4
+    21300010: thing2_5
+    21300012: thing2_6
+    21300014: thing2_7
+    21300016: thing2_8
+    21300018: thing2_9
+    21300020: thing2_10
+    21300022: thing2_11
+    21300024: thing2_12
+    21300026: thing2_13
+    21300028: thing2_14
+    21300030: thing2_15
+    21300032: thing2_16
+    21300034: thing2_17
+    21300036: thing2_18
+    21300038: thing2_19
+    21300040: thing2_20
+    21300042: thing2_21
+    21300044: thing2_22
+    21300046: thing2_23
+    21300048: thing2_24
+    21300050: thing2_25
+    21300052: thing2_26
+    21300054: thing2_27
+    21300056: thing2_28
+    21300058: thing2_29
+    21300060: thing2_30
+    21300062: thing2_31
+    21300064: thing2_32
+    21300066: thing2_33
+    21300068: thing2_34
+    21300070: thing2_35
+    21300072: thing2_36
+    21300074: thing2_37
+    21300076: thing2_38
+    21300078: thing2_39
+    21300080: thing2_40
+    21300082: thing2_41
+    21300084: thing2_42
+    21300086: thing2_43
+    21300088: thing2_44
+    21300090: thing2_45
+    21300092: thing2_46
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: thing2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -3, y: 8}
+        - {x: -9, y: 5}
+        - {x: -9, y: -11}
+        - {x: 5, y: -11}
+        - {x: 9, y: -10}
+        - {x: 9, y: 4}
+        - {x: 6, y: 8}
+    - name: thing2_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 7, y: 10}
+        - {x: 2, y: 11}
+        - {x: -7, y: 11}
+        - {x: -13, y: 7}
+        - {x: -14, y: 5}
+        - {x: -14, y: -11}
+        - {x: -9, y: -15}
+        - {x: 9, y: -15}
+        - {x: 12, y: -8}
+        - {x: 12, y: 6}
+    - name: thing2_2
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 7, y: 17}
+        - {x: -5, y: 17}
+        - {x: -9, y: 16}
+        - {x: -18, y: 6}
+        - {x: -18, y: -5}
+        - {x: -16, y: -11}
+        - {x: -8, y: -18}
+        - {x: -4, y: -20}
+        - {x: 9, y: -20}
+        - {x: 19, y: -11}
+        - {x: 19, y: 9}
+    - name: thing2_3
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -11, y: 23}
+        - {x: -23, y: 10}
+        - {x: -23, y: -9}
+        - {x: -13, y: -23}
+        - {x: -8, y: -24}
+        - {x: 15, y: -24}
+        - {x: 24, y: -22}
+        - {x: 24, y: 15}
+        - {x: 22, y: 23}
+    - name: thing2_4
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 28}
+        - {x: -30, y: 14}
+        - {x: -30, y: -21}
+        - {x: -21, y: -34}
+        - {x: 23, y: -34}
+        - {x: 35, y: -26}
+        - {x: 35, y: 14}
+        - {x: 20, y: 28}
+    - name: thing2_5
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 28}
+        - {x: -30, y: 14}
+        - {x: -30, y: -21}
+        - {x: -21, y: -34}
+        - {x: 23, y: -34}
+        - {x: 35, y: -26}
+        - {x: 35, y: 14}
+        - {x: 20, y: 28}
+    - name: thing2_6
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 28}
+        - {x: -30, y: 14}
+        - {x: -30, y: -21}
+        - {x: -21, y: -34}
+        - {x: 23, y: -34}
+        - {x: 35, y: -26}
+        - {x: 35, y: 14}
+        - {x: 20, y: 28}
+    - name: thing2_7
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 896
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 28}
+        - {x: -30, y: 14}
+        - {x: -30, y: -21}
+        - {x: -21, y: -34}
+        - {x: 23, y: -34}
+        - {x: 35, y: -26}
+        - {x: 35, y: 14}
+        - {x: 20, y: 28}
+    - name: thing2_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 28}
+        - {x: -30, y: 14}
+        - {x: -30, y: -21}
+        - {x: -21, y: -34}
+        - {x: 23, y: -34}
+        - {x: 35, y: -26}
+        - {x: 35, y: 14}
+        - {x: 20, y: 28}
+    - name: thing2_9
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 28}
+        - {x: -30, y: 14}
+        - {x: -30, y: -21}
+        - {x: -21, y: -34}
+        - {x: 23, y: -34}
+        - {x: 35, y: -26}
+        - {x: 35, y: 14}
+        - {x: 20, y: 28}
+    - name: thing2_10
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 28}
+        - {x: -30, y: 14}
+        - {x: -30, y: -21}
+        - {x: -21, y: -34}
+        - {x: 23, y: -34}
+        - {x: 35, y: -26}
+        - {x: 35, y: 14}
+        - {x: 20, y: 28}
+    - name: thing2_11
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 28}
+        - {x: -30, y: 14}
+        - {x: -30, y: -21}
+        - {x: -21, y: -34}
+        - {x: 23, y: -34}
+        - {x: 35, y: -26}
+        - {x: 35, y: 14}
+        - {x: 20, y: 28}
+    - name: thing2_12
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 28}
+        - {x: -30, y: 14}
+        - {x: -30, y: -21}
+        - {x: -21, y: -34}
+        - {x: 23, y: -34}
+        - {x: 35, y: -26}
+        - {x: 35, y: 14}
+        - {x: 20, y: 28}
+    - name: thing2_13
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 28}
+        - {x: -30, y: 14}
+        - {x: -30, y: -21}
+        - {x: -21, y: -34}
+        - {x: 23, y: -34}
+        - {x: 35, y: -26}
+        - {x: 35, y: 14}
+        - {x: 20, y: 28}
+    - name: thing2_14
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 28}
+        - {x: -30, y: 14}
+        - {x: -30, y: -21}
+        - {x: -21, y: -34}
+        - {x: 23, y: -34}
+        - {x: 35, y: -26}
+        - {x: 35, y: 14}
+        - {x: 20, y: 28}
+    - name: thing2_15
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 768
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 28}
+        - {x: -30, y: 14}
+        - {x: -30, y: -21}
+        - {x: -21, y: -34}
+        - {x: 23, y: -34}
+        - {x: 35, y: -26}
+        - {x: 35, y: 14}
+        - {x: 20, y: 28}
+    - name: thing2_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 28}
+        - {x: -30, y: 14}
+        - {x: -30, y: -21}
+        - {x: -21, y: -34}
+        - {x: 23, y: -34}
+        - {x: 35, y: -26}
+        - {x: 35, y: 14}
+        - {x: 20, y: 28}
+    - name: thing2_17
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 28}
+        - {x: -30, y: 14}
+        - {x: -30, y: -21}
+        - {x: -21, y: -34}
+        - {x: 23, y: -34}
+        - {x: 35, y: -26}
+        - {x: 35, y: 14}
+        - {x: 20, y: 28}
+    - name: thing2_18
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 28}
+        - {x: -30, y: 14}
+        - {x: -30, y: -21}
+        - {x: -21, y: -34}
+        - {x: 23, y: -34}
+        - {x: 35, y: -26}
+        - {x: 35, y: 14}
+        - {x: 20, y: 28}
+    - name: thing2_19
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 28}
+        - {x: -30, y: 14}
+        - {x: -30, y: -21}
+        - {x: -21, y: -34}
+        - {x: 23, y: -34}
+        - {x: 35, y: -26}
+        - {x: 35, y: 14}
+        - {x: 20, y: 28}
+    - name: thing2_20
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 28}
+        - {x: -30, y: 14}
+        - {x: -30, y: -21}
+        - {x: -21, y: -34}
+        - {x: 23, y: -34}
+        - {x: 35, y: -26}
+        - {x: 35, y: 14}
+        - {x: 20, y: 28}
+    - name: thing2_21
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 28}
+        - {x: -30, y: 14}
+        - {x: -30, y: -21}
+        - {x: -21, y: -34}
+        - {x: 23, y: -34}
+        - {x: 35, y: -26}
+        - {x: 35, y: 14}
+        - {x: 20, y: 28}
+    - name: thing2_22
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 28}
+        - {x: -30, y: 14}
+        - {x: -30, y: -21}
+        - {x: -21, y: -34}
+        - {x: 23, y: -34}
+        - {x: 35, y: -26}
+        - {x: 35, y: 14}
+        - {x: 20, y: 28}
+    - name: thing2_23
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 640
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -17, y: 28}
+        - {x: -30, y: 14}
+        - {x: -30, y: -21}
+        - {x: -21, y: -34}
+        - {x: 23, y: -34}
+        - {x: 35, y: -26}
+        - {x: 35, y: 14}
+        - {x: 20, y: 28}
+    - name: thing2_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -29, y: 30}
+        - {x: -30, y: 27}
+        - {x: -30, y: -19}
+        - {x: -28, y: -22}
+        - {x: -12, y: -34}
+        - {x: -7, y: -35}
+        - {x: 21, y: -35}
+        - {x: 37, y: -15}
+        - {x: 37, y: 30}
+    - name: thing2_25
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -16, y: 32}
+        - {x: -31, y: 17}
+        - {x: -31, y: -24}
+        - {x: -5, y: -37}
+        - {x: 28, y: -37}
+        - {x: 39, y: -25}
+        - {x: 39, y: 14}
+        - {x: 25, y: 32}
+    - name: thing2_26
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 22, y: 33}
+        - {x: -24, y: 33}
+        - {x: -33, y: 11}
+        - {x: -33, y: -29}
+        - {x: -9, y: -38}
+        - {x: 26, y: -38}
+        - {x: 41, y: -20}
+        - {x: 41, y: 16}
+        - {x: 39, y: 24}
+    - name: thing2_27
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 36}
+        - {x: -35, y: 22}
+        - {x: -35, y: -34}
+        - {x: -27, y: -40}
+        - {x: 18, y: -40}
+        - {x: 33, y: -34}
+        - {x: 43, y: -19}
+        - {x: 43, y: 13}
+        - {x: 30, y: 36}
+    - name: thing2_28
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -31, y: 38}
+        - {x: -37, y: 23}
+        - {x: -37, y: -38}
+        - {x: -31, y: -42}
+        - {x: 38, y: -42}
+        - {x: 45, y: -14}
+        - {x: 45, y: 19}
+        - {x: 18, y: 38}
+    - name: thing2_29
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -28, y: 38}
+        - {x: -30, y: 37}
+        - {x: -39, y: 12}
+        - {x: -39, y: -33}
+        - {x: -25, y: -46}
+        - {x: 18, y: -46}
+        - {x: 40, y: -39}
+        - {x: 47, y: -18}
+        - {x: 47, y: 25}
+        - {x: 34, y: 38}
+    - name: thing2_30
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: -33, y: 40}
+        - {x: -39, y: 31}
+        - {x: -39, y: -24}
+        - {x: -38, y: -27}
+        - {x: -11, y: -45}
+        - {x: -9, y: -45}
+        - {x: -6, y: -42}
+        - {x: 12, y: -48}
+        - {x: 48, y: -48}
+        - {x: 48, y: 40}
+    - name: thing2_31
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 512
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 24, y: 41}
+        - {x: -32, y: 41}
+        - {x: -40, y: 29}
+        - {x: -40, y: -30}
+        - {x: -8, y: -47}
+        - {x: 32, y: -47}
+        - {x: 43, y: -40}
+        - {x: 49, y: -17}
+        - {x: 49, y: 21}
+        - {x: 32, y: 37}
+    - name: thing2_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 35, y: 2}
+        - {x: 43, y: -1}
+        - {x: 44, y: -1}
+        - {x: 50, y: 0}
+        - {x: 51, y: 3}
+        - {x: 51, y: 33}
+        - {x: 40, y: 44}
+        - {x: -31, y: 44}
+        - {x: -43, y: 37}
+        - {x: -43, y: -27}
+        - {x: -42, y: -28}
+        - {x: -15, y: -47}
+        - {x: -11, y: -49}
+        - {x: 22, y: -49}
+        - {x: 51, y: -22}
+        - {x: 51, y: -10}
+        - {x: 48, y: -5}
+        - {x: 45, y: -2}
+        - {x: 35, y: -2}
+    - name: thing2_33
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 35, y: -2}
+        - {x: 35, y: 2}
+        - {x: 43, y: -2}
+        - {x: 46, y: -2}
+        - {x: 54, y: 6}
+        - {x: 54, y: 20}
+        - {x: 45, y: 32}
+        - {x: 4, y: 47}
+        - {x: -5, y: 47}
+        - {x: -17, y: 39}
+        - {x: -20, y: 36}
+        - {x: -46, y: 23}
+        - {x: -46, y: -32}
+        - {x: -13, y: -51}
+        - {x: 34, y: -51}
+        - {x: 45, y: -44}
+        - {x: 48, y: -17}
+        - {x: 48, y: -5}
+        - {x: 45, y: -2}
+    - name: thing2_34
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 48, y: -5}
+        - {x: 45, y: -2}
+        - {x: 35, y: -2}
+        - {x: 35, y: 2}
+        - {x: 43, y: -2}
+        - {x: 55, y: -2}
+        - {x: 55, y: 24}
+        - {x: 37, y: 48}
+        - {x: -31, y: 48}
+        - {x: -46, y: 28}
+        - {x: -46, y: -29}
+        - {x: -28, y: -52}
+        - {x: 20, y: -52}
+        - {x: 33, y: -41}
+        - {x: 37, y: -34}
+        - {x: 46, y: -23}
+        - {x: 48, y: -19}
+    - name: thing2_35
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 35, y: -2}
+        - {x: 35, y: 2}
+        - {x: 43, y: -2}
+        - {x: 50, y: -2}
+        - {x: 52, y: -4}
+        - {x: 54, y: -5}
+        - {x: 56, y: -2}
+        - {x: 56, y: 14}
+        - {x: 54, y: 19}
+        - {x: 43, y: 17}
+        - {x: 42, y: 36}
+        - {x: 20, y: 47}
+        - {x: 9, y: 40}
+        - {x: 5, y: 48}
+        - {x: -9, y: 48}
+        - {x: -13, y: 42}
+        - {x: -23, y: 41}
+        - {x: -26, y: 38}
+        - {x: -27, y: 35}
+        - {x: -43, y: 25}
+        - {x: -46, y: 22}
+        - {x: -46, y: -50}
+        - {x: -42, y: -52}
+        - {x: 47, y: -52}
+        - {x: 48, y: -21}
+        - {x: 48, y: -5}
+        - {x: 45, y: -2}
+    - name: thing2_36
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 48, y: -5}
+        - {x: 45, y: -2}
+        - {x: 35, y: -2}
+        - {x: 35, y: 2}
+        - {x: 43, y: -2}
+        - {x: 49, y: -2}
+        - {x: 49, y: -4}
+        - {x: 52, y: -7}
+        - {x: 54, y: -7}
+        - {x: 57, y: -4}
+        - {x: 59, y: 0}
+        - {x: 59, y: 23}
+        - {x: 42, y: 18}
+        - {x: 40, y: 15}
+        - {x: 40, y: 30}
+        - {x: 37, y: 33}
+        - {x: 35, y: 33}
+        - {x: 38, y: 48}
+        - {x: -14, y: 48}
+        - {x: -15, y: 46}
+        - {x: -12, y: 39}
+        - {x: -15, y: 41}
+        - {x: -36, y: 41}
+        - {x: -48, y: 25}
+        - {x: -48, y: -24}
+        - {x: -47, y: -32}
+        - {x: -43, y: -34}
+        - {x: -40, y: -36}
+        - {x: -36, y: -26}
+        - {x: -29, y: -52}
+        - {x: 20, y: -52}
+        - {x: 43, y: -39}
+        - {x: 42, y: -34}
+        - {x: 46, y: -28}
+        - {x: 48, y: -24}
+    - name: thing2_37
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 39, y: -27}
+        - {x: 41, y: -31}
+        - {x: 51, y: -27}
+        - {x: 49, y: -22}
+        - {x: 48, y: -5}
+        - {x: 45, y: -2}
+        - {x: 35, y: -2}
+        - {x: 35, y: 2}
+        - {x: 43, y: -2}
+        - {x: 48, y: -2}
+        - {x: 48, y: -6}
+        - {x: 50, y: -11}
+        - {x: 61, y: -8}
+        - {x: 61, y: 25}
+        - {x: 44, y: 34}
+        - {x: 38, y: 35}
+        - {x: 34, y: 35}
+        - {x: 38, y: 45}
+        - {x: 26, y: 50}
+        - {x: -40, y: 50}
+        - {x: -50, y: 43}
+        - {x: -50, y: -37}
+        - {x: -29, y: -48}
+        - {x: -8, y: -47}
+        - {x: -6, y: -43}
+        - {x: -6, y: -44}
+        - {x: -3, y: -50}
+        - {x: -1, y: -53}
+        - {x: 20, y: -53}
+        - {x: 45, y: -40}
+        - {x: 40, y: -30}
+        - {x: 31, y: -31}
+    - name: thing2_38
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 39, y: 41}
+        - {x: 29, y: 38}
+        - {x: 27, y: 34}
+        - {x: 30, y: 50}
+        - {x: 26, y: 54}
+        - {x: 20, y: 54}
+        - {x: 15, y: 53}
+        - {x: 13, y: 49}
+        - {x: 3, y: 52}
+        - {x: -16, y: 54}
+        - {x: -35, y: 43}
+        - {x: -36, y: 34}
+        - {x: -30, y: 29}
+        - {x: -26, y: 30}
+        - {x: -32, y: 27}
+        - {x: -54, y: 29}
+        - {x: -54, y: -18}
+        - {x: -52, y: -30}
+        - {x: -48, y: -40}
+        - {x: -39, y: -44}
+        - {x: -31, y: -30}
+        - {x: -34, y: -37}
+        - {x: -36, y: -45}
+        - {x: -30, y: -50}
+        - {x: -26, y: -49}
+        - {x: -9, y: -46}
+        - {x: -6, y: -43}
+        - {x: -3, y: -35}
+        - {x: -3, y: -40}
+        - {x: -8, y: -46}
+        - {x: -10, y: -51}
+        - {x: -7, y: -55}
+        - {x: 43, y: -55}
+        - {x: 64, y: -23}
+        - {x: 64, y: 24}
+    - name: thing2_39
+      rect:
+        serializedVersion: 2
+        x: 896
+        y: 384
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 39, y: 41}
+        - {x: 29, y: 38}
+        - {x: 27, y: 34}
+        - {x: 30, y: 50}
+        - {x: 26, y: 54}
+        - {x: 20, y: 54}
+        - {x: 15, y: 53}
+        - {x: 13, y: 49}
+        - {x: 3, y: 52}
+        - {x: -16, y: 54}
+        - {x: -35, y: 43}
+        - {x: -36, y: 34}
+        - {x: -30, y: 29}
+        - {x: -26, y: 30}
+        - {x: -32, y: 27}
+        - {x: -54, y: 29}
+        - {x: -54, y: -18}
+        - {x: -52, y: -30}
+        - {x: -48, y: -40}
+        - {x: -39, y: -44}
+        - {x: -31, y: -30}
+        - {x: -34, y: -37}
+        - {x: -36, y: -45}
+        - {x: -30, y: -50}
+        - {x: -26, y: -49}
+        - {x: -9, y: -46}
+        - {x: -6, y: -43}
+        - {x: -3, y: -35}
+        - {x: -3, y: -40}
+        - {x: -8, y: -46}
+        - {x: -10, y: -51}
+        - {x: -7, y: -55}
+        - {x: 43, y: -55}
+        - {x: 64, y: -23}
+        - {x: 64, y: 24}
+    - name: thing2_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 39, y: 41}
+        - {x: 29, y: 38}
+        - {x: 27, y: 34}
+        - {x: 30, y: 50}
+        - {x: 26, y: 54}
+        - {x: 20, y: 54}
+        - {x: 15, y: 53}
+        - {x: 13, y: 49}
+        - {x: 3, y: 52}
+        - {x: -16, y: 54}
+        - {x: -35, y: 43}
+        - {x: -36, y: 34}
+        - {x: -30, y: 29}
+        - {x: -26, y: 30}
+        - {x: -32, y: 27}
+        - {x: -54, y: 29}
+        - {x: -54, y: -18}
+        - {x: -52, y: -30}
+        - {x: -48, y: -40}
+        - {x: -39, y: -44}
+        - {x: -31, y: -30}
+        - {x: -34, y: -37}
+        - {x: -36, y: -45}
+        - {x: -30, y: -50}
+        - {x: -26, y: -49}
+        - {x: -9, y: -46}
+        - {x: -6, y: -43}
+        - {x: -3, y: -35}
+        - {x: -3, y: -40}
+        - {x: -8, y: -46}
+        - {x: -10, y: -51}
+        - {x: -7, y: -55}
+        - {x: 43, y: -55}
+        - {x: 64, y: -23}
+        - {x: 64, y: 24}
+    - name: thing2_41
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 39, y: 41}
+        - {x: 29, y: 38}
+        - {x: 27, y: 34}
+        - {x: 30, y: 50}
+        - {x: 26, y: 54}
+        - {x: 20, y: 54}
+        - {x: 15, y: 53}
+        - {x: 13, y: 49}
+        - {x: 3, y: 52}
+        - {x: -16, y: 54}
+        - {x: -35, y: 43}
+        - {x: -36, y: 34}
+        - {x: -30, y: 29}
+        - {x: -26, y: 30}
+        - {x: -32, y: 27}
+        - {x: -54, y: 29}
+        - {x: -54, y: -18}
+        - {x: -52, y: -30}
+        - {x: -48, y: -40}
+        - {x: -39, y: -44}
+        - {x: -31, y: -30}
+        - {x: -34, y: -37}
+        - {x: -36, y: -45}
+        - {x: -30, y: -50}
+        - {x: -26, y: -49}
+        - {x: -9, y: -46}
+        - {x: -6, y: -43}
+        - {x: -3, y: -35}
+        - {x: -3, y: -40}
+        - {x: -8, y: -46}
+        - {x: -10, y: -51}
+        - {x: -7, y: -55}
+        - {x: 43, y: -55}
+        - {x: 64, y: -23}
+        - {x: 64, y: 24}
+    - name: thing2_42
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 39, y: 41}
+        - {x: 29, y: 38}
+        - {x: 27, y: 34}
+        - {x: 30, y: 50}
+        - {x: 26, y: 54}
+        - {x: 20, y: 54}
+        - {x: 15, y: 53}
+        - {x: 13, y: 49}
+        - {x: 3, y: 52}
+        - {x: -16, y: 54}
+        - {x: -35, y: 43}
+        - {x: -36, y: 34}
+        - {x: -30, y: 29}
+        - {x: -26, y: 30}
+        - {x: -32, y: 27}
+        - {x: -54, y: 29}
+        - {x: -54, y: -18}
+        - {x: -52, y: -30}
+        - {x: -48, y: -40}
+        - {x: -39, y: -44}
+        - {x: -31, y: -30}
+        - {x: -34, y: -37}
+        - {x: -36, y: -45}
+        - {x: -30, y: -50}
+        - {x: -26, y: -49}
+        - {x: -9, y: -46}
+        - {x: -6, y: -43}
+        - {x: -3, y: -35}
+        - {x: -3, y: -40}
+        - {x: -8, y: -46}
+        - {x: -10, y: -51}
+        - {x: -7, y: -55}
+        - {x: 43, y: -55}
+        - {x: 64, y: -23}
+        - {x: 64, y: 24}
+    - name: thing2_43
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 39, y: 41}
+        - {x: 29, y: 38}
+        - {x: 27, y: 34}
+        - {x: 30, y: 50}
+        - {x: 26, y: 54}
+        - {x: 20, y: 54}
+        - {x: 15, y: 53}
+        - {x: 13, y: 49}
+        - {x: 3, y: 52}
+        - {x: -16, y: 54}
+        - {x: -35, y: 43}
+        - {x: -36, y: 34}
+        - {x: -30, y: 29}
+        - {x: -26, y: 30}
+        - {x: -32, y: 27}
+        - {x: -54, y: 29}
+        - {x: -54, y: -18}
+        - {x: -52, y: -30}
+        - {x: -48, y: -40}
+        - {x: -39, y: -44}
+        - {x: -31, y: -30}
+        - {x: -34, y: -37}
+        - {x: -36, y: -45}
+        - {x: -30, y: -50}
+        - {x: -26, y: -49}
+        - {x: -9, y: -46}
+        - {x: -6, y: -43}
+        - {x: -3, y: -35}
+        - {x: -3, y: -40}
+        - {x: -8, y: -46}
+        - {x: -10, y: -51}
+        - {x: -7, y: -55}
+        - {x: 43, y: -55}
+        - {x: 64, y: -23}
+        - {x: 64, y: 24}
+    - name: thing2_44
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 39, y: 41}
+        - {x: 29, y: 38}
+        - {x: 27, y: 34}
+        - {x: 30, y: 50}
+        - {x: 26, y: 54}
+        - {x: 20, y: 54}
+        - {x: 15, y: 53}
+        - {x: 13, y: 49}
+        - {x: 3, y: 52}
+        - {x: -16, y: 54}
+        - {x: -35, y: 43}
+        - {x: -36, y: 34}
+        - {x: -30, y: 29}
+        - {x: -26, y: 30}
+        - {x: -32, y: 27}
+        - {x: -54, y: 29}
+        - {x: -54, y: -18}
+        - {x: -52, y: -30}
+        - {x: -48, y: -40}
+        - {x: -39, y: -44}
+        - {x: -31, y: -30}
+        - {x: -34, y: -37}
+        - {x: -36, y: -45}
+        - {x: -30, y: -50}
+        - {x: -26, y: -49}
+        - {x: -9, y: -46}
+        - {x: -6, y: -43}
+        - {x: -3, y: -35}
+        - {x: -3, y: -40}
+        - {x: -8, y: -46}
+        - {x: -10, y: -51}
+        - {x: -7, y: -55}
+        - {x: 43, y: -55}
+        - {x: 64, y: -23}
+        - {x: 64, y: 24}
+    - name: thing2_45
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 39, y: 41}
+        - {x: 29, y: 38}
+        - {x: 27, y: 34}
+        - {x: 30, y: 50}
+        - {x: 26, y: 54}
+        - {x: 20, y: 54}
+        - {x: 15, y: 53}
+        - {x: 13, y: 49}
+        - {x: 3, y: 52}
+        - {x: -16, y: 54}
+        - {x: -35, y: 43}
+        - {x: -36, y: 34}
+        - {x: -30, y: 29}
+        - {x: -26, y: 30}
+        - {x: -32, y: 27}
+        - {x: -54, y: 29}
+        - {x: -54, y: -18}
+        - {x: -52, y: -30}
+        - {x: -48, y: -40}
+        - {x: -39, y: -44}
+        - {x: -31, y: -30}
+        - {x: -34, y: -37}
+        - {x: -36, y: -45}
+        - {x: -30, y: -50}
+        - {x: -26, y: -49}
+        - {x: -9, y: -46}
+        - {x: -6, y: -43}
+        - {x: -3, y: -35}
+        - {x: -3, y: -40}
+        - {x: -8, y: -46}
+        - {x: -10, y: -51}
+        - {x: -7, y: -55}
+        - {x: 43, y: -55}
+        - {x: 64, y: -23}
+        - {x: 64, y: 24}
+    - name: thing2_46
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 128
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline:
+      - - {x: 39, y: 41}
+        - {x: 29, y: 38}
+        - {x: 27, y: 34}
+        - {x: 30, y: 50}
+        - {x: 26, y: 54}
+        - {x: 20, y: 54}
+        - {x: 15, y: 53}
+        - {x: 13, y: 49}
+        - {x: 3, y: 52}
+        - {x: -16, y: 54}
+        - {x: -35, y: 43}
+        - {x: -36, y: 34}
+        - {x: -30, y: 29}
+        - {x: -26, y: 30}
+        - {x: -32, y: 27}
+        - {x: -54, y: 29}
+        - {x: -54, y: -18}
+        - {x: -52, y: -30}
+        - {x: -48, y: -40}
+        - {x: -39, y: -44}
+        - {x: -31, y: -30}
+        - {x: -34, y: -37}
+        - {x: -36, y: -45}
+        - {x: -30, y: -50}
+        - {x: -26, y: -49}
+        - {x: -9, y: -46}
+        - {x: -6, y: -43}
+        - {x: -3, y: -35}
+        - {x: -3, y: -40}
+        - {x: -8, y: -46}
+        - {x: -10, y: -51}
+        - {x: -7, y: -55}
+        - {x: 43, y: -55}
+        - {x: 64, y: -23}
+        - {x: 64, y: 24}
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
