@@ -47,7 +47,8 @@ public class GameScript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
+		Messenger.AddListener ("exitObstacle", exitedCollider);
+		Messenger.AddListener ("enteredObstacle", enteredCollider);
 		cam = Camera.main;
 		scoreController = new ScoreController ();
 		timerController = new TimerController (() => TimesUp ());
@@ -103,8 +104,8 @@ public class GameScript : MonoBehaviour {
 			if (playerScript.isMoving () || justMoved) {
 				return;
 			}
-			endGameScript.setScore (scoreController.getScores ());
-			endGameScript.PlayEndGame (player);
+			Messenger.Broadcast<Scores,GameObject> ("gameOver",scoreController.getScores(),player);
+			Messenger.Broadcast ("disableJumping");
 			disableMovement = true;
 		}
 		if (Input.GetKeyDown (KeyCode.Escape)) { 
@@ -169,9 +170,7 @@ public class GameScript : MonoBehaviour {
 		soundEffectScript.playLevelProgression (platformProgression);
 		barCounterController.addBar ();
 		scoreController.addPlatform ();
-		scoreController.addScore(score);
-
-
+	
 		if (platformProgression % 4 == 0) {
 			scoreController.addLockDownLane ();
 			audioScript.lockDownLane (currentLaneId);
@@ -217,4 +216,12 @@ public class GameScript : MonoBehaviour {
 		player.transform.position = currentPlatform.transform.position;
 	}
 
+	private void exitedCollider(){
+		disableMovement = false;
+		scoreController.addScore(score);
+
+	}
+	private void enteredCollider(){
+		disableMovement = true;
+	}
 }

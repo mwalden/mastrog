@@ -9,14 +9,16 @@ public class JumpScript : MonoBehaviour {
 	private GameObject currentRestBar;
 	private Rigidbody2D rb;
 	public LayerMask layerMask;
+	private bool jumpingDisabled;
 	void Start(){
 		rb = GetComponent<Rigidbody2D> ();
-//		ps = GetComponent<PlayerScript> ();
+		Messenger.AddListener ("disableJumping",disableJumping);
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		if (Input.GetKeyDown (KeyCode.Space)) {
+		if (Input.GetKeyDown (KeyCode.Space) && !jumpingDisabled) {
 			//prevent double jump
 			if (rb.velocity.y <= 0.1) {
 				rb.velocity =  (new Vector2 (0, force));
@@ -50,5 +52,9 @@ public class JumpScript : MonoBehaviour {
 //			Debug.Log ("Force : " + force);
 
 		}
+	}
+
+	void disableJumping(){
+		jumpingDisabled = true;
 	}
 }

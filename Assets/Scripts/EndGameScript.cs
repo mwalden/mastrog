@@ -20,6 +20,16 @@ public class EndGameScript : MonoBehaviour {
 
 	//the rate the player will move faster than the camera;
 	public float playerSpeedIncrement;
+
+	void Start(){
+		Messenger.AddListener<Scores,GameObject> ("gameOver", gameOver);
+	}
+
+	void gameOver(Scores score, GameObject player){
+		PlayEndGame (player);
+		setScore (score);
+	}
+
 	void Update(){
 		if (moving) {
 			playerSpeed += playerSpeedIncrement;
@@ -34,7 +44,7 @@ public class EndGameScript : MonoBehaviour {
 //				moving = false;
 		}
 	}
-	public void PlayEndGame(GameObject player){
+	private void PlayEndGame(GameObject player){
 		playerSpeed = speed;
 		this.player = player;
 		Collider2D[] colliders = GameObject.FindObjectsOfType<Collider2D> ();
@@ -50,7 +60,7 @@ public class EndGameScript : MonoBehaviour {
 
 	}
 
-	public void setScore(Scores scores){
+	private void setScore(Scores scores){
 		this.scores = scores;
 	}
 

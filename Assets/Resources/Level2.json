@@ -3,7 +3,7 @@
     {
       "folderName": "First",
       "preview": "Track 1",
-      "lengthInSeconds": 200,
+      "lengthInSeconds": 311,
       "backgroundImage": "rainbowStars",
       "title": "HackDay Song",
       "numberOfLanes": 3,
@@ -151,9 +151,9 @@
       ]
     },
     {
-      "folderName": "HackDay",
+      "folderName": "Song 2",
       "preview": "Track 2",
-      "lengthInSeconds": 200,
+      "lengthInSeconds": 187,
       "backgroundImage": "space",
       "title": "test Song",
       "numberOfLanes": 4,
@@ -200,9 +200,9 @@
       ]
     },
     {
-      "folderName": "Song 2",
+      "folderName": "HackDay",
       "preview": "Track 3",
-      "lengthInSeconds": 200,
+      "lengthInSeconds": 10,
       "backgroundImage": "dinosaur",
       "title": "HackDay Song",
       "numberOfLanes": 3,
