@@ -29,7 +29,7 @@ public class JumpScript : MonoBehaviour {
 		if (Input.touches.Length > 0) {
 			Touch touch = Input.touches [0];
 
-			if (touch.phase==TouchPhase.Ended && rb.velocity.y <= 0.1){
+			if (touch.phase==TouchPhase.Ended && rb.velocity.y <= 0.3){
 				rb.velocity = (new Vector2 (0, force));
 			}
 			return;

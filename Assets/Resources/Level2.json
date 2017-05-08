@@ -2,7 +2,7 @@
   "levels": [
     {
       "folderName": "First",
-      "preview": "Track 1",
+      "preview": "Track 3",
       "lengthInSeconds": 311,
       "backgroundImage": "rainbowStars",
       "title": "HackDay Song",
@@ -162,55 +162,6 @@
       "obstacleNames": [
         "square",
         "petal",
-        "circle"
-      ],
-      "rows": [
-        {
-          "name": "square",
-          "speed": 100
-        },
-        {
-          "name": "square",
-          "speed": 100
-        },
-        {
-          "name": "petal",
-          "speed": 100
-        },
-        {
-          "name": "petal",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 100
-        },
-        {
-          "name": "square",
-          "speed": 100
-        },
-        {
-          "name": "square",
-          "speed": 100
-        },
-        {
-          "name": "square",
-          "speed": 100
-        }
-      ]
-    },
-    {
-      "folderName": "HackDay",
-      "preview": "Track 3",
-      "lengthInSeconds": 10,
-      "backgroundImage": "dinosaur",
-      "title": "HackDay Song",
-      "numberOfLanes": 3,
-      "startingLane": 2,
-      "numberOfLevels": 3,
-      "obstacleNames": [
-        "square",
-        "petal",
         "circle",
         "circleNoPlatform"
       ],
@@ -324,7 +275,97 @@
           "speed": 100
         },
         {
+          "name": "circleNoPlatform",
+          "speed": 200
+        },
+        {
           "name": "square",
+          "speed": 100
+        },
+        {
+          "name": "circleNoPlatform",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 200
+        },
+        {
+          "name": "petal",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 100
+        }
+      ]
+    },
+    {
+      "folderName": "HackDay",
+      "preview": "Track 1",
+      "lengthInSeconds": 203,
+      "backgroundImage": "dinosaur",
+      "title": "HackDay Song",
+      "numberOfLanes": 3,
+      "startingLane": 2,
+      "numberOfLevels": 3,
+      "obstacleNames": [
+        "square",
+        "petal",
+        "circle",
+        "circleNoPlatform"
+      ],
+      "rows": [
+        {
+          "name": "petal",
+          "speed": 200
+        },
+        {
+          "name": "circleNoPlatform",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 200
+        },
+        {
+          "name": "circleNoPlatform",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 100
+        },
+        {
+          "name": "square",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 200
+        },
+        {
+          "name": "square",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 200
+        },
+        {
+          "name": "petal",
+          "speed": 100
+        },
+        {
+          "name": "petal",
+          "speed": 100
+        },
+        {
+          "name": "petal",
           "speed": 200
         },
         {
@@ -333,6 +374,66 @@
         },
         {
           "name": "square",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 200
+        },
+        {
+          "name": "petal",
+          "speed": 100
+        },
+        {
+          "name": "circle",
+          "speed": 100
+        },
+        {
+          "name": "square",
+          "speed": 200
+        },
+        {
+          "name": "petal",
+          "speed": 100
+        },
+        {
+          "name": "circleNoPlatform",
+          "speed": 100
+        },
+        {
+          "name": "petal",
+          "speed": 200
+        },
+        {
+          "name": "square",
+          "speed": 100
+        },
+        {
+          "name": "square",
+          "speed": 100
+        },
+        {
+          "name": "circleNoPlatform",
+          "speed": 200
+        },
+        {
+          "name": "square",
+          "speed": 100
+        },
+        {
+          "name": "square",
+          "speed": 100
+        },
+        {
+          "name": "circleNoPlatform",
+          "speed": 200
+        },
+        {
+          "name": "square",
+          "speed": 100
+        },
+        {
+          "name": "circleNoPlatform",
           "speed": 100
         },
         {

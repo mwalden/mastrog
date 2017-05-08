@@ -71,7 +71,6 @@ public class GameScript : MonoBehaviour {
 	}
 
 	void moveLeft(){
-
 		if (disableMovement)
 			return;
 		if (currentLaneId > 0 && !playerScript.isMoving ()) {
