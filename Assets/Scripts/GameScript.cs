@@ -49,6 +49,7 @@ public class GameScript : MonoBehaviour {
 	void Start () {
 		Messenger.AddListener ("exitObstacle", exitedCollider);
 		Messenger.AddListener ("enteredObstacle", enteredCollider);
+		Messenger.AddListener ("clearOutLane", clearOutLane);
 		cam = Camera.main;
 		scoreController = new ScoreController ();
 		timerController = new TimerController (() => TimesUp ());
@@ -181,6 +182,17 @@ public class GameScript : MonoBehaviour {
 			soundEffectScript.playWoosh ();
 		}
 		
+	}
+
+	public void clearOutLane(){
+		scoreController.addLockDownLane ();
+		audioScript.lockDownLane (currentLaneId);
+		barCounterController.emptyBars ();
+		platformProgression = 0;
+		particleSystemScript.playParticleSystem ();
+		//			levelBuilder.lockDownLane (currentLaneId);
+		Messenger.Broadcast<int> ("disableLane", currentLaneId);
+		soundEffectScript.playWoosh ();
 	}
 
 	public void setCurrentPlatform(GameObject platform){
