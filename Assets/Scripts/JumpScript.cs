@@ -10,12 +10,28 @@ public class JumpScript : MonoBehaviour {
 	private Rigidbody2D rb;
 	public LayerMask layerMask;
 	private bool jumpingDisabled;
+	public TouchGesture.GestureSettings gestureSetting;
+	private TouchGesture touch;
 	void Start(){
 		rb = GetComponent<Rigidbody2D> ();
 		Messenger.AddListener ("disableJumping",disableJumping);
-
+		#if UNITY_ANDROID
+//			touch = new TouchGesture(this.gestureSetting);
+//			StartCoroutine(touch.CheckVerticleSwipes(
+//				onSwipeUp: () => { jump();},
+//				onSwipeDown: () => { ignore();}
+//			));
+		#endif
 	}
 
+	void ignore(){
+	}
+	void jump(){
+		if (rb.velocity.y <= 0.1) {
+			rb.velocity =  (new Vector2 (0, force));
+
+		}
+	}
 	// Update is called once per frame
 	void Update () {
 		if (Input.GetKeyDown (KeyCode.Space) && !jumpingDisabled) {
@@ -29,7 +45,7 @@ public class JumpScript : MonoBehaviour {
 		if (Input.touches.Length > 0) {
 			Touch touch = Input.touches [0];
 
-			if (touch.phase==TouchPhase.Ended && rb.velocity.y <= 0.3){
+			if (touch.phase==TouchPhase.Ended && rb.velocity.y <= 0.1){
 				rb.velocity = (new Vector2 (0, force));
 			}
 			return;

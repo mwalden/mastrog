@@ -69,6 +69,13 @@ public class TouchGesture
 		return couldBeSwipe && swipeTime < settings.maxSwipeTime && swipeDist > settings.minSwipeDist;
 	}
 
+	private bool isAVerticalSwipe(Touch touch)
+	{
+		float swipeTime = Time.time - swipeStartTime; //Time the touch stayed at the screen till now.
+		float swipeDist = Mathf.Abs(touch.position.y - startPos.y); //Swipe distance
+		return couldBeSwipe && swipeTime < settings.maxSwipeTime && swipeDist > settings.minSwipeDist;
+	}
+
 
 
 	public IEnumerator CheckVerticleSwipes(Action onSwipeDown, Action onSwipeUp) //Coroutine, which gets Started in "Start()" and runs over the whole game to check for swipes
@@ -90,7 +97,7 @@ public class TouchGesture
 						couldBeSwipe = false;
 					break;
 				case TouchPhase.Ended:
-					if (isASwipe(touch))
+					if (isAVerticalSwipe(touch))
 					{
 						couldBeSwipe = false; //<-- Otherwise this part would be called over and over again.
 						if (Mathf.Sign(touch.position.y - startPos.y) == 1f) //Swipe-direction, either 1 or -1.   

@@ -306,7 +306,7 @@
       "lengthInSeconds": 203,
       "backgroundImage": "dinosaur",
       "title": "HackDay Song",
-      "numberOfLanes": 3,
+      "numberOfLanes": 4,
       "startingLane": 2,
       "numberOfLevels": 3,
       "obstacleNames": [
@@ -317,11 +317,11 @@
       ],
       "rows": [
         {
-          "name": "petal",
+          "name": "circle",
           "speed": 200
         },
         {
-          "name": "circleNoPlatform",
+          "name": "circle",
           "speed": 100
         },
         {
@@ -329,7 +329,7 @@
           "speed": 200
         },
         {
-          "name": "circleNoPlatform",
+          "name": "circle",
           "speed": 100
         },
         {

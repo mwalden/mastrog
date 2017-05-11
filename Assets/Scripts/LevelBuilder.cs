@@ -42,6 +42,7 @@ public class LevelBuilder : MonoBehaviour {
 				level = parser.getLevels ().levels [2];
 			}
 		}
+		Messenger.Broadcast<NewLevel> ("setLevel", level);
 		int startingLane = level.startingLane;
 
 		numberOfLanes = level.numberOfLanes;
