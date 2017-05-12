@@ -172,14 +172,7 @@ public class GameScript : MonoBehaviour {
 		scoreController.addPlatform ();
 	
 		if (platformProgression % 4 == 0) {
-			scoreController.addLockDownLane ();
-			audioScript.lockDownLane (currentLaneId);
-			barCounterController.emptyBars ();
-			platformProgression = 0;
-			particleSystemScript.playParticleSystem ();
-//			levelBuilder.lockDownLane (currentLaneId);
-			Messenger.Broadcast<int> ("disableLane", currentLaneId);
-			soundEffectScript.playWoosh ();
+			clearOutLane();
 		}
 		
 	}
@@ -190,7 +183,6 @@ public class GameScript : MonoBehaviour {
 		barCounterController.emptyBars ();
 		platformProgression = 0;
 		particleSystemScript.playParticleSystem ();
-		//			levelBuilder.lockDownLane (currentLaneId);
 		Messenger.Broadcast<int> ("disableLane", currentLaneId);
 		soundEffectScript.playWoosh ();
 	}

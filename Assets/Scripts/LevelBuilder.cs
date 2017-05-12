@@ -87,6 +87,9 @@ public class LevelBuilder : MonoBehaviour {
 
 	private void putItemBackInPool(GameObject go){
 		List<GameObject> objects = obstaclePool [go.name];
+		EnableDisableScript script = go.GetComponent<EnableDisableScript> ();
+		if (script != null)
+			script.enableObstacle ();
 		go.SetActive(false);
 		obstaclesInUse.Remove (go);
 		objects.Add (go);
