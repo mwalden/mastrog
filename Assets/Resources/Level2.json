@@ -2,7 +2,9 @@
   "levels": [
     {
       "folderName": "First",
+      "powerBoxChance": 0.5,
       "preview": "Track 3",
+      "changeOfGoodPowerBox":1.0,
       "lengthInSeconds": 311,
       "backgroundImage": "rainbowStars",
       "title": "HackDay Song",
@@ -153,6 +155,8 @@
     {
       "folderName": "Song 2",
       "preview": "Track 2",
+      "changeOfGoodPowerBox":1.0,
+      "powerBoxChance": 0.5,
       "lengthInSeconds": 187,
       "backgroundImage": "space",
       "title": "test Song",
@@ -302,6 +306,8 @@
     },
     {
       "folderName": "HackDay",
+      "powerBoxChance": 1.0,
+      "changeOfGoodPowerBox":1.0,
       "preview": "Track 1",
       "lengthInSeconds": 203,
       "backgroundImage": "dinosaur",

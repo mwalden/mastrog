@@ -13,7 +13,7 @@ public class PlatformScript : MonoBehaviour {
 //	}
 
 	void OnCollisionEnter2D(Collision2D coll){
-		
+		Messenger.Broadcast ("landed");
 		gameScript.setCurrentPlatform (gameObject);
 	}
 }

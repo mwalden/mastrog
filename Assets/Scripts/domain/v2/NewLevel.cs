@@ -15,5 +15,7 @@ public class NewLevel
 	public int numberOfLevels;	
 	public string preview;
 	public string backgroundImage;
+	public float powerBoxChance;
+	public float goodOrBadBoxChance;
 }
 

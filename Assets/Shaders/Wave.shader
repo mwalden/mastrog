@@ -1,4 +1,4 @@
-﻿Shader "Custom/NewImageEffectShader"
+﻿Shader "Custom/Wave"
 {
 	Properties
 	{
@@ -43,13 +43,13 @@
 
 			fixed4 frag (v2f i) : SV_Target
 			{
-				fixed4 col = tex2D(_MainTex, i.uv + float2(0,sin(i.vertex.x/50 + _Time[0]  * _Wave)) /10);
+				fixed4 col = tex2D(_MainTex, i.uv + float2(0,sin(i.vertex.y/100 + _Time[0]  * _Wave) /10));
 //				fixed4 col = tex2D(_MainTex, i.uv + float2(0,i.vertex.y);
 
 //				fixed4 col = tex2D(_MainTex, i.uv);
 				// just invert the colors
 //				col = 1 - col;
-				col.r = .3;
+				
 				return col;
 			}
 			ENDCG

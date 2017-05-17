@@ -40,8 +40,15 @@ public class GameScript : MonoBehaviour {
 	//handles the red swiping particle system when locking down a level
 	public ParticleScript particleSystemScript;
 	public LevelBuilder levelBuilder;
+
+	//top right counter how far you have moved
 	public BarCounterController barCounterController;
+
+	//stops someone from moving within an obsticle
 	private bool disableMovement;
+
+	//count of how many obstacles you have traversed
+	private int obstaclesPassed;
 
 
 
@@ -170,7 +177,7 @@ public class GameScript : MonoBehaviour {
 		soundEffectScript.playLevelProgression (platformProgression);
 		barCounterController.addBar ();
 		scoreController.addPlatform ();
-	
+		
 		if (platformProgression % 4 == 0) {
 			clearOutLane();
 		}
@@ -184,6 +191,7 @@ public class GameScript : MonoBehaviour {
 		platformProgression = 0;
 		particleSystemScript.playParticleSystem ();
 		Messenger.Broadcast<int> ("disableLane", currentLaneId);
+
 		soundEffectScript.playWoosh ();
 	}
 
@@ -221,7 +229,10 @@ public class GameScript : MonoBehaviour {
 
 	private void exitedCollider(){
 		disableMovement = false;
+		obstaclesPassed++;
 		scoreController.addScore(score);
+		Messenger.Broadcast<int> ("setRow", obstaclesPassed);
+
 
 	}
 	private void enteredCollider(){
