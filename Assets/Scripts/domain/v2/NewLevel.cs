@@ -16,6 +16,6 @@ public class NewLevel
 	public string preview;
 	public string backgroundImage;
 	public float powerBoxChance;
-	public float goodOrBadBoxChance;
+	public float changeOfGoodPowerBox;
 }
 

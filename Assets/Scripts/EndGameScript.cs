@@ -40,8 +40,6 @@ public class EndGameScript : MonoBehaviour {
 				moving = false;
 				displayScores ();
 			}
-//			if (cam.transform.position.y >= destination.y)
-//				moving = false;
 		}
 	}
 	private void PlayEndGame(GameObject player){

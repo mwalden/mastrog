@@ -23,7 +23,6 @@ public class PowerBoxScript : MonoBehaviour {
 	void OnTriggerEnter2D(Collider2D coll){
 		if (coll.gameObject.tag != "Player")
 			return;
-		Debug.Log ("entered");
 		burst.transform.position = transform.position;
 		transform.position = new Vector3 (100, 100, 100);
 		this.burst.Play ();

@@ -2,12 +2,13 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
 public class AudioScript : MonoBehaviour {
 
 	Dictionary<int,bool> lockedAudioTracks = new Dictionary<int,bool> ();
 	Dictionary<int,float> lockedAudioTracksDuration = new Dictionary<int,float> ();
 	List<AudioSource> audioSources = new List<AudioSource>();
-//	List<AudioSource> successAudio = new List<AudioSource>();
+
 	AudioSource error;
 	AudioSource woosh;
 	public int currentLane;

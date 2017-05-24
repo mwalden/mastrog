@@ -50,10 +50,14 @@ public class PowerBoxController : MonoBehaviour {
 	}
 
 	void boxOpened(){
-		float randomNumber = Random.Range (0,1f );
-		goodEffects [0] ();
-		badEffects [0] ();
-			
+		float goodOrBad = Random.Range (0,1f );
+		if (goodOrBad < level.changeOfGoodPowerBox) {
+			int effect = Random.Range (0, goodEffects.Count - 1);
+			goodEffects [effect] ();
+		} else {
+			int effect = Random.Range (0, badEffects.Count - 1);
+			badEffects [effect] ();
+		}
 	}
 
 	void landedOnPlatform(){

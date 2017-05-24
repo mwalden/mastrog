@@ -16,6 +16,7 @@ public class DisplayScores : MonoBehaviour {
 	private float timeToZero;
 	private int line;
 
+
 	public TimerController timerController;
 
 	void Start(){

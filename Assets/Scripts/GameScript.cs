@@ -231,6 +231,7 @@ public class GameScript : MonoBehaviour {
 		disableMovement = false;
 		obstaclesPassed++;
 		scoreController.addScore(score);
+		Messenger.Broadcast<int> ("addScore", score);
 		Messenger.Broadcast<int> ("setRow", obstaclesPassed);
 
 
