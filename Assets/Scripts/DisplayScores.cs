@@ -16,6 +16,12 @@ public class DisplayScores : MonoBehaviour {
 	private float timeToZero;
 	private int line;
 
+	public Sprite successBurst;
+	public Sprite failBurst;
+	public Text endGameTextMessage;
+
+	public SpriteRenderer burstSpriteRenderer;
+
 
 	public TimerController timerController;
 
@@ -54,14 +60,23 @@ public class DisplayScores : MonoBehaviour {
 		errorCount.text = scores.getErrorCount ().ToString();
 		lanesLockedDown.text = scores.getLanesLockedDown ().ToString();
 		title.text = scores.getLevel ().title;
+		if (scores.completedLevel) {
+			burstSpriteRenderer.sprite = successBurst;
+			endGameTextMessage.text = "WELL DONE!";
+		} else {
+			burstSpriteRenderer.sprite = failBurst;
+			endGameTextMessage.text = "FAILED";
+		}
 		
 	}
 
 	public void showLine(){
 		Vector3 cPos = Camera.main.transform.position;
 		Vector3 burstPosition = new Vector3 (cPos.x, cPos.y + 1.5f, cPos.z);
+
 		burstAnimator.gameObject.transform.position = burstPosition;
 		burstAnimator.gameObject.SetActive (true);
+
 		burstAnimator.Play ("burst");
 		showLines = true;
 	}

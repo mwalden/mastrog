@@ -37,6 +37,7 @@ public class JumpScript : MonoBehaviour {
 		if (Input.GetKeyDown (KeyCode.Space) && !jumpingDisabled) {
 			//prevent double jump
 			if (rb.velocity.y <= 0.1) {
+				Messenger.Broadcast ("jumped");
 				rb.velocity =  (new Vector2 (0, force));
 
 			}
@@ -44,7 +45,7 @@ public class JumpScript : MonoBehaviour {
 		#if UNITY_ANDROID
 		if (Input.touches.Length > 0) {
 			Touch touch = Input.touches [0];
-
+			Messenger.Broadcast ("jumped");
 			if (touch.phase==TouchPhase.Ended && rb.velocity.y <= 0.1){
 				rb.velocity = (new Vector2 (0, force));
 			}
@@ -63,10 +64,7 @@ public class JumpScript : MonoBehaviour {
 			
 			float distance = Mathf.Abs(hit.transform.position.y-position.y);
 			float g = Physics.gravity.magnitude; // get the gravity value
-//			Debug.Log(distance);
 			force = Mathf.Sqrt(2 * g * distance) + hit.collider.bounds.size.y+.25f;
-//			Debug.Log ("Force : " + force);
-
 		}
 	}
 

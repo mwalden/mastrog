@@ -9,9 +9,12 @@ public class ScoreController{
 	private int lockDownLaneCount;
 	private int errorCount;
 	private int platformCount;
+	public bool completedLevel { get; set;}
 	private NewLevel level;
 
-	public ScoreController (){}
+	public ScoreController (){
+		completedLevel = true;
+	}
 	public void setCurrentLevel(NewLevel level){
 		this.level = level;
 	}
@@ -41,7 +44,8 @@ public class ScoreController{
 			platformsPassed: platformCount,
 			lanesLockedDown: lockDownLaneCount,
 			errorCount: errorCount,
-			level:this.level);
+			level:this.level,
+			completedLevel:this.completedLevel);
 	}
 }
 

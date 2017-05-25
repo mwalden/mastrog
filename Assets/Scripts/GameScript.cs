@@ -57,6 +57,7 @@ public class GameScript : MonoBehaviour {
 		Messenger.AddListener ("exitObstacle", exitedCollider);
 		Messenger.AddListener ("enteredObstacle", enteredCollider);
 		Messenger.AddListener ("clearOutLane", clearOutLane);
+		Messenger.AddListener ("ranOutOfHealth", ranOutOfHealth);
 		cam = Camera.main;
 		scoreController = new ScoreController ();
 		timerController = new TimerController (() => TimesUp ());
@@ -146,6 +147,7 @@ public class GameScript : MonoBehaviour {
 
 	private void setCurrentLaneId(int id){
 		currentLaneId = id;
+		Messenger.Broadcast ("jumped");
 		audioScript.setCurrentLane (currentLaneId);
 	}
 
@@ -224,6 +226,7 @@ public class GameScript : MonoBehaviour {
 		scoreController.addError ();
 		soundEffectScript.playError ();
 		playerRigidbody.velocity = new Vector2(0.0f,0.0f);
+		Messenger.Broadcast<float> ("removeHealth", .3f);
 		player.transform.position = currentPlatform.transform.position;
 	}
 
@@ -232,11 +235,19 @@ public class GameScript : MonoBehaviour {
 		obstaclesPassed++;
 		scoreController.addScore(score);
 		Messenger.Broadcast<int> ("addScore", score);
+		Messenger.Broadcast<float> ("addHealth", .05f);
 		Messenger.Broadcast<int> ("setRow", obstaclesPassed);
 
 
 	}
 	private void enteredCollider(){
 		disableMovement = true;
+	}
+
+	private void ranOutOfHealth(){
+		scoreController.completedLevel = false;
+		timerController.endTimer ();
+		gameOver = true;
+
 	}
 }

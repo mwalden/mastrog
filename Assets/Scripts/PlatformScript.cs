@@ -8,9 +8,6 @@ public class PlatformScript : MonoBehaviour {
 	void Start(){
 		gameScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameScript> ();
 	}
-//	void OnCollisionExit2D(Collision2D coll){
-//		gameScript.setCurrentPlatform (gameObject);
-//	}
 
 	void OnCollisionEnter2D(Collision2D coll){
 		Messenger.Broadcast ("landed");

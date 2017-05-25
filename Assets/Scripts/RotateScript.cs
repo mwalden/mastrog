@@ -15,7 +15,9 @@ public class RotateScript : MonoBehaviour {
 	private int z;
 
 	private int direction;
+	private Transform _transform;
 	void Start(){
+		_transform = transform;
 		direction = turnLeft ? 1 : -1;
 	}
 	void Update () {
@@ -23,7 +25,7 @@ public class RotateScript : MonoBehaviour {
 		y = yAxis ? 1 : 0;
 		z = zAxis ? 1 : 0;
 
-		transform.Rotate (x * direction * speed * Time.deltaTime, 
+		_transform.Rotate (x * direction * speed * Time.deltaTime, 
 			y * direction * speed * Time.deltaTime, 
 			z * direction * speed * Time.deltaTime);
 	}

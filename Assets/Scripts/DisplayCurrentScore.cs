@@ -15,6 +15,6 @@ public class DisplayCurrentScore : MonoBehaviour {
 
 	void addScore(int score){
 		this.score += score;
-		currentScoreText.text = string.Concat("Score : ",this.score);
+		currentScoreText.text = string.Concat("Score:",this.score);
 	}
 }

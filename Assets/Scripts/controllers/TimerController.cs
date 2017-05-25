@@ -19,7 +19,10 @@ public class TimerController
 	private void OnTimedEvent(object source, ElapsedEventArgs e){
 		aTimer.Enabled = false;
 		timesUp ();
+	}
 
+	public void endTimer(){
+		aTimer.Enabled = false;
 	}
 }
 

@@ -3,7 +3,8 @@ using UnityEngine.UI;
 using System.Collections;
 
 public class HealthController : MonoBehaviour {
-
+	//this was for that scene where we werent using the scale. 
+	//not in the game
 	public Image health;
 
 	public float totalHealth = 1f;
