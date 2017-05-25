@@ -245,9 +245,11 @@ public class GameScript : MonoBehaviour {
 	}
 
 	private void ranOutOfHealth(){
+		disableMovement = false;
 		scoreController.completedLevel = false;
 		timerController.endTimer ();
 		gameOver = true;
+		Messenger.Broadcast ("HideHud");
 
 	}
 }
