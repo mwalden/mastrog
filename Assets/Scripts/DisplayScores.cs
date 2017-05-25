@@ -55,6 +55,7 @@ public class DisplayScores : MonoBehaviour {
 
 
 	public void setInfo(Scores scores){
+		Messenger.Broadcast ("HideHud");
 		score.text = scores.getScores ().ToString();
 		platformsPassed.text = scores.getPlatformsPasssed ().ToString();
 		errorCount.text = scores.getErrorCount ().ToString();
