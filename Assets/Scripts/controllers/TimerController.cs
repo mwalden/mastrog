@@ -8,7 +8,16 @@ public class TimerController
 		this.timesUp = timesUp;
 		aTimer = new System.Timers.Timer();
 		aTimer.Elapsed+=new ElapsedEventHandler(OnTimedEvent);
+	}
 
+	public TimerController(){
+		aTimer = new System.Timers.Timer();
+		aTimer.Elapsed+=new ElapsedEventHandler(OnTimedEvent);
+	}
+
+
+	public void setAction(Action timesUp){
+		this.timesUp = timesUp;
 	}
 	public void beginTimer (int timeInSeconds)
 	{
@@ -18,7 +27,8 @@ public class TimerController
 
 	private void OnTimedEvent(object source, ElapsedEventArgs e){
 		aTimer.Enabled = false;
-		timesUp ();
+		if (timesUp != null)
+			timesUp ();
 	}
 
 	public void endTimer(){

@@ -2,31 +2,28 @@
 using System.Collections;
 
 public class PowerBoxScript : MonoBehaviour {
-
-	public GameObject burstPrefab;
 	public float boxSpeed = 2f;
 	public bool keepMoving = true;
-	private ParticleSystem burst;
-
+	private Transform _transform;
 	void Start(){
-		burst = (Instantiate (burstPrefab, new Vector3 (transform.position.x, transform.position.y, transform.position.z), Quaternion.identity) as GameObject).GetComponent<ParticleSystem>();		
+		_transform = transform;
 	}
-
 	void Update () {
 		if (!keepMoving)
 			return;
-		transform.position = new Vector3 (transform.position.x - boxSpeed * Time.deltaTime,
-			transform.position.y,
+		transform.position = new Vector3 (_transform.position.x - boxSpeed * Time.deltaTime,
+			_transform.position.y,
 			0);
 	}
 
 	void OnTriggerEnter2D(Collider2D coll){
 		if (coll.gameObject.tag != "Player")
 			return;
-		burst.transform.position = transform.position;
-		transform.position = new Vector3 (100, 100, 100);
-		this.burst.Play ();
-		Messenger.Broadcast ("boxOpened");
+		Messenger.Broadcast<Vector3> ("boxOpened",_transform.position);
+		_transform.position = new Vector3 (100, 100, 100);
+
+
+
 	}
 
 	

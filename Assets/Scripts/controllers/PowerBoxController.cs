@@ -21,45 +21,67 @@ public class PowerBoxController : MonoBehaviour {
 	private bool deployBox;
 	private bool clearedObstacle;
 	private bool landed;
-
-
+	public GameObject burstPrefab;
+	private ParticleSystem burst;
 	public delegate void BoxOpenedEffect();
 	//wavey script is on RenderShader on the camera
 
 	Dictionary<int,BoxOpenedEffect> goodEffects;
 	Dictionary<int,BoxOpenedEffect> badEffects;
-	TimerController timerController = new TimerController (() => {
-		Messenger.Broadcast ("turnOffWaves");	
-		timerController.endTimer();
-	});
+	TimerController timerController = new TimerController ();
+
 	public void clearLane(){
 		Messenger.Broadcast ("clearOutLane");
 	}
+
 	public void wavey(){
+		timerController.setAction (() => {
+			Messenger.Broadcast ("turnOffWaves");	
+		});
 		timerController.beginTimer (5000);
 		Messenger.Broadcast ("turnOnWaves");
 	}
 
+	public void fullHealth(){
+		Messenger.Broadcast<float>("addHealth",1000f);
+	}
+
+	public void fasterBleeding(){
+		timerController.setAction (() => {
+			Messenger.Broadcast<float> ("adjustBleedFactor", .004f);
+		});
+		Messenger.Broadcast<float>("adjustBleedFactor",.008f);
+		timerController.beginTimer (5000);
+	}
+
 	void Start(){
+		burst = (Instantiate (burstPrefab, new Vector3 (transform.position.x, transform.position.y, transform.position.z), Quaternion.identity) as GameObject).GetComponent<ParticleSystem>();		
 		goodEffects = new Dictionary<int,BoxOpenedEffect> ();
 		badEffects = new Dictionary<int,BoxOpenedEffect> ();
 		goodEffects.Add (0, clearLane);
+		goodEffects.Add (1, fullHealth);
 		badEffects.Add (0, wavey);
+		badEffects.Add (1, fasterBleeding);
 		bounds = CameraExtensions.OrthographicBounds (Camera.main);
 		Messenger.AddListener<NewLevel> ("setLevel", setLevel);
 		Messenger.AddListener<int> ("setRow", setClearedObstacle);
 		Messenger.AddListener ("landed", landedOnPlatform);
-		Messenger.AddListener ("boxOpened", boxOpened);
+		Messenger.AddListener <Vector3>("boxOpened", boxOpened);
+		Messenger.AddListener ("gameOver", gameOver);
 		powerBoxChance = new Dictionary<int,float>();
 	}
-
-	void boxOpened(){
+	void gameOver(){
+		Messenger.Broadcast ("turnOffWaves");	
+	}
+	void boxOpened(Vector3 position){
+		burst.transform.position = position;
+		this.burst.Play ();
 		float goodOrBad = Random.Range (0,1f );
 		if (goodOrBad < level.changeOfGoodPowerBox) {
-			int effect = Random.Range (0, goodEffects.Count - 1);
+			int effect = Random.Range (0, goodEffects.Count);
 			goodEffects [effect] ();
 		} else {
-			int effect = Random.Range (0, badEffects.Count - 1);
+			int effect = Random.Range (0, badEffects.Count);
 			badEffects [effect] ();
 		}
 	}

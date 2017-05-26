@@ -14,6 +14,7 @@ public class ScoreController{
 
 	public ScoreController (){
 		completedLevel = true;
+		Messenger.AddListener<int> ("addScore", addScore);
 	}
 	public void setCurrentLevel(NewLevel level){
 		this.level = level;
@@ -37,7 +38,6 @@ public class ScoreController{
 	public void removeScore(int score){
 		this.score -= score;
 	}
-
 
 	public Scores getScores(){
 		return new Scores (score: this.score,

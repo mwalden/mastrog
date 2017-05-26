@@ -231,12 +231,9 @@ public class GameScript : MonoBehaviour {
 	private void exitedCollider(){
 		disableMovement = false;
 		obstaclesPassed++;
-		scoreController.addScore(score);
 		Messenger.Broadcast<int> ("addScore", score);
 		Messenger.Broadcast<float> ("addHealth", .05f);
 		Messenger.Broadcast<int> ("setRow", obstaclesPassed);
-
-
 	}
 	private void enteredCollider(){
 		disableMovement = true;
