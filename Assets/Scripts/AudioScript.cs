@@ -15,10 +15,6 @@ public class AudioScript : MonoBehaviour {
 	public float lockDownDuration;
 	public int level;
 	private NewLevel gameLevel;
-	
-
-
-//	private int successAudioLevel;
 
 	public void setGameLevel(NewLevel level){
 		gameLevel = level;

@@ -25,7 +25,7 @@ public class PowerBoxController : MonoBehaviour {
 	public GameObject burstPrefab;
 	private ParticleSystem burst;
 	public delegate void BoxOpenedEffect();
-	//wavey script is on RenderShader on the camera
+
 	private Animator powerBoxTitleAnimator;
 	public Text powerBoxTitle;
 	Dictionary<int,BoxOpenedEffect> goodEffects;
@@ -36,7 +36,7 @@ public class PowerBoxController : MonoBehaviour {
 		powerBoxTitle.text = "Lane Cleared!";
 		Messenger.Broadcast ("clearOutLane");
 	}
-
+	//wavey script is on RenderShader on the camera
 	public void wavey(){
 		powerBoxTitle.text = "Cant see!";
 		timerController.setAction (() => {
