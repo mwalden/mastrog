@@ -55,7 +55,7 @@ public class PowerBoxController : MonoBehaviour {
 	}
 
 	void Start(){
-		burst = (Instantiate (burstPrefab, new Vector3 (transform.position.x, transform.position.y, transform.position.z), Quaternion.identity) as GameObject).GetComponent<ParticleSystem>();		
+		burst = (Instantiate (burstPrefab, new Vector3 (-100,-100,-100), Quaternion.identity) as GameObject).GetComponent<ParticleSystem>();		
 		goodEffects = new Dictionary<int,BoxOpenedEffect> ();
 		badEffects = new Dictionary<int,BoxOpenedEffect> ();
 		goodEffects.Add (0, clearLane);
@@ -72,6 +72,14 @@ public class PowerBoxController : MonoBehaviour {
 	}
 	void gameOver(){
 		Messenger.Broadcast ("turnOffWaves");	
+	}
+
+	void onDestory(){
+		Messenger.RemoveListener<NewLevel> ("setLevel", setLevel);
+		Messenger.RemoveListener<int> ("setRow", setClearedObstacle);
+		Messenger.RemoveListener ("landed", landedOnPlatform);
+		Messenger.RemoveListener <Vector3>("boxOpened", boxOpened);
+		Messenger.RemoveListener ("gameOver", gameOver);
 	}
 	void boxOpened(Vector3 position){
 		burst.transform.position = position;
