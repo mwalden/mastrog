@@ -24,8 +24,6 @@ public class JumpScript : MonoBehaviour {
 		#endif
 	}
 
-	void ignore(){
-	}
 	void jump(){
 		if (rb.velocity.y <= 0.1) {
 			rb.velocity =  (new Vector2 (0, force));
@@ -43,7 +41,7 @@ public class JumpScript : MonoBehaviour {
 			}
 		}
 		#if UNITY_ANDROID
-		if (Input.touches.Length > 0) {
+		if (Input.touches.Length > 0 && !jumpingDisabled) {
 			Touch touch = Input.touches [0];
 			Messenger.Broadcast ("jumped");
 			if (touch.phase==TouchPhase.Ended && rb.velocity.y <= 0.1){

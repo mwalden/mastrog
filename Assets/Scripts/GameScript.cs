@@ -112,8 +112,9 @@ public class GameScript : MonoBehaviour {
 			if (playerScript.isMoving () || justMoved) {
 				return;
 			}
-			Messenger.Broadcast<Scores,GameObject> ("gameOver",scoreController.getScores(),player);
 			Messenger.Broadcast ("disableJumping");
+			Messenger.Broadcast<Scores,GameObject> ("gameOver",scoreController.getScores(),player);
+
 			disableMovement = true;
 		}
 		if (Input.GetKeyDown (KeyCode.Escape)) { 
