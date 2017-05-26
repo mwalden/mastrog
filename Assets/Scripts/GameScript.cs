@@ -157,8 +157,6 @@ public class GameScript : MonoBehaviour {
 		distanceToMoveX = (bounds.max.x * 2f);
 		float dist = distanceToMoveX * startingLane;
 		Vector3 cameraDestination = new Vector3 (cam.transform.position.x + dist, cam.transform.position.y, cam.transform.position.z);
-//		Vector3 playerDestination = new Vector3 (player.transform.position.x + dist, player.transform.position.y, player.transform.position.z);
-//		playerScript.moveToPosition (playerDestination);
 		cameraScript.moveCameraToPosition (cameraDestination);
 		justMoved = true;
 	}
@@ -249,7 +247,5 @@ public class GameScript : MonoBehaviour {
 		scoreController.completedLevel = false;
 		timerController.endTimer ();
 		gameOver = true;
-		Messenger.Broadcast ("HideHud");
-
 	}
 }

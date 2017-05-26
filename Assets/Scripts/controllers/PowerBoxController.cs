@@ -28,11 +28,15 @@ public class PowerBoxController : MonoBehaviour {
 
 	Dictionary<int,BoxOpenedEffect> goodEffects;
 	Dictionary<int,BoxOpenedEffect> badEffects;
-
+	TimerController timerController = new TimerController (() => {
+		Messenger.Broadcast ("turnOffWaves");	
+		timerController.endTimer();
+	});
 	public void clearLane(){
 		Messenger.Broadcast ("clearOutLane");
 	}
 	public void wavey(){
+		timerController.beginTimer (5000);
 		Messenger.Broadcast ("turnOnWaves");
 	}
 
