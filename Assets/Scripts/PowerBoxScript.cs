@@ -5,8 +5,11 @@ public class PowerBoxScript : MonoBehaviour {
 	public float boxSpeed = 2f;
 	public bool keepMoving = true;
 	private Transform _transform;
+
+
 	void Start(){
 		_transform = transform;
+
 	}
 	void Update () {
 		if (!keepMoving)

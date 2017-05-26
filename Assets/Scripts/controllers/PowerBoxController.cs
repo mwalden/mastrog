@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -25,16 +26,19 @@ public class PowerBoxController : MonoBehaviour {
 	private ParticleSystem burst;
 	public delegate void BoxOpenedEffect();
 	//wavey script is on RenderShader on the camera
-
+	private Animator powerBoxTitleAnimator;
+	public Text powerBoxTitle;
 	Dictionary<int,BoxOpenedEffect> goodEffects;
 	Dictionary<int,BoxOpenedEffect> badEffects;
 	TimerController timerController = new TimerController ();
 
 	public void clearLane(){
+		powerBoxTitle.text = "Lane Cleared!";
 		Messenger.Broadcast ("clearOutLane");
 	}
 
 	public void wavey(){
+		powerBoxTitle.text = "Cant see!";
 		timerController.setAction (() => {
 			Messenger.Broadcast ("turnOffWaves");	
 		});
@@ -44,9 +48,11 @@ public class PowerBoxController : MonoBehaviour {
 
 	public void fullHealth(){
 		Messenger.Broadcast<float>("addHealth",1000f);
+		powerBoxTitle.text = "Added Health";
 	}
 
 	public void fasterBleeding(){
+		powerBoxTitle.text = "Lose Health";
 		timerController.setAction (() => {
 			Messenger.Broadcast<float> ("adjustBleedFactor", .004f);
 		});
@@ -55,6 +61,7 @@ public class PowerBoxController : MonoBehaviour {
 	}
 
 	void Start(){
+		powerBoxTitleAnimator = powerBoxTitle.GetComponent<Animator> ();
 		burst = (Instantiate (burstPrefab, new Vector3 (-100,-100,-100), Quaternion.identity) as GameObject).GetComponent<ParticleSystem>();		
 		goodEffects = new Dictionary<int,BoxOpenedEffect> ();
 		badEffects = new Dictionary<int,BoxOpenedEffect> ();
@@ -67,7 +74,7 @@ public class PowerBoxController : MonoBehaviour {
 		Messenger.AddListener<int> ("setRow", setClearedObstacle);
 		Messenger.AddListener ("landed", landedOnPlatform);
 		Messenger.AddListener <Vector3>("boxOpened", boxOpened);
-		Messenger.AddListener ("gameOver", gameOver);
+//		Messenger.AddListener ("gameOver", gameOver);
 		powerBoxChance = new Dictionary<int,float>();
 	}
 	void gameOver(){
@@ -82,6 +89,8 @@ public class PowerBoxController : MonoBehaviour {
 		Messenger.RemoveListener ("gameOver", gameOver);
 	}
 	void boxOpened(Vector3 position){
+//		powerBoxTitleAnimator.gameObject.SetActive (true);
+
 		burst.transform.position = position;
 		this.burst.Play ();
 		float goodOrBad = Random.Range (0,1f );
@@ -92,6 +101,7 @@ public class PowerBoxController : MonoBehaviour {
 			int effect = Random.Range (0, badEffects.Count);
 			badEffects [effect] ();
 		}
+		powerBoxTitleAnimator.Play ("powerbox");
 	}
 
 	void landedOnPlatform(){

@@ -22,7 +22,6 @@ public class DisplayScores : MonoBehaviour {
 
 	public SpriteRenderer burstSpriteRenderer;
 
-
 	public TimerController timerController;
 
 	void Start(){
