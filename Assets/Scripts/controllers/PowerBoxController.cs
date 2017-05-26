@@ -74,10 +74,12 @@ public class PowerBoxController : MonoBehaviour {
 		Messenger.AddListener<int> ("setRow", setClearedObstacle);
 		Messenger.AddListener ("landed", landedOnPlatform);
 		Messenger.AddListener <Vector3>("boxOpened", boxOpened);
-//		Messenger.AddListener ("gameOver", gameOver);
+		Messenger.AddListener<Scores,GameObject> ("gameOver", gameOver);
 		powerBoxChance = new Dictionary<int,float>();
 	}
-	void gameOver(){
+
+	//something else is listening for game over and it has these objects
+	void gameOver(Scores scores, GameObject player){
 		Messenger.Broadcast ("turnOffWaves");	
 	}
 
@@ -86,7 +88,7 @@ public class PowerBoxController : MonoBehaviour {
 		Messenger.RemoveListener<int> ("setRow", setClearedObstacle);
 		Messenger.RemoveListener ("landed", landedOnPlatform);
 		Messenger.RemoveListener <Vector3>("boxOpened", boxOpened);
-		Messenger.RemoveListener ("gameOver", gameOver);
+		Messenger.RemoveListener<Scores,GameObject> ("gameOver", gameOver);
 	}
 	void boxOpened(Vector3 position){
 //		powerBoxTitleAnimator.gameObject.SetActive (true);
