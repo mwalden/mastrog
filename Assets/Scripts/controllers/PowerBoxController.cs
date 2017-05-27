@@ -31,13 +31,14 @@ public class PowerBoxController : MonoBehaviour {
 	Dictionary<int,BoxOpenedEffect> goodEffects;
 	Dictionary<int,BoxOpenedEffect> badEffects;
 	TimerController timerController = new TimerController ();
+	BoxOpenedEffect currentEffect;
 
-	public void clearLane(){
+	void clearLane(){
 		powerBoxTitle.text = "Lane Cleared!";
 		Messenger.Broadcast ("clearOutLane");
 	}
 	//wavey script is on RenderShader on the camera
-	public void wavey(){
+	void wavey(){
 		powerBoxTitle.text = "Cant see!";
 		timerController.setAction (() => {
 			Messenger.Broadcast ("turnOffWaves");	
@@ -46,12 +47,12 @@ public class PowerBoxController : MonoBehaviour {
 		Messenger.Broadcast ("turnOnWaves");
 	}
 
-	public void fullHealth(){
+	void fullHealth(){
 		Messenger.Broadcast<float>("addHealth",1000f);
 		powerBoxTitle.text = "Added Health";
 	}
 
-	public void fasterBleeding(){
+	void fasterBleeding(){
 		powerBoxTitle.text = "Lose Health";
 		timerController.setAction (() => {
 			Messenger.Broadcast<float> ("adjustBleedFactor", .004f);
@@ -60,8 +61,12 @@ public class PowerBoxController : MonoBehaviour {
 		timerController.beginTimer (5000);
 	}
 
+	public void PlayEffect(){
+		currentEffect ();
+	}
+
 	void Start(){
-		powerBoxTitleAnimator = powerBoxTitle.GetComponent<Animator> ();
+		powerBoxTitleAnimator = GetComponent<Animator> ();
 		burst = (Instantiate (burstPrefab, new Vector3 (-100,-100,-100), Quaternion.identity) as GameObject).GetComponent<ParticleSystem>();		
 		goodEffects = new Dictionary<int,BoxOpenedEffect> ();
 		badEffects = new Dictionary<int,BoxOpenedEffect> ();
@@ -91,19 +96,17 @@ public class PowerBoxController : MonoBehaviour {
 		Messenger.RemoveListener<Scores,GameObject> ("gameOver", gameOver);
 	}
 	void boxOpened(Vector3 position){
-//		powerBoxTitleAnimator.gameObject.SetActive (true);
-
 		burst.transform.position = position;
 		this.burst.Play ();
 		float goodOrBad = Random.Range (0,1f );
 		if (goodOrBad < level.changeOfGoodPowerBox) {
 			int effect = Random.Range (0, goodEffects.Count);
-			goodEffects [effect] ();
+			goodEffects [effect]();
 		} else {
 			int effect = Random.Range (0, badEffects.Count);
-			badEffects [effect] ();
+			badEffects[effect]();
 		}
-		powerBoxTitleAnimator.Play ("powerbox");
+		powerBoxTitleAnimator.SetTrigger ("ShowTitle");
 	}
 
 	void landedOnPlatform(){
@@ -154,8 +157,6 @@ public class PowerBoxController : MonoBehaviour {
 			0);
 	}
 
-	
 
-	
 
 }

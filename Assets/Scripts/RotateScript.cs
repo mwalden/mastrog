@@ -30,6 +30,4 @@ public class RotateScript : MonoBehaviour {
 			z * direction * speed * Time.deltaTime);
 	}
 
-	public void ADSFSAFD(){
-	}
 }
