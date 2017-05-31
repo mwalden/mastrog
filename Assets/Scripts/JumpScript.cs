@@ -16,11 +16,11 @@ public class JumpScript : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D> ();
 		Messenger.AddListener ("disableJumping",disableJumping);
 		#if UNITY_ANDROID
-			touch = new TouchGesture(this.gestureSetting);
-			StartCoroutine(touch.CheckVerticleSwipes(
-				onSwipeUp: () => { jump();},
-				onSwipeDown: () => { ignore();}
-			));
+//			touch = new TouchGesture(this.gestureSetting);
+//			StartCoroutine(touch.CheckVerticleSwipes(
+//				onSwipeUp: () => { jump();},
+//				onSwipeDown: () => { ignore();}
+//			));
 		#endif
 	}
 	void ignore(){
@@ -42,16 +42,16 @@ public class JumpScript : MonoBehaviour {
 
 			}
 		}
-//		#if UNITY_ANDROID
-//		if (Input.touches.Length > 0 && !jumpingDisabled) {
-//			Touch touch = Input.touches [0];
-//			Messenger.Broadcast ("jumped");
-//			if (touch.phase==TouchPhase.Ended && rb.velocity.y <= 0.1){
-//				rb.velocity = (new Vector2 (0, force));
-//			}
-//			return;
-//		}
-//		#endif
+		#if UNITY_ANDROID
+		if (Input.touches.Length > 0 && !jumpingDisabled) {
+			Touch touch = Input.touches [0];
+			Messenger.Broadcast ("jumped");
+			if (touch.phase==TouchPhase.Ended && rb.velocity.y <= 0.1){
+				rb.velocity = (new Vector2 (0, force));
+			}
+			return;
+		}
+		#endif
 	}
 
 

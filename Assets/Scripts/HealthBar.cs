@@ -37,12 +37,10 @@ public class HealthBar : MonoBehaviour {
 		bleeding = false;
 	}
 	void addHealth(float amount){
-		Debug.Log ("added health");
 		float total = Mathf.Min (_transform.localScale.y + amount, 1f);
 		setScale (total);
 	}
 	void removeHealth(float amount){
-		Debug.Log ("remove health");
 		float total = Mathf.Max (_transform.localScale.y - amount, 0);
 		setScale (total);
 	}

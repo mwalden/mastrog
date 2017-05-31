@@ -33,6 +33,8 @@ public class LevelBuilder : MonoBehaviour {
 		if (currentLevelGO != null) {
 			currentLevelScript = currentLevelGO.GetComponent<CurrentLevelScript> ();
 		}
+
+		LevelDetails levelDetails;
 		if (currentLevelScript != null) {
 			level = currentLevelScript.level;
 		} else {
@@ -40,8 +42,10 @@ public class LevelBuilder : MonoBehaviour {
 			if (currentLevelScript == null) {
 				LevelParser parser = new LevelParser ();
 				level = parser.getLevels ().levels [2];
+				levelDetails = parser.getNewLevels ();
 			}
 		}
+
 		Messenger.Broadcast<NewLevel> ("setLevel", level);
 		int startingLane = level.startingLane;
 

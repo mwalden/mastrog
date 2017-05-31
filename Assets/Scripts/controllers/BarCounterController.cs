@@ -17,8 +17,7 @@ public class BarCounterController : MonoBehaviour {
 		barNumber++;
 	}
 
-	public void emptyBars(){
-		Debug.Log ("emptying bars");
+	public void emptyBars(){		
 		foreach (GameObject go in bars) {
 			go.GetComponent<Image> ().sprite = empty;
 		}

@@ -1,4 +1,21 @@
 {
+  "powerboxes":[
+    {
+      "name":"refillHealth",
+      "goodBox":true,
+      "waitForTitle":false
+    },
+    {
+      "name":"drainHealth",
+      "goodBox":false,
+      "waitForTitle":true
+    },
+    {
+      "name":"cleanLane",
+      "goodBox":true,
+      "waitForTitle":false
+    }
+  ],
   "levels": [
     {
       "folderName": "First",
@@ -18,138 +35,104 @@
         "circleNoPlatform"
       ],
       "rows": [
-        {
-          "name": "circleNoPlatform",
-          "speed": 200
-        },
-        {
-          "name": "circleNoPlatform",
-          "speed": 100
-        },
-        {
-          "name": "circleNoPlatform",
-          "speed": 200
-        },
-        {
-          "name": "circleNoPlatform",
-          "speed": 100
-        },
-        {
-          "name": "circleNoPlatform",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 200
-        },
-        {
-          "name": "circle",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 200
-        },
-        {
-          "name": "petal",
-          "speed": 100
-        },
-        {
-          "name": "petal",
-          "speed": 100
-        },
-        {
-          "name": "petal",
-          "speed": 200
-        },
-        {
-          "name": "circle",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 200
-        },
-        {
-          "name": "petal",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 200
-        },
-        {
-          "name": "petal",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 200
-        },
-        {
-          "name": "circle",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 200
-        },
-        {
-          "name": "circle",
-          "speed": 100
-        },
-        {
-          "name": "petal",
-          "speed": 100
-        },
-        {
-          "name": "petal",
-          "speed": 200
-        },
-        {
-          "name": "petal",
-          "speed": 100
-        },
-        {
-          "name": "petal",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 200
-        },
-        {
-          "name": "petal",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 100
-        }
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ]
       ]
     },
     {
@@ -170,138 +153,104 @@
         "circleNoPlatform"
       ],
       "rows": [
-        {
-          "name": "petal",
-          "speed": 200
-        },
-        {
-          "name": "circleNoPlatform",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 200
-        },
-        {
-          "name": "circleNoPlatform",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 100
-        },
-        {
-          "name": "square",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 200
-        },
-        {
-          "name": "square",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 200
-        },
-        {
-          "name": "petal",
-          "speed": 100
-        },
-        {
-          "name": "petal",
-          "speed": 100
-        },
-        {
-          "name": "petal",
-          "speed": 200
-        },
-        {
-          "name": "square",
-          "speed": 100
-        },
-        {
-          "name": "square",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 200
-        },
-        {
-          "name": "petal",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 100
-        },
-        {
-          "name": "square",
-          "speed": 200
-        },
-        {
-          "name": "petal",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 200
-        },
-        {
-          "name": "square",
-          "speed": 100
-        },
-        {
-          "name": "square",
-          "speed": 100
-        },
-        {
-          "name": "square",
-          "speed": 200
-        },
-        {
-          "name": "square",
-          "speed": 100
-        },
-        {
-          "name": "square",
-          "speed": 100
-        },
-        {
-          "name": "circleNoPlatform",
-          "speed": 200
-        },
-        {
-          "name": "square",
-          "speed": 100
-        },
-        {
-          "name": "circleNoPlatform",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 200
-        },
-        {
-          "name": "petal",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 100
-        }
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ]
       ]
     },
     {
@@ -322,138 +271,104 @@
         "circleNoPlatform"
       ],
       "rows": [
-        {
-          "name": "circle",
-          "speed": 200
-        },
-        {
-          "name": "circle",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 200
-        },
-        {
-          "name": "circle",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 100
-        },
-        {
-          "name": "square",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 200
-        },
-        {
-          "name": "square",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 200
-        },
-        {
-          "name": "petal",
-          "speed": 100
-        },
-        {
-          "name": "petal",
-          "speed": 100
-        },
-        {
-          "name": "petal",
-          "speed": 200
-        },
-        {
-          "name": "square",
-          "speed": 100
-        },
-        {
-          "name": "square",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 200
-        },
-        {
-          "name": "petal",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 100
-        },
-        {
-          "name": "square",
-          "speed": 200
-        },
-        {
-          "name": "petal",
-          "speed": 100
-        },
-        {
-          "name": "circleNoPlatform",
-          "speed": 100
-        },
-        {
-          "name": "petal",
-          "speed": 200
-        },
-        {
-          "name": "square",
-          "speed": 100
-        },
-        {
-          "name": "square",
-          "speed": 100
-        },
-        {
-          "name": "circleNoPlatform",
-          "speed": 200
-        },
-        {
-          "name": "square",
-          "speed": 100
-        },
-        {
-          "name": "square",
-          "speed": 100
-        },
-        {
-          "name": "circleNoPlatform",
-          "speed": 200
-        },
-        {
-          "name": "square",
-          "speed": 100
-        },
-        {
-          "name": "circleNoPlatform",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 200
-        },
-        {
-          "name": "square",
-          "speed": 100
-        },
-        {
-          "name": "circle",
-          "speed": 100
-        }
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ]
       ]
     }
   ]

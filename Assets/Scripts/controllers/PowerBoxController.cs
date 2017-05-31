@@ -31,7 +31,8 @@ public class PowerBoxController : MonoBehaviour {
 	Dictionary<int,BoxOpenedEffect> goodEffects;
 	Dictionary<int,BoxOpenedEffect> badEffects;
 	TimerController timerController = new TimerController ();
-	BoxOpenedEffect currentEffect;
+	ParticleSystem.EmissionModule psemit;
+//	BoxOpenedEffect currentEffect;
 
 	void clearLane(){
 		powerBoxTitle.text = "Lane Cleared!";
@@ -61,13 +62,12 @@ public class PowerBoxController : MonoBehaviour {
 		timerController.beginTimer (5000);
 	}
 
-	public void PlayEffect(){
-		currentEffect ();
-	}
+//	public void PlayEffect(){
+//		currentEffect ();
+//	}
 
 	void Start(){
 		powerBoxTitleAnimator = GetComponent<Animator> ();
-		burst = (Instantiate (burstPrefab, new Vector3 (-100,-100,-100), Quaternion.identity) as GameObject).GetComponent<ParticleSystem>();		
 		goodEffects = new Dictionary<int,BoxOpenedEffect> ();
 		badEffects = new Dictionary<int,BoxOpenedEffect> ();
 		goodEffects.Add (0, clearLane);
@@ -95,9 +95,18 @@ public class PowerBoxController : MonoBehaviour {
 		Messenger.RemoveListener <Vector3>("boxOpened", boxOpened);
 		Messenger.RemoveListener<Scores,GameObject> ("gameOver", gameOver);
 	}
-	void boxOpened(Vector3 position){
-		burst.transform.position = position;
+
+
+
+	public void playBurst(){
+		Debug.Log ("Areasdfadsfadf you playing :" +burst.isPlaying);
+		Debug.Log ("Have you stopped? :" +burst.isStopped);
+
 		this.burst.Play ();
+	}
+	void boxOpened(Vector3 position){
+		Destroy (burst);
+		burst = (Instantiate (burstPrefab, position, Quaternion.identity) as GameObject).GetComponent<ParticleSystem>();		
 		float goodOrBad = Random.Range (0,1f );
 		if (goodOrBad < level.changeOfGoodPowerBox) {
 			int effect = Random.Range (0, goodEffects.Count);
