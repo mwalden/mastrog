@@ -1,8 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CurrentLevelScript : MonoBehaviour {
-	public NewLevel level;
+public class CurrentLevelScript : MonoBehaviour {	
 	public int levelId;
 	bool created;
 
