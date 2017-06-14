@@ -10,11 +10,10 @@ public class PowerBoxController : MonoBehaviour {
 	public float boxSpeed;
 
 	private bool objectAlreadyOut;
-	private NewLevel level;
+	private LevelDetail level;
 	private GameObject box;
 	private Bounds bounds;
 	private GameObject player;
-	private CurrentLevelScript currentLevelScript;
 	private int currentRow;
 	//powerBoxChance[0] = probability of no box
 	//powerBoxChance[1] = probability of a box being deployed.
@@ -75,12 +74,15 @@ public class PowerBoxController : MonoBehaviour {
 		badEffects.Add (0, wavey);
 		badEffects.Add (1, fasterBleeding);
 		bounds = CameraExtensions.OrthographicBounds (Camera.main);
-		Messenger.AddListener<NewLevel> ("setLevel", setLevel);
+		level = LevelManager.Instance.getCurrentLevelDetail();
+		powerBoxChance = new Dictionary<int,float>();
+		resetProbabilities (level.powerBoxChance);
+
 		Messenger.AddListener<int> ("setRow", setClearedObstacle);
 		Messenger.AddListener ("landed", landedOnPlatform);
 		Messenger.AddListener <Vector3>("boxOpened", boxOpened);
 		Messenger.AddListener<Scores,GameObject> ("gameOver", gameOver);
-		powerBoxChance = new Dictionary<int,float>();
+
 	}
 
 	//something else is listening for game over and it has these objects
@@ -89,7 +91,6 @@ public class PowerBoxController : MonoBehaviour {
 	}
 
 	void onDestory(){
-		Messenger.RemoveListener<NewLevel> ("setLevel", setLevel);
 		Messenger.RemoveListener<int> ("setRow", setClearedObstacle);
 		Messenger.RemoveListener ("landed", landedOnPlatform);
 		Messenger.RemoveListener <Vector3>("boxOpened", boxOpened);
@@ -150,11 +151,6 @@ public class PowerBoxController : MonoBehaviour {
 	void resetProbabilities(float probability){
 		powerBoxChance [0] = 1 - probability;
 		powerBoxChance [1] = probability;
-	}
-
-	void setLevel(NewLevel level){
-		this.level = level;
-		resetProbabilities (level.powerBoxChance);
 	}
 
 	void createBox(){

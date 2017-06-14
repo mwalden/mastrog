@@ -10,7 +10,7 @@ public class LevelBuilder : MonoBehaviour {
 	public GameObject playerPrefab;
 	private int numberOfLanes;
 	public Camera mainCamera;
-	public NewLevel level;
+	public LevelDetail level;
 	public Bounds bounds;
 	public float offset = 2.5f;
 	private int maxLevelBuilt;
@@ -27,40 +27,25 @@ public class LevelBuilder : MonoBehaviour {
 		mainCamera = Camera.main;
 
 		//trying to pull alevel from level selection.
-		GameObject currentLevelGO = GameObject.FindGameObjectWithTag ("CurrentLevel");
+
 		gameScript = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameScript> ();
-		CurrentLevelScript currentLevelScript = null;
-		if (currentLevelGO != null) {
-			currentLevelScript = currentLevelGO.GetComponent<CurrentLevelScript> ();
-		}
 
-		LevelDetails levelDetails;
-		if (currentLevelScript != null) {
-			level = currentLevelScript.level;
-		} else {
-			//if its not there (IE: coming from editor), create it and pull song 0.
-			if (currentLevelScript == null) {
-				LevelParser parser = new LevelParser ();
-				level = parser.getLevels ().levels [2];
-				levelDetails = parser.getNewLevels ();
-			}
-		}
-
-		Messenger.Broadcast<NewLevel> ("setLevel", level);
+		level = LevelManager.Instance.getCurrentLevelDetail();
 		int startingLane = level.startingLane;
 
 		numberOfLanes = level.numberOfLanes;
 		int numberOfLevels = level.numberOfLevels;
-		Obstacle[] obstacles = level.rows;
+		List<List<Obstacle>> rows = level.rows;
 		initilizeObjectPool ();
 		bounds = CameraExtensions.OrthographicBounds (Camera.main);
 		int obstaclePosition = 0;
-		for (int i = 0; i < numberOfLevels; i++) {
+		for (int i = 0; i <= numberOfLevels - 1; i++) {
 			maxLevelBuilt++;
 			float y = 8 * i;
 			obstaclePosition = 0;
-			for (int j = i * numberOfLanes; j < i * numberOfLanes + numberOfLanes; j++) {
-				Obstacle obstacle = obstacles [j];
+			List<Obstacle> rowsObstacles = rows [i];
+			for (int j = 0; j <= rowsObstacles.Count-1; j++) {
+				Obstacle obstacle = rowsObstacles [j];
 				GameObject go = getObjectFromPoolByName (obstacle.name, i);
 				go.transform.position = new Vector3 (bounds.center.x  + (bounds.size.x * obstaclePosition), y, 10);
 				Instantiate(platform,new Vector3(bounds.center.x + (bounds.size.x * obstaclePosition)  ,bounds.min.y+1+y,10),Quaternion.identity);
@@ -70,8 +55,6 @@ public class LevelBuilder : MonoBehaviour {
 
 		GameObject player = Instantiate (playerPrefab, new Vector3 (bounds.center.x + (bounds.size.x * startingLane), bounds.min.y + 1.7f, 10f), Quaternion.identity) as GameObject;
 		player.tag = "Player";
-		gameScript.setCurrentGameLevel (level);
-
 		gameScript.setStartingLane (startingLane);
 	}
 
@@ -114,10 +97,10 @@ public class LevelBuilder : MonoBehaviour {
 
 	private void addRowToScene(int levelId){
 		int y = (levelId - 1) * 8;
+		if (levelId >= level.numberOfLevels)
+			levelId = 0;
 		for (int i = 0; i < numberOfLanes; i++) {
-			if (obstacleArrayMarker == level.rows.Length - 1)
-				obstacleArrayMarker = 0;
-			Obstacle obstacle = level.rows[obstacleArrayMarker];
+			Obstacle obstacle = level.rows[levelId][i];
 			GameObject go = getObjectFromPoolByName (obstacle.name, levelId);
 			if (i == lockedDownLane)
 				go.GetComponent<EnableDisableScript> ().disableObstacle ();
@@ -141,6 +124,7 @@ public class LevelBuilder : MonoBehaviour {
 			for (int i = 0; i < objectsToPutBack.Count;i++){
 				putItemBackInPool (objectsToPutBack [i]);
 			}
+
 			maxLevelBuilt++;
 			addRowToScene (maxLevelBuilt);
 		}

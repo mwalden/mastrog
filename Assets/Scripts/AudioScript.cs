@@ -14,15 +14,15 @@ public class AudioScript : MonoBehaviour {
 	public int currentLane;
 	public float lockDownDuration;
 	public int level;
-	private NewLevel gameLevel;
+	private LevelDetail gameLevel;
 
-	public void setGameLevel(NewLevel level){
-		gameLevel = level;
+	void Start(){
+		gameLevel = LevelManager.Instance.getCurrentLevelDetail();
 
-		for (int x = 0; x < level.numberOfLanes; x++) {
+		for (int x = 0; x < gameLevel.numberOfLanes; x++) {
 			AudioSource audioSource = gameObject.AddComponent<AudioSource> ();
 			audioSources.Add (audioSource);
-			string path = "Audio" + "/"+level.folderName+"/" + (x + 1);
+			string path = "Audio" + "/"+gameLevel.folderName+"/" + (x + 1);
 			AudioClip clip = Resources.Load<AudioClip> (path);
 			audioSource.clip = clip;
 			audioSource.volume = 0;

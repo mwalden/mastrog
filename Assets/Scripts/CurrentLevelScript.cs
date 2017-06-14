@@ -3,6 +3,7 @@ using System.Collections;
 
 public class CurrentLevelScript : MonoBehaviour {
 	public NewLevel level;
+	public int levelId;
 	bool created;
 
 	void Awake() {

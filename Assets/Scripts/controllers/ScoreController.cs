@@ -10,14 +10,12 @@ public class ScoreController{
 	private int errorCount;
 	private int platformCount;
 	public bool completedLevel { get; set;}
-	private NewLevel level;
+	private LevelDetail level;
 
 	public ScoreController (){
 		completedLevel = true;
+		level = LevelManager.Instance.getCurrentLevelDetail ();
 		Messenger.AddListener<int> ("addScore", addScore);
-	}
-	public void setCurrentLevel(NewLevel level){
-		this.level = level;
 	}
 
 	public void setTimeOnPlatform(float time){

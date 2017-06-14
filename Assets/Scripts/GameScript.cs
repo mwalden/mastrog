@@ -20,7 +20,7 @@ public class GameScript : MonoBehaviour {
 	//going left/right on the platforms
 	private int currentLaneId;
 	//level the player has selected
-	private NewLevel currentGameLevel;
+	private LevelDetail currentGameLevel;
 	//when the timer goes off, the game ends
 	private TimerController timerController;
 	//bounds of the camera. used to calculate distanceToMoveX 
@@ -65,6 +65,8 @@ public class GameScript : MonoBehaviour {
 		bounds = CameraExtensions.OrthographicBounds (cam);
 		audioScript = GameObject.FindGameObjectWithTag ("AudioController").GetComponent<AudioScript> ();
 		soundEffectScript = GameObject.FindGameObjectWithTag ("SoundEffectsController").GetComponent<SoundEffectsScript> ();
+		currentGameLevel = LevelManager.Instance.getCurrentLevelDetail ();
+		timerController.beginTimer(currentGameLevel.lengthInSeconds * 1000);
 		#if UNITY_ANDROID
 			touch = new TouchGesture(this.gestureSetting);
 			StartCoroutine(touch.CheckHorizontalSwipes(
@@ -137,13 +139,6 @@ public class GameScript : MonoBehaviour {
 			barCounterController.emptyBars ();
 		}
 		#endif
-	}
-
-	public void setCurrentGameLevel(NewLevel gameLevel){
-		this.currentGameLevel = gameLevel;
-		scoreController.setCurrentLevel (gameLevel);
-		audioScript.setGameLevel (gameLevel);
-		timerController.beginTimer(currentGameLevel.lengthInSeconds * 1000);
 	}
 
 	private void setCurrentLaneId(int id){

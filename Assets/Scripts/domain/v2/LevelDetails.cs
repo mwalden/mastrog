@@ -9,12 +9,13 @@ public class Powerbox
 	public bool waitForTitle { get; set; }
 }
 
-public class MarcelsLevel
+public class LevelDetail
 {
+	public int id{ get; set;}
 	public string folderName { get; set; }
-	public double powerBoxChance { get; set; }
+	public float powerBoxChance { get; set; }
 	public string preview { get; set; }
-	public double changeOfGoodPowerBox { get; set; }
+	public float changeOfGoodPowerBox { get; set; }
 	public int lengthInSeconds { get; set; }
 	public string backgroundImage { get; set; }
 	public string title { get; set; }
@@ -28,7 +29,7 @@ public class MarcelsLevel
 public class LevelDetails
 {
 	public List<Powerbox> powerboxes { get; set; }
-	public List<MarcelsLevel> levels { get; set; }
+	public List<LevelDetail> levels { get; set; }
 }
 
 

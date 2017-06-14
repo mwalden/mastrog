@@ -7,9 +7,9 @@ public class Scores
 	private int lanesLockedDown;
 	private int errorCount;
 	public bool completedLevel { get; set;}
-	private NewLevel level;
+	private LevelDetail level;
 
-	public Scores (int score, int platformsPassed, int lanesLockedDown, int errorCount, NewLevel level, bool completedLevel)
+	public Scores (int score, int platformsPassed, int lanesLockedDown, int errorCount, LevelDetail level, bool completedLevel)
 	{
 		this.scores = score;
 		this.platformsPassed = platformsPassed;
@@ -19,7 +19,7 @@ public class Scores
 		this.completedLevel = completedLevel;
 	}
 
-	public NewLevel getLevel(){
+	public LevelDetail getLevel(){
 		return level;
 	}
 		

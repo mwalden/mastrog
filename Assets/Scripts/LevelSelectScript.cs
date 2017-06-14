@@ -15,51 +15,42 @@ public class LevelSelectScript : MonoBehaviour {
 
 	private AudioClip song;
 	private int selectedLevel;
-	private NewLevel[] levels;
+	private List<LevelDetail> levels;
 	private List<GameObject> panels;
-	private CurrentLevelScript currentLevelScript;
 	public TouchGesture.GestureSettings gestureSetting;
 	private TouchGesture touch;
 
 	void Start () {
-		
 		panels = new List<GameObject> ();
-		currentLevelScript = GameObject.FindGameObjectWithTag ("CurrentLevel").GetComponent<CurrentLevelScript> ();
-		ParseJsonLevels parser = new ParseJsonLevels();
-		LevelParser levelParser = new LevelParser ();
-		NewLevels newLevels = levelParser.getLevels ();
-//		Levels gameLevels = parser.getLevels ();
-		foreach (NewLevel level in newLevels.levels){
+
+		levels = LevelManager.Instance.getLevels();
+
+		foreach (LevelDetail level in levels){
 			GameObject panel = Instantiate(levelSelectPrefab,new Vector3(0,0,10),Quaternion.identity) as GameObject;
 			panel.GetComponentInChildren<Text> ().text = level.title;
 			Sprite sprite = Resources.Load<Sprite> ("images/" + level.backgroundImage);
 			panel.GetComponent<Image> ().sprite = sprite;
 			scroll.AddChild (panel);
 		}
-		levels = newLevels.levels;
 		PlayMusic (0);
-	}
-	void Update () {
 	}
 
 	public void onChange(){
 		if (selectedLevel == scroll.CurrentPage)
 			return;
-
-		currentLevelScript.level = levels [scroll.CurrentPage];
+		LevelManager.Instance.currentLevel = levels[scroll.CurrentPage].id;
 		selectedLevel = scroll.CurrentPage;
 		PlayMusic (scroll.CurrentPage);
 
 	}
 
 	public void onClick(){
-		currentLevelScript.level = levels [selectedLevel];
+		LevelManager.Instance.currentLevel = levels [selectedLevel].id;
 		SceneManager.LoadScene (1);
 	}
 
-
 	void PlayMusic(int selection){
-		NewLevel level = levels [selection];
+		LevelDetail level = levels [selection];
 		string previewName = level.preview;
 		song = Resources.Load<AudioClip> ("Audio/Previews/"+previewName);
 		audioSource.clip = song;
