@@ -3,7 +3,7 @@
     {
       "name":"refillHealth",
       "goodBox":true,
-      "waitForTitle":false
+      "waitForTitle":true
     },
     {
       "name":"drainHealth",
@@ -11,8 +11,13 @@
       "waitForTitle":true
     },
     {
-      "name":"cleanLane",
+      "name":"clearLane",
       "goodBox":true,
+      "waitForTitle":false
+    },
+    {
+      "name":"wavey",
+      "goodBox":false,
       "waitForTitle":false
     }
   ],
@@ -261,7 +266,7 @@
       "powerBoxChance": 1.0,
       "changeOfGoodPowerBox":0.5, 
       "preview": "Track 1",
-      "lengthInSeconds": 30,
+      "lengthInSeconds": 203,
       "backgroundImage": "dinosaur",
       "title": "HackDay Song",
       "numberOfLanes": 4,

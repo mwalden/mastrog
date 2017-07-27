@@ -6,15 +6,13 @@ public class DisplayCurrentScore : MonoBehaviour {
 
 	private Text currentScoreText;
 
-	private int score;
 	// Use this for initialization
 	void Start () {
 		currentScoreText = GetComponent<Text> ();
-		Messenger.AddListener<int> ("addScore", addScore);
+		Messenger.AddListener<int> ("displayScore", displayScore);
 	}
 
-	void addScore(int score){
-		this.score += score;
-		currentScoreText.text = string.Concat("Score:",this.score);
+	void displayScore(int score){
+		currentScoreText.text = string.Concat("Score:",score);
 	}
 }

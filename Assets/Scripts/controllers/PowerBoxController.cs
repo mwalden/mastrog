@@ -1,7 +1,9 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using System.Collections.Generic;
+using System;
+using System.Collections.Generic;	
+
 
 public class PowerBoxController : MonoBehaviour {
 
@@ -23,15 +25,16 @@ public class PowerBoxController : MonoBehaviour {
 	private bool landed;
 	public GameObject burstPrefab;
 	private ParticleSystem burst;
+	Dictionary<string, Action> powerboxFunctions;
 	public delegate void BoxOpenedEffect();
 
 	private Animator powerBoxTitleAnimator;
 	public Text powerBoxTitle;
-	Dictionary<int,BoxOpenedEffect> goodEffects;
-	Dictionary<int,BoxOpenedEffect> badEffects;
+	Dictionary<int,Powerbox> goodEffects;
+	Dictionary<int,Powerbox> badEffects;
 	TimerController timerController = new TimerController ();
-	ParticleSystem.EmissionModule psemit;
-//	BoxOpenedEffect currentEffect;
+
+	BoxOpenedEffect currentEffect;
 
 	void clearLane(){
 		powerBoxTitle.text = "Lane Cleared!";
@@ -47,7 +50,7 @@ public class PowerBoxController : MonoBehaviour {
 		Messenger.Broadcast ("turnOnWaves");
 	}
 
-	void fullHealth(){
+	void refillHealth(){
 		Messenger.Broadcast<float>("addHealth",1000f);
 		powerBoxTitle.text = "Added Health";
 	}
@@ -61,18 +64,35 @@ public class PowerBoxController : MonoBehaviour {
 		timerController.beginTimer (5000);
 	}
 
-//	public void PlayEffect(){
-//		currentEffect ();
-//	}
+	public void PlayEffect(){
+		
+		currentEffect ();
+	}
 
 	void Start(){
 		powerBoxTitleAnimator = GetComponent<Animator> ();
-		goodEffects = new Dictionary<int,BoxOpenedEffect> ();
-		badEffects = new Dictionary<int,BoxOpenedEffect> ();
-		goodEffects.Add (0, clearLane);
-		goodEffects.Add (1, fullHealth);
-		badEffects.Add (0, wavey);
-		badEffects.Add (1, fasterBleeding);
+		goodEffects = new Dictionary<int,Powerbox> ();
+		badEffects = new Dictionary<int,Powerbox> ();
+		powerboxFunctions = new Dictionary<string, Action>()
+		{
+			{ "refillHealth", () => refillHealth() },
+			{ "clearLane", () => clearLane() },
+			{ "wavey", () => wavey() },
+			{ "fasterBleeding", () => fasterBleeding() },
+		};
+		List<Powerbox> powerboxes = LevelManager.Instance.getPowerBoxInfo ();
+		int goodCount = 0;
+		int badCount = 0;
+		foreach (Powerbox box in powerboxes){
+			if (box.goodBox) {
+				goodEffects.Add (goodCount, box);
+				goodCount++;
+			} else {
+				badEffects.Add (badCount, box);
+				badCount++;
+			}
+		}
+
 		bounds = CameraExtensions.OrthographicBounds (Camera.main);
 		level = LevelManager.Instance.getCurrentLevelDetail();
 		powerBoxChance = new Dictionary<int,float>();
@@ -99,22 +119,24 @@ public class PowerBoxController : MonoBehaviour {
 
 
 
-	public void playBurst(){
-		Debug.Log ("Areasdfadsfadf you playing :" +burst.isPlaying);
-		Debug.Log ("Have you stopped? :" +burst.isStopped);
-
+	public void playBurst(){		
 		this.burst.Play ();
 	}
+
+	void playBoxOpen(Dictionary<int,Powerbox> powerbox){
+		int effect = UnityEngine.Random.Range (0, powerbox.Count);
+		Powerbox box = powerbox [effect];
+		powerboxFunctions [box.name] ();
+	}
+
 	void boxOpened(Vector3 position){
 		Destroy (burst);
 		burst = (Instantiate (burstPrefab, position, Quaternion.identity) as GameObject).GetComponent<ParticleSystem>();		
-		float goodOrBad = Random.Range (0,1f );
+		float goodOrBad = UnityEngine.Random.Range (0,1f );
 		if (goodOrBad < level.changeOfGoodPowerBox) {
-			int effect = Random.Range (0, goodEffects.Count);
-			goodEffects [effect]();
+			playBoxOpen (goodEffects);
 		} else {
-			int effect = Random.Range (0, badEffects.Count);
-			badEffects[effect]();
+			playBoxOpen (badEffects);
 		}
 		powerBoxTitleAnimator.SetTrigger ("ShowTitle");
 	}
@@ -136,7 +158,7 @@ public class PowerBoxController : MonoBehaviour {
 			player = GameObject.FindGameObjectWithTag ("Player");
 		}
 
-		float randomNumber = Random.Range (0,1f );
+		float randomNumber = UnityEngine.Random.Range (0,1f );
 		deployBox = (randomNumber <= powerBoxChance [1]);
 		if (deployBox && !objectAlreadyOut){
 			resetProbabilities (level.powerBoxChance);

@@ -15,7 +15,7 @@ public class LevelManager
 	private LevelManager ()
 	{
 		currentLevel = -1;
-		TextAsset targetFile = Resources.Load<TextAsset>("Level2");
+		TextAsset targetFile = Resources.Load<TextAsset>("test1");
 		levelDetails = JsonConvert.DeserializeObject<LevelDetails> (targetFile.text);
 	}
 
@@ -45,6 +45,10 @@ public class LevelManager
 
 	public List<Powerbox> getPowerBoxInfo(){
 		return levelDetails.powerboxes;
+	}
+
+	public LevelDetails getLevelDeatils(){
+		return levelDetails;
 	}
 	public LevelDetail getCurrentLevelDetail(){
 		foreach (LevelDetail levelDetail in levelDetails.levels) {

@@ -187,7 +187,6 @@ public class GameScript : MonoBehaviour {
 		platformProgression = 0;
 		particleSystemScript.playParticleSystem ();
 		Messenger.Broadcast<int> ("disableLane", currentLaneId);
-
 		soundEffectScript.playWoosh ();
 	}
 
@@ -227,7 +226,7 @@ public class GameScript : MonoBehaviour {
 	private void exitedCollider(){
 		disableMovement = false;
 		obstaclesPassed++;
-		Messenger.Broadcast<int> ("addScore", score);
+		Messenger.Broadcast<int,int> ("addScore", currentLaneId,score);
 		Messenger.Broadcast<float> ("addHealth", .05f);
 		Messenger.Broadcast<int> ("setRow", obstaclesPassed);
 	}

@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-
+[ExecuteInEditMode]
 public class RotateScript : MonoBehaviour {
 
-	public float speed;
+	public float speed = 100.0f;
 	public bool turnLeft = true;
 	public bool xAxis = false;
 	public bool yAxis = false;
