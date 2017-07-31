@@ -9,9 +9,14 @@ public class BarCounterController : MonoBehaviour {
 	public List<GameObject> bars;
 	//bar we should update when we get told to.
 	private int barNumber;
-
+	private bool isLaneEnabled = true;
+	void Start(){
+		Messenger.AddListener<bool> ("isLaneEnabled", laneEnabled);
+	}
 
 	public void addBar(){
+		if (!isLaneEnabled)
+			return;
 		GameObject go = bars [barNumber];
 		go.GetComponent<Image> ().sprite = full;
 		barNumber++;
@@ -22,5 +27,9 @@ public class BarCounterController : MonoBehaviour {
 			go.GetComponent<Image> ().sprite = empty;
 		}
 		barNumber = 0;
+	}
+
+	private void laneEnabled(bool isLaneEnabled){
+		this.isLaneEnabled = isLaneEnabled;
 	}
 }

@@ -56,6 +56,7 @@ public class LevelBuilder : MonoBehaviour {
 		GameObject player = Instantiate (playerPrefab, new Vector3 (bounds.center.x + (bounds.size.x * startingLane), bounds.min.y + 1.7f, 10f), Quaternion.identity) as GameObject;
 		player.tag = "Player";
 		gameScript.setStartingLane (startingLane);
+		Messenger.Broadcast<int>("initializeLanes",level.numberOfLanes);
 	}
 
 	private void initilizeObjectPool(){

@@ -9,14 +9,17 @@ public class HealthBar : MonoBehaviour {
 	[Range(0f,.02f)]
 	public float bleedFactor;
 	private bool gameOver;
+	private bool isLaneEnabled = true;
+
 
 	// Use this for initialization
 	void Start () {
 		healthBar = GetComponent<Image> ();
 		_transform = healthBar.transform;
-		Messenger.AddListener<float> ("addHealth", addHealth);
+		Messenger.AddListener<float,bool> ("addHealth", addHealth);
 		Messenger.AddListener<float> ("removeHealth", removeHealth);
 		Messenger.AddListener<float> ("adjustBleedFactor", adjustBleedFactor);
+		Messenger.AddListener<bool> ("isLaneEnabled", laneEnabled);
 		Messenger.AddListener("landed", bleedHealthEnabled);
 		Messenger.AddListener("jumped", bleedHealthdisabled);
 	}
@@ -36,7 +39,13 @@ public class HealthBar : MonoBehaviour {
 	void bleedHealthdisabled(){
 		bleeding = false;
 	}
-	void addHealth(float amount){
+
+	private void laneEnabled(bool isLaneEnabled){
+		this.isLaneEnabled = isLaneEnabled;
+	}
+	void addHealth(float amount,bool overrideEnabled){
+		if (!overrideEnabled && !isLaneEnabled)
+			return;
 		float total = Mathf.Min (_transform.localScale.y + amount, 1f);
 		setScale (total);
 	}

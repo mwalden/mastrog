@@ -51,7 +51,7 @@ public class PowerBoxController : MonoBehaviour {
 	}
 
 	void refillHealth(){
-		Messenger.Broadcast<float>("addHealth",1000f);
+		Messenger.Broadcast<float,bool>("addHealth",1000f,true);
 		powerBoxTitle.text = "Added Health";
 	}
 
@@ -78,7 +78,7 @@ public class PowerBoxController : MonoBehaviour {
 			{ "refillHealth", () => refillHealth() },
 			{ "clearLane", () => clearLane() },
 			{ "wavey", () => wavey() },
-			{ "fasterBleeding", () => fasterBleeding() },
+			{ "drainHealth", () => fasterBleeding() },
 		};
 		List<Powerbox> powerboxes = LevelManager.Instance.getPowerBoxInfo ();
 		int goodCount = 0;
@@ -126,6 +126,7 @@ public class PowerBoxController : MonoBehaviour {
 	void playBoxOpen(Dictionary<int,Powerbox> powerbox){
 		int effect = UnityEngine.Random.Range (0, powerbox.Count);
 		Powerbox box = powerbox [effect];
+		print ("POWER BOX ::: " + box.name);
 		powerboxFunctions [box.name] ();
 	}
 

@@ -12,30 +12,14 @@ public class ScoreController{
 	private int platformCount;
 	public bool completedLevel { get; set;}
 	private LevelDetail level;
-	private Dictionary<int,bool> enabledLanes;
+
+	private bool isLaneEnabled = true;
 
 	public ScoreController (){
 		completedLevel = true;
 		level = LevelManager.Instance.getCurrentLevelDetail ();
-		enabledLanes = new Dictionary<int,bool> ();
-		Messenger.AddListener<int> ("disableLane", laneDisabled);
-		Messenger.AddListener<int> ("enableLane", laneEnabled);
+		Messenger.AddListener<bool> ("isLaneEnabled", laneEnabled);
 		Messenger.AddListener<int,int>("addScore", addScore);
-	}
-
-	public void laneDisabled(int laneId){
-		if (enabledLanes.ContainsKey(laneId))
-			enabledLanes [laneId] = false;
-		else
-			enabledLanes.Add (laneId, false);
-
-	}
-
-	public void laneEnabled(int laneId){
-		if (enabledLanes.ContainsKey(laneId))
-			enabledLanes [laneId] = true;
-		else
-			enabledLanes.Add (laneId, true);
 	}
 
 	public void setTimeOnPlatform(float time){
@@ -51,13 +35,17 @@ public class ScoreController{
 		lockDownLaneCount++;
 	}
 	public void addScore(int laneId, int score){
-		if (enabledLanes.ContainsKey(laneId) && !enabledLanes [laneId])
+		if (!isLaneEnabled)
 			return;
 		this.score += score;
 		Messenger.Broadcast ("displayScore", this.score);
 	}
 	public void removeScore(int score){
 		this.score -= score;
+	}
+
+	private void laneEnabled(bool isLaneEnabled){
+		this.isLaneEnabled = isLaneEnabled;
 	}
 
 	public Scores getScores(){

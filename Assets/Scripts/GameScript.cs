@@ -144,6 +144,7 @@ public class GameScript : MonoBehaviour {
 	private void setCurrentLaneId(int id){
 		currentLaneId = id;
 		Messenger.Broadcast ("jumped");
+		Messenger.Broadcast ("changedLanes", id);
 		audioScript.setCurrentLane (currentLaneId);
 	}
 
@@ -227,7 +228,7 @@ public class GameScript : MonoBehaviour {
 		disableMovement = false;
 		obstaclesPassed++;
 		Messenger.Broadcast<int,int> ("addScore", currentLaneId,score);
-		Messenger.Broadcast<float> ("addHealth", .05f);
+		Messenger.Broadcast<float,bool> ("addHealth", .05f,false);
 		Messenger.Broadcast<int> ("setRow", obstaclesPassed);
 	}
 	private void enteredCollider(){
