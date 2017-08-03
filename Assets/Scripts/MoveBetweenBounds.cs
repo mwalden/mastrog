@@ -9,6 +9,7 @@ public class MoveBetweenBounds : MonoBehaviour {
 	private Bounds cameraBounds;
 	private Camera gameCamera;
 	private Vector3 cameraPosition;
+
 	// Use this for initialization
 	void Start () {
 		gameCamera = Camera.main;
@@ -17,13 +18,20 @@ public class MoveBetweenBounds : MonoBehaviour {
 	}
 	
 	void Update () {
-		print ("local . " + transform.localPosition.x);
-		print ("position . " + cameraBounds.max.x);
-//
-		if (transform.localPosition.x < cameraBounds.max.x) {
+		if (transform.localPosition.x < cameraBounds.max.x && direction == 1) {
 			transform.localPosition = new Vector3 (transform.localPosition.x + speed * Time.deltaTime,
 				transform.localPosition.y, 
 				transform.localPosition.z);
+		} else if (transform.localPosition.x > cameraBounds.min.x && direction == 0){
+			transform.localPosition = new Vector3 (transform.localPosition.x - speed * Time.deltaTime,
+				transform.localPosition.y, 
+				transform.localPosition.z);
 		}
+
+		if (transform.localPosition.x > cameraBounds.max.x)
+			direction = 0;
+		if (transform.localPosition.x < cameraBounds.min.x)
+			direction = 1;
+
 	}
 }
