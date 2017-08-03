@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class BumpingUpAndDown : MonoBehaviour {
-
+	//this was used on that floating square. probably wont use it anymore.
 	public float diff = 1f;
 	public float distance;
 	public float switchTime;

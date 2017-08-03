@@ -69,6 +69,7 @@ namespace LevelEditor{
 			}
 		}
 
+
 		public void clearPowerBoxes(){
 			powerboxes = new List<string>();
 		}

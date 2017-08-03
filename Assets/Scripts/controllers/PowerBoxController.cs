@@ -64,6 +64,14 @@ public class PowerBoxController : MonoBehaviour {
 		timerController.beginTimer (5000);
 	}
 
+	void speedUpRotations(){
+		powerBoxTitle.text = "Speed up!";
+		RotateScript []rotateScripts = GameObject.FindObjectsOfType<RotateScript> ();
+		foreach (RotateScript rotateScript in rotateScripts){
+			rotateScript.speedUpPowerup ();
+		}
+	}
+
 	public void PlayEffect(){
 		
 		currentEffect ();
@@ -79,6 +87,7 @@ public class PowerBoxController : MonoBehaviour {
 			{ "clearLane", () => clearLane() },
 			{ "wavey", () => wavey() },
 			{ "drainHealth", () => fasterBleeding() },
+			{"speedUpRotations",() => speedUpRotations()}
 		};
 		List<Powerbox> powerboxes = LevelManager.Instance.getPowerBoxInfo ();
 		int goodCount = 0;

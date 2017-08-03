@@ -1,1 +1,563 @@
-{"powerboxes":[{"name":"refillHealth","goodBox":true,"waitForTitle":true},{"name":"drainHealth","goodBox":false,"waitForTitle":true},{"name":"clearLane","goodBox":true,"waitForTitle":false},{"name":"wavey","goodBox":false,"waitForTitle":false}],"levels":[{"id":0,"folderName":"First","powerBoxChance":0.5,"preview":"Track 3","changeOfGoodPowerBox":0.5,"lengthInSeconds":311,"backgroundImage":"rainbowStars","title":"HackDay Song","numberOfLanes":3,"startingLane":2,"numberOfLevels":3,"obstacleNames":["square","petal","circle","circleNoPlatform"],"rows":[[{"name":"circleNoPlatform","speed":200.0},{"name":"circle","speed":100.0},{"name":"square","speed":100.0}],[{"name":"circleNoPlatform","speed":200.0},{"name":"circle","speed":100.0},{"name":"square","speed":100.0}],[{"name":"circleNoPlatform","speed":200.0},{"name":"circle","speed":100.0},{"name":"square","speed":100.0}],[{"name":"circleNoPlatform","speed":200.0},{"name":"circle","speed":100.0},{"name":"square","speed":100.0}],[{"name":"circleNoPlatform","speed":200.0},{"name":"circle","speed":100.0},{"name":"square","speed":100.0}],[{"name":"circleNoPlatform","speed":200.0},{"name":"circle","speed":100.0},{"name":"square","speed":100.0}],[{"name":"circleNoPlatform","speed":200.0},{"name":"circle","speed":100.0},{"name":"square","speed":100.0}]]},{"id":1,"folderName":"Song 2","powerBoxChance":0.5,"preview":"Track 2","changeOfGoodPowerBox":0.5,"lengthInSeconds":187,"backgroundImage":"space","title":"test Song","numberOfLanes":4,"startingLane":2,"numberOfLevels":4,"obstacleNames":["square","petal","circle","circleNoPlatform"],"rows":[[{"name":"circleNoPlatform","speed":200.0},{"name":"circle","speed":100.0},{"name":"square","speed":100.0}],[{"name":"circleNoPlatform","speed":200.0},{"name":"circle","speed":100.0},{"name":"square","speed":100.0}],[{"name":"circleNoPlatform","speed":200.0},{"name":"circle","speed":100.0},{"name":"square","speed":100.0}],[{"name":"circleNoPlatform","speed":200.0},{"name":"circle","speed":100.0},{"name":"square","speed":100.0}],[{"name":"circleNoPlatform","speed":200.0},{"name":"circle","speed":100.0},{"name":"square","speed":100.0}],[{"name":"circleNoPlatform","speed":200.0},{"name":"circle","speed":100.0},{"name":"square","speed":100.0}],[{"name":"circleNoPlatform","speed":200.0},{"name":"circle","speed":100.0},{"name":"square","speed":100.0}]]},{"id":2,"folderName":"HackDay","powerBoxChance":1.0,"preview":"Track 1","changeOfGoodPowerBox":0.5,"lengthInSeconds":203,"backgroundImage":"dinosaur","title":"HackDay Song","numberOfLanes":4,"startingLane":2,"numberOfLevels":3,"obstacleNames":["square","petal","circle","circleNoPlatform"],"rows":[[{"name":"circleNoPlatform","speed":200.0},{"name":"circle","speed":100.0},{"name":"square","speed":100.0},{"name":"square","speed":100.0}],[{"name":"circleNoPlatform","speed":200.0},{"name":"circle","speed":100.0},{"name":"square","speed":100.0},{"name":"square","speed":100.0}],[{"name":"circleNoPlatform","speed":300.0},{"name":"circle","speed":100.0},{"name":"square","speed":100.0},{"name":"square","speed":100.0}],[{"name":"circleNoPlatform","speed":200.0},{"name":"circle","speed":100.0},{"name":"square","speed":100.0},{"name":"square","speed":100.0}],[{"name":"circleNoPlatform","speed":200.0},{"name":"circle","speed":100.0},{"name":"square","speed":100.0},{"name":"square","speed":100.0}],[{"name":"circleNoPlatform","speed":300.0},{"name":"circle","speed":100.0},{"name":"square","speed":100.0},{"name":"square","speed":100.0}],[{"name":"circleNoPlatform","speed":200.0},{"name":"circle","speed":100.0},{"name":"square","speed":100.0},{"name":"square","speed":100.0}]]},{"id":3,"folderName":"business cat","powerBoxChance":0.0,"preview":"business cat","changeOfGoodPowerBox":0.5,"lengthInSeconds":20,"backgroundImage":"businesscat","title":"business cat","numberOfLanes":4,"startingLane":1,"numberOfLevels":4,"obstacleNames":["circle","square","scalingsquare","circleNoPlatform","pyramid","petal"],"rows":[[{"name":"circle","speed":100.0},{"name":"square","speed":100.0},{"name":"square","speed":100.0},{"name":"square","speed":100.0}],[{"name":"scalingsquare","speed":100.0},{"name":"circleNoPlatform","speed":100.0},{"name":"pyramid","speed":100.0},{"name":"petal","speed":100.0}],[{"name":"scalingsquare","speed":100.0},{"name":"circle","speed":100.0},{"name":"square","speed":100.0},{"name":"circleNoPlatform","speed":100.0}],[{"name":"pyramid","speed":100.0},{"name":"scalingsquare","speed":100.0},{"name":"square","speed":100.0},{"name":"circleNoPlatform","speed":100.0}],[{"name":"circleNoPlatform","speed":100.0},{"name":"circleNoPlatform","speed":100.0},{"name":"circle","speed":100.0},{"name":"petal","speed":100.0}],[{"name":"scalingsquare","speed":100.0},{"name":"pyramid","speed":100.0},{"name":"pyramid","speed":100.0},{"name":"pyramid","speed":100.0}],[{"name":"square","speed":100.0},{"name":"scalingsquare","speed":100.0},{"name":"circle","speed":100.0},{"name":"petal","speed":100.0}],[{"name":"square","speed":100.0},{"name":"circleNoPlatform","speed":100.0},{"name":"pyramid","speed":100.0},{"name":"pyramid","speed":100.0}]]}]}
+{
+  "powerboxes": [
+    {
+      "name": "speedUpRotations",
+      "goodBox": true,
+      "waitForTitle": true
+    }
+  ],
+  "levels": [
+    {
+      "id": 0,
+      "folderName": "First",
+      "powerBoxChance": 0.5,
+      "preview": "Track 3",
+      "changeOfGoodPowerBox": 0.5,
+      "lengthInSeconds": 311,
+      "backgroundImage": "rainbowStars",
+      "title": "HackDay Song",
+      "numberOfLanes": 3,
+      "startingLane": 2,
+      "numberOfLevels": 3,
+      "obstacleNames": [
+        "square",
+        "petal",
+        "circle",
+        "circleNoPlatform"
+      ],
+      "rows": [
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ]
+      ]
+    },
+    {
+      "id": 1,
+      "folderName": "Song 2",
+      "powerBoxChance": 0.5,
+      "preview": "Track 2",
+      "changeOfGoodPowerBox": 0.5,
+      "lengthInSeconds": 187,
+      "backgroundImage": "space",
+      "title": "test Song",
+      "numberOfLanes": 4,
+      "startingLane": 2,
+      "numberOfLevels": 4,
+      "obstacleNames": [
+        "square",
+        "petal",
+        "circle",
+        "circleNoPlatform"
+      ],
+      "rows": [
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ]
+      ]
+    },
+    {
+      "id": 2,
+      "folderName": "HackDay",
+      "powerBoxChance": 1,
+      "preview": "Track 1",
+      "changeOfGoodPowerBox": 1,
+      "lengthInSeconds": 203,
+      "backgroundImage": "dinosaur",
+      "title": "HackDay Song",
+      "numberOfLanes": 4,
+      "startingLane": 2,
+      "numberOfLevels": 3,
+      "obstacleNames": [
+        "square",
+        "petal",
+        "circle",
+        "circleNoPlatform"
+      ],
+      "rows": [
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 300
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 300
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 200
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ]
+      ]
+    },
+    {
+      "id": 3,
+      "folderName": "business cat",
+      "powerBoxChance": 0,
+      "preview": "business cat",
+      "changeOfGoodPowerBox": 0.5,
+      "lengthInSeconds": 20,
+      "backgroundImage": "businesscat",
+      "title": "business cat",
+      "numberOfLanes": 4,
+      "startingLane": 1,
+      "numberOfLevels": 4,
+      "obstacleNames": [
+        "circle",
+        "square",
+        "scalingsquare",
+        "circleNoPlatform",
+        "pyramid",
+        "petal"
+      ],
+      "rows": [
+        [
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "scalingsquare",
+            "speed": 100
+          },
+          {
+            "name": "circleNoPlatform",
+            "speed": 100
+          },
+          {
+            "name": "pyramid",
+            "speed": 100
+          },
+          {
+            "name": "petal",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "scalingsquare",
+            "speed": 100
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          },
+          {
+            "name": "circleNoPlatform",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "pyramid",
+            "speed": 100
+          },
+          {
+            "name": "scalingsquare",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          },
+          {
+            "name": "circleNoPlatform",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circleNoPlatform",
+            "speed": 100
+          },
+          {
+            "name": "circleNoPlatform",
+            "speed": 100
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "petal",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "scalingsquare",
+            "speed": 100
+          },
+          {
+            "name": "pyramid",
+            "speed": 100
+          },
+          {
+            "name": "pyramid",
+            "speed": 100
+          },
+          {
+            "name": "pyramid",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "square",
+            "speed": 100
+          },
+          {
+            "name": "scalingsquare",
+            "speed": 100
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "petal",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "square",
+            "speed": 100
+          },
+          {
+            "name": "circleNoPlatform",
+            "speed": 100
+          },
+          {
+            "name": "pyramid",
+            "speed": 100
+          },
+          {
+            "name": "pyramid",
+            "speed": 100
+          }
+        ]
+      ]
+    }
+  ]
+}

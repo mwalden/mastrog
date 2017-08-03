@@ -137,6 +137,7 @@ namespace LevelEditor
 			serializedObject.ApplyModifiedProperties ();
 			EditorGUILayout.Space ();
 			base.OnInspectorGUI ();
+
 //			if (GUILayout.Button ("Add Powerbox")) {
 //				powerboxes.Add (new Powerbox ());
 
