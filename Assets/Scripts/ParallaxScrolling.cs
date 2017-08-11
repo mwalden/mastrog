@@ -6,6 +6,7 @@ public class ParallaxScrolling : MonoBehaviour {
 
 	public GameObject toFollow;
 	private Vector3 oldFollowingPosition;
+
 	void Start(){
 		oldFollowingPosition = toFollow.transform.position;
 	}
@@ -24,13 +25,13 @@ public class ParallaxScrolling : MonoBehaviour {
 		}
 
 		if (oldFollowingPosition.y != toFollow.transform.position.y) {
-			print ("moving y value");
+			
 			if (transform.position.y < toFollow.transform.position.y) {
 				float diff = oldFollowingPosition.y - toFollow.transform.position.y;	
-				newY = diff * .25f + transform.position.y;
+				newY = diff * .01f + transform.position.y;
 			} else {
 				float diff = toFollow.transform.position.y -oldFollowingPosition.y;
-				newY = transform.position.y - diff * .25f;
+				newY = transform.position.y - diff * .01f;
 			}
 		}
 

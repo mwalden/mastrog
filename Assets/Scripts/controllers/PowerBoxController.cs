@@ -134,8 +134,9 @@ public class PowerBoxController : MonoBehaviour {
 
 	void playBoxOpen(Dictionary<int,Powerbox> powerbox){
 		int effect = UnityEngine.Random.Range (0, powerbox.Count);
+		print (effect);
 		Powerbox box = powerbox [effect];
-		print ("POWER BOX ::: " + box.name);
+
 		powerboxFunctions [box.name] ();
 	}
 
