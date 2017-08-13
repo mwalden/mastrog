@@ -20,6 +20,7 @@ public class ScoreController{
 		level = LevelManager.Instance.getCurrentLevelDetail ();
 		Messenger.AddListener<bool> ("isLaneEnabled", laneEnabled);
 		Messenger.AddListener<int,int>("addScore", addScore);
+		Messenger.AddListener<int>("addScoreIgnoreLaneEnabled", addScoreIgnoreLaneEnabled);
 	}
 
 	public void setTimeOnPlatform(float time){
@@ -34,6 +35,12 @@ public class ScoreController{
 	public void addLockDownLane(){
 		lockDownLaneCount++;
 	}
+
+	public void addScoreIgnoreLaneEnabled(int score){
+		this.score += score;
+		Messenger.Broadcast ("displayScore", this.score);
+	}
+
 	public void addScore(int laneId, int score){
 		if (!isLaneEnabled)
 			return;

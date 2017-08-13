@@ -25,6 +25,7 @@ public class PowerBoxController : MonoBehaviour {
 	private bool landed;
 	public GameObject burstPrefab;
 	private ParticleSystem burst;
+	private Vector3 lastPosition;
 	Dictionary<string, Action> powerboxFunctions;
 	public delegate void BoxOpenedEffect();
 
@@ -35,6 +36,12 @@ public class PowerBoxController : MonoBehaviour {
 	TimerController timerController = new TimerController ();
 
 	BoxOpenedEffect currentEffect;
+
+	void bonusPoints(){
+		powerBoxTitle.text = "Bonus Points!";
+		Messenger.Broadcast<Vector3> ("playScoreBurst", lastPosition);
+		Messenger.Broadcast<int> ("addScoreIgnoreLaneEnabled", 1000);
+	}
 
 	void clearLane(){
 		powerBoxTitle.text = "Lane Cleared!";
@@ -87,7 +94,8 @@ public class PowerBoxController : MonoBehaviour {
 			{ "clearLane", () => clearLane() },
 			{ "wavey", () => wavey() },
 			{ "drainHealth", () => fasterBleeding() },
-			{"speedUpRotations",() => speedUpRotations()}
+			{ "speedUpRotations",() => speedUpRotations()},
+			{ "bonusPoints",() => bonusPoints()}
 		};
 		List<Powerbox> powerboxes = LevelManager.Instance.getPowerBoxInfo ();
 		int goodCount = 0;
@@ -141,6 +149,7 @@ public class PowerBoxController : MonoBehaviour {
 	}
 
 	void boxOpened(Vector3 position){
+		lastPosition = position;
 		Destroy (burst);
 		burst = (Instantiate (burstPrefab, position, Quaternion.identity) as GameObject).GetComponent<ParticleSystem>();		
 		float goodOrBad = UnityEngine.Random.Range (0,1f );

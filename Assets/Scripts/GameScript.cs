@@ -228,6 +228,7 @@ public class GameScript : MonoBehaviour {
 		disableMovement = false;
 		obstaclesPassed++;
 		Messenger.Broadcast<int,int> ("addScore", currentLaneId,score);
+		Messenger.Broadcast<Vector3> ("playScoreBurst", player.transform.position);
 		Messenger.Broadcast<float,bool> ("addHealth", .05f,false);
 		Messenger.Broadcast<int> ("setRow", obstaclesPassed);
 	}
