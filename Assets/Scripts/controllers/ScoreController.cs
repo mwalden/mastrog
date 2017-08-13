@@ -41,7 +41,7 @@ public class ScoreController{
 		Messenger.Broadcast ("displayScore", this.score);
 	}
 
-	public void addScore(int laneId, int score){
+	public void addScore(int laneId, int score){		
 		if (!isLaneEnabled)
 			return;
 		this.score += score;
@@ -49,6 +49,7 @@ public class ScoreController{
 	}
 	public void removeScore(int score){
 		this.score -= score;
+		Messenger.Broadcast ("displayScore", this.score);
 	}
 
 	private void laneEnabled(bool isLaneEnabled){

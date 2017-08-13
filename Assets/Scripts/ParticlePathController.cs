@@ -8,8 +8,12 @@ public class ParticlePathController : MonoBehaviour {
 	public float m_Drift = .01f;
 	public bool moveParticles;
 	public Vector3 destination = new Vector3(-1.5f,5f,0f);
+
+	private bool isLaneEnabled = true;
+
 	void Start () {
 		Messenger.AddListener<Vector3> ("playScoreBurst", playBurst);
+		Messenger.AddListener<bool> ("isLaneEnabled", laneEnabled);
 		pArr = new ParticleSystem.Particle[1000];
 		ps = GetComponent<ParticleSystem> ();
 		print ("Start : " + ps.GetParticles (pArr));
@@ -32,11 +36,17 @@ public class ParticlePathController : MonoBehaviour {
 	}
 
 	public void playBurst(Vector3 position){
+		if (!isLaneEnabled)
+			return;
 		ps.transform.position = position;
 		moveParticles = false;
 		StartCoroutine (timer ());
 		ps.Play ();
 
+	}
+
+	private void laneEnabled(bool isLaneEnabled){
+		this.isLaneEnabled = isLaneEnabled;
 	}
 
 	private IEnumerator timer(){

@@ -49,6 +49,7 @@ public class GameScript : MonoBehaviour {
 
 	//count of how many obstacles you have traversed
 	private int obstaclesPassed;
+	private bool isLaneEnabled = true;
 
 
 
@@ -58,6 +59,7 @@ public class GameScript : MonoBehaviour {
 		Messenger.AddListener ("enteredObstacle", enteredCollider);
 		Messenger.AddListener ("clearOutLane", clearOutLane);
 		Messenger.AddListener ("ranOutOfHealth", ranOutOfHealth);
+		Messenger.AddListener<bool> ("isLaneEnabled", laneEnabled);
 		cam = Camera.main;
 		scoreController = new ScoreController ();
 		timerController = new TimerController (() => TimesUp ());
@@ -169,6 +171,8 @@ public class GameScript : MonoBehaviour {
 	}
 
 	private void movedOneLevelUp(){		
+		if (!isLaneEnabled)
+			return;
 		currentPlatformLevel++;
 		platformProgression++;
 		soundEffectScript.playLevelProgression (platformProgression);
@@ -213,6 +217,10 @@ public class GameScript : MonoBehaviour {
 
 	public void cleanUpLevel(){
 		levelBuilder.cleanUpObstacles (currentPlatformLevel/2);
+	}
+
+	private void laneEnabled(bool isLaneEnabled){
+		this.isLaneEnabled = isLaneEnabled;
 	}
 
 	public void resetPlayer(){
