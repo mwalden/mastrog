@@ -8,10 +8,13 @@ public class ParticlePathController : MonoBehaviour {
 	public float m_Drift = .01f;
 	public bool moveParticles;
 	public Vector3 destination = new Vector3(-1.5f,5f,0f);
-
+	private Camera camera;
+	public Vector3 lastCameraPosition;
 	private bool isLaneEnabled = true;
 
 	void Start () {
+		camera = Camera.main;
+		lastCameraPosition = camera.transform.localPosition;
 		Messenger.AddListener<Vector3> ("playScoreBurst", playBurst);
 		Messenger.AddListener<bool> ("isLaneEnabled", laneEnabled);
 		pArr = new ParticleSystem.Particle[1000];
@@ -23,6 +26,11 @@ public class ParticlePathController : MonoBehaviour {
 	void LateUpdate () {
 		if (!moveParticles)
 			return;
+		if (camera.transform.position.Equals (lastCameraPosition)) {
+			print ("CAMERA CHANGING");
+		}
+		lastCameraPosition = camera.WorldToScreenPoint(camera.transform.localPosition);
+
 		int count = ps.GetParticles (pArr);
 		for (int i = 0; i < count; i++)
 		{
