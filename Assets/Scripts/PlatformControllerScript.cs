@@ -31,7 +31,7 @@ public class PlatformControllerScript : MonoBehaviour {
 	public void disablePlatforms(){
 		platforms = GameObject.FindGameObjectsWithTag ("platform");
 		foreach (GameObject go in platforms) {
-			go.GetComponent<BoxCollider2D> ().enabled = false;
+			go.GetComponent<Collider2D> ().enabled = false;
 		}
 	}
 }
