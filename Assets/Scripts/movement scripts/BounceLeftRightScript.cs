@@ -32,8 +32,8 @@ public class BounceLeftRightScript : MonoBehaviour {
 		width = left.gameObject.GetComponent<SpriteRenderer> ().bounds.size.x;
 		originalLeft = left.transform.localPosition;
 		originalRight = right.transform.localPosition;
-		leftBound = new Vector3(bounds.min.x + width/2, left.transform.position.y + leftYBound,left.transform.position.z);
-		rightBound = new Vector3 (bounds.max.x - width/2, left.transform.position.y + rightYBound, left.transform.position.z);
+		leftBound = new Vector3(bounds.min.x + width/2, left.transform.localPosition.y + leftYBound,left.transform.position.z);
+		rightBound = new Vector3 (bounds.max.x - width/2, left.transform.localPosition.y + rightYBound, left.transform.position.z);
 	}
 	
 

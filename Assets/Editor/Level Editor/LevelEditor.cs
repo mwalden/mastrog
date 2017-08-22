@@ -62,29 +62,29 @@ namespace LevelEditor
 				level.chanceOfGoodPowerbox = EditorGUILayout.Slider ("Chance of good/bad", level.chanceOfGoodPowerbox, 0.0f, 1.0f);
 			EditorGUILayout.EndVertical ();
 
-
-			EditorGUILayout.LabelField ("Powerboxes to add");
-			EditorGUILayout.BeginHorizontal ("Box",opts);
-			EditorGUILayout.BeginVertical ("Box",opts);
-			if (GUILayout.Button ("Refill Health")) {
-				level.addPowerbox ("refillHealth");
-			}
-			if (GUILayout.Button ("Drain Health")) {
-				level.addPowerbox ("drainHealth");
-			}
-			if (GUILayout.Button ("Clear Lane")) {
-				level.addPowerbox ("clearLane");
-			}
-			if (GUILayout.Button ("Wavey and slow")) {
-				level.addPowerbox ("wavey");
-			}
-			EditorGUILayout.EndVertical ();
-			if (GUILayout.Button ("Clear powerboxes")) {
-				if (EditorUtility.DisplayDialog ("Clear powerboxes ", "You are sure you want to clear the poweboxes?", "yes", "no")) {
-					level.clearPowerBoxes ();
-				}
-			}
-			EditorGUILayout.EndHorizontal ();
+//
+//			EditorGUILayout.LabelField ("Powerboxes to add");
+//			EditorGUILayout.BeginHorizontal ("Box",opts);
+//			EditorGUILayout.BeginVertical ("Box",opts);
+//			if (GUILayout.Button ("Refill Health")) {
+//				level.addPowerbox ("refillHealth");
+//			}
+//			if (GUILayout.Button ("Drain Health")) {
+//				level.addPowerbox ("drainHealth");
+//			}
+//			if (GUILayout.Button ("Clear Lane")) {
+//				level.addPowerbox ("clearLane");
+//			}
+//			if (GUILayout.Button ("Wavey and slow")) {
+//				level.addPowerbox ("wavey");
+//			}
+//			EditorGUILayout.EndVertical ();
+//			if (GUILayout.Button ("Clear powerboxes")) {
+//				if (EditorUtility.DisplayDialog ("Clear powerboxes ", "You are sure you want to clear the poweboxes?", "yes", "no")) {
+//					level.clearPowerBoxes ();
+//				}
+//			}
+//			EditorGUILayout.EndHorizontal ();
 
 
 
@@ -113,6 +113,15 @@ namespace LevelEditor
 					level.addObstacleWithType ("circleNoPlatform");
 				}
 			EditorGUILayout.EndHorizontal ();
+			EditorGUILayout.BeginHorizontal ();
+			if (GUILayout.Button ("Bounce back and forth")) {
+				level.addObstacleWithType ("bounceBackAndForth");
+			}
+			if (GUILayout.Button ("Circular Expander")) {
+				level.addObstacleWithType ("circularExpander");
+			}
+			EditorGUILayout.EndHorizontal ();
+
 			EditorGUILayout.EndVertical ();
 			EditorGUILayout.LabelField ("Actions");
 			EditorGUILayout.BeginVertical ("Box");

@@ -1,6 +1,6 @@
 {
   "powerboxes": [
-  	{
+    {
       "name": "bonusPoints",
       "goodBox": true,
       "waitForTitle": true
@@ -293,11 +293,11 @@
         ],
         [
           {
-            "name": "circularExpander",
+            "name": "bounceBackAndForth",
             "speed": 100
           },
           {
-            "name": "square",
+            "name": "bounceBackAndForth",
             "speed": 100
           },
           {
@@ -494,27 +494,29 @@
     {
       "id": 3,
       "folderName": "business cat",
-      "powerBoxChance": 0,
-      "preview": "business cat",
-      "changeOfGoodPowerBox": 0.5,
-      "lengthInSeconds": 20,
+      "powerBoxChance": 0.68,
+      "preview": "Track 1",
+      "changeOfGoodPowerBox": 1,
+      "lengthInSeconds": 183,
       "backgroundImage": "businesscat",
       "title": "business cat",
       "numberOfLanes": 4,
       "startingLane": 1,
       "numberOfLevels": 4,
       "obstacleNames": [
-        "circle",
-        "square",
-        "scalingsquare",
-        "circleNoPlatform",
         "pyramid",
-        "petal"
+        "square",
+        "circle",
+        "circularExpander",
+        "bounceBackAndForth",
+        "petal",
+        "scalingsquare",
+        "circleNoPlatform"
       ],
       "rows": [
         [
           {
-            "name": "petal",
+            "name": "pyramid",
             "speed": 100
           },
           {
@@ -522,25 +524,61 @@
             "speed": 100
           },
           {
-            "name": "square",
+            "name": "circle",
             "speed": 100
           },
           {
-            "name": "square",
+            "name": "circle",
             "speed": 100
           }
         ],
         [
           {
-            "name": "scalingsquare",
-            "speed": 100
-          },
-          {
-            "name": "circleNoPlatform",
+            "name": "square",
             "speed": 100
           },
           {
             "name": "pyramid",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          },
+          {
+            "name": "pyramid",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circularExpander",
+            "speed": 100
+          },
+          {
+            "name": "bounceBackAndForth",
+            "speed": 100
+          },
+          {
+            "name": "bounceBackAndForth",
+            "speed": 100
+          },
+          {
+            "name": "circularExpander",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circularExpander",
+            "speed": 100
+          },
+          {
+            "name": "petal",
+            "speed": 100
+          },
+          {
+            "name": "scalingsquare",
             "speed": 100
           },
           {
@@ -562,13 +600,17 @@
             "speed": 100
           },
           {
-            "name": "circleNoPlatform",
+            "name": "scalingsquare",
             "speed": 100
           }
         ],
         [
           {
-            "name": "pyramid",
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "petal",
             "speed": 100
           },
           {
@@ -576,11 +618,43 @@
             "speed": 100
           },
           {
+            "name": "bounceBackAndForth",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circularExpander",
+            "speed": 100
+          },
+          {
+            "name": "circularExpander",
+            "speed": 100
+          },
+          {
+            "name": "pyramid",
+            "speed": 100
+          },
+          {
+            "name": "pyramid",
+            "speed": 100
+          }
+        ],
+        [
+          {
             "name": "square",
             "speed": 100
           },
           {
-            "name": "circleNoPlatform",
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "scalingsquare",
+            "speed": 100
+          },
+          {
+            "name": "bounceBackAndForth",
             "speed": 100
           }
         ],
@@ -590,11 +664,11 @@
             "speed": 100
           },
           {
-            "name": "circleNoPlatform",
+            "name": "circularExpander",
             "speed": 100
           },
           {
-            "name": "circle",
+            "name": "bounceBackAndForth",
             "speed": 100
           },
           {
@@ -608,11 +682,11 @@
             "speed": 100
           },
           {
-            "name": "pyramid",
+            "name": "circle",
             "speed": 100
           },
           {
-            "name": "pyramid",
+            "name": "square",
             "speed": 100
           },
           {
@@ -621,6 +695,64 @@
           }
         ],
         [
+          {
+            "name": "scalingsquare",
+            "speed": 100
+          },
+          {
+            "name": "bounceBackAndForth",
+            "speed": 100
+          },
+          {
+            "name": "bounceBackAndForth",
+            "speed": 100
+          },
+          {
+            "name": "circularExpander",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circularExpander",
+            "speed": 100
+          },
+          {
+            "name": "square",
+            "speed": 100
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "scalingsquare",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "petal",
+            "speed": 100
+          },
+          {
+            "name": "pyramid",
+            "speed": 100
+          },
+          {
+            "name": "pyramid",
+            "speed": 100
+          },
+          {
+            "name": "scalingsquare",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "circle",
+            "speed": 100
+          },
           {
             "name": "square",
             "speed": 100
@@ -630,11 +762,25 @@
             "speed": 100
           },
           {
-            "name": "circle",
+            "name": "bounceBackAndForth",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "bounceBackAndForth",
             "speed": 100
           },
           {
             "name": "petal",
+            "speed": 100
+          },
+          {
+            "name": "scalingsquare",
+            "speed": 100
+          },
+          {
+            "name": "circle",
             "speed": 100
           }
         ],
@@ -644,15 +790,33 @@
             "speed": 100
           },
           {
-            "name": "circleNoPlatform",
-            "speed": 100
-          },
-          {
             "name": "pyramid",
             "speed": 100
           },
           {
-            "name": "pyramid",
+            "name": "square",
+            "speed": 100
+          },
+          {
+            "name": "circle",
+            "speed": 100
+          }
+        ],
+        [
+          {
+            "name": "scalingsquare",
+            "speed": 100
+          },
+          {
+            "name": "petal",
+            "speed": 100
+          },
+          {
+            "name": "bounceBackAndForth",
+            "speed": 100
+          },
+          {
+            "name": "scalingsquare",
             "speed": 100
           }
         ]
