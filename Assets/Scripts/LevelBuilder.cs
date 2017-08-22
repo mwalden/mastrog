@@ -39,7 +39,7 @@ public class LevelBuilder : MonoBehaviour {
 		initilizeObjectPool ();
 		bounds = CameraExtensions.OrthographicBounds (Camera.main);
 		int obstaclePosition = 0;
-		for (int i = 0; i <= numberOfLevels - 1; i++) {
+		for (int i = 0; i <= 4; i++) {
 			maxLevelBuilt++;
 			float y = 8 * i;
 			obstaclePosition = 0;
@@ -97,11 +97,13 @@ public class LevelBuilder : MonoBehaviour {
 	}
 
 	private void addRowToScene(int levelId){
+		print (levelId);
 		int y = (levelId - 1) * 8;
 		if (levelId >= level.numberOfLevels)
 			levelId = 0;
 		for (int i = 0; i < numberOfLanes; i++) {
 			Obstacle obstacle = level.rows[levelId][i];
+			print ("Adding a : " + obstacle.name);
 			GameObject go = getObjectFromPoolByName (obstacle.name, levelId);
 			if (i == lockedDownLane)
 				go.GetComponent<EnableDisableScript> ().disableObstacle ();

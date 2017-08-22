@@ -34,7 +34,7 @@ public class AudioScript : MonoBehaviour {
 
 	void Update(){
 		float deltaTime = Time.deltaTime;
-		for (int x = 0; x < gameLevel.numberOfLevels; x++) {
+		for (int x = 0; x < gameLevel.numberOfLanes; x++) {
 			if (lockedAudioTracks [x]) {
 				lockedAudioTracksDuration [x] -= deltaTime;
 				if (lockedAudioTracksDuration [x] <= 0) {
