@@ -8,6 +8,7 @@ public class PlayerScript : MonoBehaviour {
 	private bool moving;
 	private Rigidbody2D rigidbody;
 	public float speedToSwitchLanes;
+	private float MAX_VELOCITY_FOR_STRETCH = 5;
 	public bool isMoving(){
 		return moving;
 	}
@@ -18,7 +19,9 @@ public class PlayerScript : MonoBehaviour {
 	}
 
 	void Update(){
-		if (moving) {
+		if (moving) {			
+//			float newVel = rigidbody.velocity.y < 0.1 ? 0 : rigidbody.velocity.y;
+//			float y =  Mathf.Min(2,newVel/ (MAX_VELOCITY_FOR_STRETCH - 1) + 1);
 			float step = speedToSwitchLanes * Time.deltaTime;
 			transform.position = Vector3.MoveTowards (transform.position, positionMovingTo, step);
 			moving = transform.position != positionMovingTo;

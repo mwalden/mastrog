@@ -12,6 +12,7 @@ public class JumpScript : MonoBehaviour {
 	private bool jumpingDisabled;
 	public TouchGesture.GestureSettings gestureSetting;
 	private TouchGesture touch;
+	private float MAX_VELOCITY_FOR_STRETCH = 5;
 	void Start(){
 		rb = GetComponent<Rigidbody2D> ();
 		Messenger.AddListener ("disableJumping",disableJumping);
@@ -32,8 +33,16 @@ public class JumpScript : MonoBehaviour {
 
 		}
 	}
-	// Update is called once per frame
+
 	void Update () {
+		if (rb.velocity.y > .1) {
+			float newVel = rb.velocity.y < 0.1 ? 0 : rb.velocity.y;
+			float y =  Mathf.Min(2,newVel/ (MAX_VELOCITY_FOR_STRETCH - 1) + 1);
+			transform.localScale = new Vector3 (transform.localScale.x, y, transform.localScale.z);
+		} else if (transform.localScale.y > 1) {
+			transform.localScale = new Vector3 (transform.localScale.x, 1, transform.localScale.z);
+		}
+			
 		if (Input.GetKeyDown (KeyCode.Space) && !jumpingDisabled) {
 			//prevent double jump
 			if (rb.velocity.y <= 0.1) {

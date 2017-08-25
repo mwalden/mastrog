@@ -99,8 +99,9 @@ public class LevelBuilder : MonoBehaviour {
 	private void addRowToScene(int levelId){
 		print (levelId);
 		int y = (levelId - 1) * 8;
-		if (levelId >= level.numberOfLevels)
-			levelId = 0;
+		if (levelId >= level.rows.Count) {
+			levelId = levelId - level.rows.Count;
+		}
 		for (int i = 0; i < numberOfLanes; i++) {
 			Obstacle obstacle = level.rows[levelId][i];
 			print ("Adding a : " + obstacle.name);

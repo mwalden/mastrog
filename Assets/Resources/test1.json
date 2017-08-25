@@ -275,19 +275,19 @@
       "rows": [
         [
           {
-            "name": "pyramid",
+            "name": "circle",
             "speed": 100
           },
           {
-            "name": "circularExpander",
+            "name": "circle",
+            "speed": 100
+          },
+          {
+            "name": "circle",
             "speed": 100
           },
           {
             "name": "bounceBackAndForth",
-            "speed": 100
-          },
-          {
-            "name": "pyramid",
             "speed": 100
           }
         ],
@@ -315,7 +315,7 @@
             "speed": 100
           },
           {
-            "name": "scalingsquare",
+            "name": "bounceBackAndForth",
             "speed": 100
           },
           {
@@ -333,7 +333,7 @@
             "speed": 100
           },
           {
-            "name": "petal",
+            "name": "bounceBackAndForth",
             "speed": 100
           },
           {
@@ -351,7 +351,7 @@
             "speed": 100
           },
           {
-            "name": "circle",
+            "name": "bounceBackAndForth",
             "speed": 100
           },
           {
@@ -369,7 +369,7 @@
             "speed": 100
           },
           {
-            "name": "square",
+            "name": "bounceBackAndForth",
             "speed": 100
           },
           {

@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class BounceLeftRightScript : MonoBehaviour {
-	private Bounds bounds;
+	private Bounds bounds = CameraExtensions.OrthographicBounds (Camera.main);
 	private Transform left;
 	private Transform right;
 	// Use this for initialization
@@ -18,8 +18,8 @@ public class BounceLeftRightScript : MonoBehaviour {
 	public float speed;
 	private float z = -5f;
 
-	void Start () {
-		bounds = CameraExtensions.OrthographicBounds (Camera.main);
+	void OnEnable () {
+		
 		Transform[] gos = gameObject.GetComponentsInChildren<Transform> ();
 		for (int i = 0; i < gos.Length; i++) {
 			Transform go = gos [i];
@@ -34,6 +34,8 @@ public class BounceLeftRightScript : MonoBehaviour {
 		originalRight = right.transform.localPosition;
 		leftBound = new Vector3(bounds.min.x + width/2, left.transform.localPosition.y + leftYBound,left.transform.position.z);
 		rightBound = new Vector3 (bounds.max.x - width/2, left.transform.localPosition.y + rightYBound, left.transform.position.z);
+		print ("Enabled");
+		print (leftBound);
 	}
 	
 
