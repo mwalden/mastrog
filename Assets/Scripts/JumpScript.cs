@@ -13,7 +13,9 @@ public class JumpScript : MonoBehaviour {
 	public TouchGesture.GestureSettings gestureSetting;
 	private TouchGesture touch;
 	private float MAX_VELOCITY_FOR_STRETCH = 5;
+	private GameObject player;
 	void Start(){
+		player = GameObject.FindGameObjectWithTag ("Player");
 		rb = GetComponent<Rigidbody2D> ();
 		Messenger.AddListener ("disableJumping",disableJumping);
 		#if UNITY_ANDROID
@@ -35,6 +37,7 @@ public class JumpScript : MonoBehaviour {
 	}
 
 	void Update () {
+		
 		if (rb.velocity.y > .1) {
 			float newVel = rb.velocity.y < 0.1 ? 0 : rb.velocity.y;
 			float y =  Mathf.Min(2,newVel/ (MAX_VELOCITY_FOR_STRETCH - 1) + 1);
@@ -65,8 +68,8 @@ public class JumpScript : MonoBehaviour {
 
 
 	void FixedUpdate() {
-		GameObject go = GameObject.FindGameObjectWithTag ("Player");
-		Vector3 position = go.transform.position;
+		
+		Vector3 position = player.transform.position;
 
 		RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.up,100f,layerMask);
 		if (hit.collider != null) {

@@ -16,7 +16,9 @@ public class ParticlePathController : MonoBehaviour {
 	void Start () {
 		camera = Camera.main;
 		lastCameraPosition = camera.transform.localPosition;
+		Messenger.AddListener<Vector3,int> ("playBurstIgnoreLaneEnbled", playBurstIgnoreLaneEnbled);
 		Messenger.AddListener<Vector3,int> ("playScoreBurst", playBurst);
+
 		Messenger.AddListener<bool> ("isLaneEnabled", laneEnabled);
 		pArr = new ParticleSystem.Particle[1000];
 		ps = GetComponent<ParticleSystem> ();
@@ -37,13 +39,21 @@ public class ParticlePathController : MonoBehaviour {
 		{
 			if (Vector3.Distance (pArr [i].position, destination) < 0.01f) {
 				pArr [i].lifetime = 0;
-				Messenger.Broadcast ("addScore", -1,this.score);
+				Messenger.Broadcast ("addScoreIgnoreLaneEnabled",this.score);
 			}
 			Vector3 newPos = Vector3.MoveTowards (pArr [i].position, destination, .30f);
 			pArr [i].position = newPos;
 
 		}
 		ps.SetParticles(pArr, count);
+	}
+
+	public void playBurstIgnoreLaneEnbled(Vector3 position,int score){
+		this.score = score;
+		ps.transform.position = position;
+		moveParticles = false;
+		StartCoroutine (timer ());
+		ps.Play ();
 	}
 
 	public void playBurst(Vector3 position,int score){

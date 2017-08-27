@@ -5,7 +5,7 @@ public class PlayerScript : MonoBehaviour {
 	
 	private GameScript gameScript;
 	private Vector3 positionMovingTo;
-	private bool moving;
+	public bool moving;
 	private Rigidbody2D rigidbody;
 	public float speedToSwitchLanes;
 	private float distanceTraveled;

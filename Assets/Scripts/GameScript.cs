@@ -16,6 +16,7 @@ public class GameScript : MonoBehaviour {
 	private CameraScript cameraScript;
 	private bool justMoved;
 	private float distanceToMoveX;
+	private bool jumping;
 
 	//going left/right on the platforms
 	private int currentLaneId;
@@ -52,13 +53,14 @@ public class GameScript : MonoBehaviour {
 	private bool isLaneEnabled = true;
 
 
-
 	// Use this for initialization
 	void Start () {
 		Messenger.AddListener ("exitObstacle", exitedCollider);
 		Messenger.AddListener ("enteredObstacle", enteredCollider);
 		Messenger.AddListener ("clearOutLane", clearOutLane);
 		Messenger.AddListener ("ranOutOfHealth", ranOutOfHealth);
+		Messenger.AddListener("landed", landed);
+		Messenger.AddListener("jumped", jumped);
 		Messenger.AddListener<bool> ("isLaneEnabled", laneEnabled);
 		cam = Camera.main;
 		scoreController = new ScoreController ();
@@ -94,7 +96,6 @@ public class GameScript : MonoBehaviour {
 		}
 	}
 	void moveRight(){
-
 		if (disableMovement)
 			return;
 		if (currentLaneId + 1 < currentGameLevel.numberOfLanes && !playerScript.isMoving ()) {
@@ -128,13 +129,13 @@ public class GameScript : MonoBehaviour {
 		if (Input.GetKeyUp (KeyCode.C)) {
 			levelBuilder.cleanUpObstacles (platformProgression);
 		}
-		if (Input.GetKeyUp(KeyCode.LeftArrow) && currentLaneId > 0 && !playerScript.isMoving()){
+		if (Input.GetKeyUp(KeyCode.LeftArrow) && currentLaneId > 0 && !playerScript.isMoving() && !jumping){
 			setCurrentLaneId (currentLaneId - 1);
 			cameraAndPlayer (true);
 			platformProgression = 0;
 			barCounterController.emptyBars ();
 		}
-		if (Input.GetKeyUp(KeyCode.RightArrow)&& currentLaneId + 1 < currentGameLevel.numberOfLanes && !playerScript.isMoving()){
+		if (Input.GetKeyUp(KeyCode.RightArrow)&& currentLaneId + 1 < currentGameLevel.numberOfLanes && !playerScript.isMoving() && !jumping){
 			setCurrentLaneId (currentLaneId + 1);
 			cameraAndPlayer (false);
 			platformProgression = 0;
@@ -249,5 +250,13 @@ public class GameScript : MonoBehaviour {
 		scoreController.completedLevel = false;
 		timerController.endTimer ();
 		gameOver = true;
+	}
+
+	void landed(){
+		jumping = false;
+	}
+
+	void jumped(){
+		jumping = true;
 	}
 }
