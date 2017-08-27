@@ -287,17 +287,17 @@
             "speed": 100
           },
           {
-            "name": "bounceBackAndForth",
+            "name": "circularExpander",
             "speed": 100
           }
         ],
         [
           {
-            "name": "bounceBackAndForth",
+            "name": "circle",
             "speed": 100
           },
           {
-            "name": "bounceBackAndForth",
+            "name": "circle",
             "speed": 100
           },
           {
@@ -315,11 +315,11 @@
             "speed": 100
           },
           {
-            "name": "bounceBackAndForth",
+            "name": "circle",
             "speed": 100
           },
           {
-            "name": "scalingsquare",
+            "name": "circularExpander",
             "speed": 100
           },
           {
@@ -355,7 +355,7 @@
             "speed": 100
           },
           {
-            "name": "scalingsquare",
+            "name": "circularExpander",
             "speed": 100
           },
           {
@@ -373,7 +373,7 @@
             "speed": 100
           },
           {
-            "name": "scalingsquare",
+            "name": "circularExpander",
             "speed": 100
           },
           {
@@ -391,7 +391,7 @@
             "speed": 100
           },
           {
-            "name": "circle",
+            "name": "circularExpander",
             "speed": 100
           },
           {
@@ -409,7 +409,7 @@
             "speed": 100
           },
           {
-            "name": "scalingsquare",
+            "name": "circularExpander",
             "speed": 100
           },
           {
@@ -427,7 +427,7 @@
             "speed": 100
           },
           {
-            "name": "circle",
+            "name": "circularExpander",
             "speed": 100
           },
           {

@@ -39,8 +39,8 @@ public class PowerBoxController : MonoBehaviour {
 
 	void bonusPoints(){
 		powerBoxTitle.text = "Bonus Points!";
-		Messenger.Broadcast<Vector3> ("playScoreBurst", lastPosition);
-		Messenger.Broadcast<int> ("addScoreIgnoreLaneEnabled", 1000);
+		Messenger.Broadcast<Vector3,int> ("playScoreBurst", lastPosition,1000);
+//		Messenger.Broadcast<int> ("addScoreIgnoreLaneEnabled", 1000);
 	}
 
 	void clearLane(){

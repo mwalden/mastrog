@@ -19,14 +19,13 @@ public class CircularMovementScript : MonoBehaviour {
 	Vector3 origin;
 	public bool movingOut = true;
 	float startingZ = 0;
+	Bounds bounds = CameraExtensions.OrthographicBounds (Camera.main);
 	void Start () {
 		obstacles = new List<GameObject> ();
 		float angleDifference = 360 / total;
 		float width;
-		Bounds bounds = CameraExtensions.OrthographicBounds (Camera.main);
 		obstacleBounds = new List<Vector3> ();
 		obstacleOrigins = new List<Vector3> ();
-
 		float radians = angleDifference * Mathf.Deg2Rad;
 		for (int i = 0; i < total; i++) {
 			float x = Mathf.Cos(radians + (radians * i));

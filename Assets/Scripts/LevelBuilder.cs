@@ -97,14 +97,12 @@ public class LevelBuilder : MonoBehaviour {
 	}
 
 	private void addRowToScene(int levelId){
-		print (levelId);
 		int y = (levelId - 1) * 8;
 		if (levelId >= level.rows.Count) {
 			levelId = levelId - level.rows.Count;
 		}
 		for (int i = 0; i < numberOfLanes; i++) {
 			Obstacle obstacle = level.rows[levelId][i];
-			print ("Adding a : " + obstacle.name);
 			GameObject go = getObjectFromPoolByName (obstacle.name, levelId);
 			if (i == lockedDownLane)
 				go.GetComponent<EnableDisableScript> ().disableObstacle ();

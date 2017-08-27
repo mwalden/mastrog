@@ -34,8 +34,6 @@ public class BounceLeftRightScript : MonoBehaviour {
 		originalRight = right.transform.localPosition;
 		leftBound = new Vector3(bounds.min.x + width/2, left.transform.localPosition.y + leftYBound,left.transform.position.z);
 		rightBound = new Vector3 (bounds.max.x - width/2, left.transform.localPosition.y + rightYBound, left.transform.position.z);
-		print ("Enabled");
-		print (leftBound);
 	}
 	
 

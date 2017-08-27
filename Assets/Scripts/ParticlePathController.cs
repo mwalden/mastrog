@@ -11,41 +11,45 @@ public class ParticlePathController : MonoBehaviour {
 	private Camera camera;
 	public Vector3 lastCameraPosition;
 	private bool isLaneEnabled = true;
+	private int score = 0;
 
 	void Start () {
 		camera = Camera.main;
 		lastCameraPosition = camera.transform.localPosition;
-		Messenger.AddListener<Vector3> ("playScoreBurst", playBurst);
+		Messenger.AddListener<Vector3,int> ("playScoreBurst", playBurst);
 		Messenger.AddListener<bool> ("isLaneEnabled", laneEnabled);
 		pArr = new ParticleSystem.Particle[1000];
 		ps = GetComponent<ParticleSystem> ();
-		print ("Start : " + ps.GetParticles (pArr));
+//		print ("Start : " + ps.GetParticles (pArr));
 	}
 	
 	// Update is called once per frame
 	void LateUpdate () {
 		if (!moveParticles)
 			return;
-		if (camera.transform.position.Equals (lastCameraPosition)) {
-			print ("CAMERA CHANGING");
-		}
+//		if (camera.transform.position.Equals (lastCameraPosition)) {
+//			print ("CAMERA CHANGING");
+//		}
 		lastCameraPosition = camera.WorldToScreenPoint(camera.transform.localPosition);
 
 		int count = ps.GetParticles (pArr);
 		for (int i = 0; i < count; i++)
 		{
-			if (Vector3.Distance(pArr [i].position,destination) < 0.01f)
+			if (Vector3.Distance (pArr [i].position, destination) < 0.01f) {
 				pArr [i].lifetime = 0;
-			Vector3 newPos = Vector3.MoveTowards (pArr [i].position, destination, .25f);
+				Messenger.Broadcast ("addScore", -1,this.score);
+			}
+			Vector3 newPos = Vector3.MoveTowards (pArr [i].position, destination, .30f);
 			pArr [i].position = newPos;
 
 		}
 		ps.SetParticles(pArr, count);
 	}
 
-	public void playBurst(Vector3 position){
+	public void playBurst(Vector3 position,int score){
 		if (!isLaneEnabled)
 			return;
+		this.score = score;
 		ps.transform.position = position;
 		moveParticles = false;
 		StartCoroutine (timer ());

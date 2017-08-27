@@ -235,8 +235,8 @@ public class GameScript : MonoBehaviour {
 	private void exitedCollider(){
 		disableMovement = false;
 		obstaclesPassed++;
-		Messenger.Broadcast<int,int> ("addScore", currentLaneId,score);
-		Messenger.Broadcast<Vector3> ("playScoreBurst", player.transform.position);
+//		Messenger.Broadcast<int,int> ("addScore", currentLaneId,score);
+		Messenger.Broadcast<Vector3,int> ("playScoreBurst", player.transform.position,score);
 		Messenger.Broadcast<float,bool> ("addHealth", .05f,false);
 		Messenger.Broadcast<int> ("setRow", obstaclesPassed);
 	}

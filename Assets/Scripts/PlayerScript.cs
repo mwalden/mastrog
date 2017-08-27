@@ -8,9 +8,15 @@ public class PlayerScript : MonoBehaviour {
 	private bool moving;
 	private Rigidbody2D rigidbody;
 	public float speedToSwitchLanes;
-	private float MAX_VELOCITY_FOR_STRETCH = 5;
+	private float distanceTraveled;
+	private float baseYValue;
+
 	public bool isMoving(){
 		return moving;
+	}
+
+	private float getYValue(float x){
+		return (-((Mathf.Pow(.333f*x -1,2))) + 1f)/3f;
 	}
 
 	void Start(){
@@ -19,12 +25,14 @@ public class PlayerScript : MonoBehaviour {
 	}
 
 	void Update(){
+		
 		if (moving) {			
-//			float newVel = rigidbody.velocity.y < 0.1 ? 0 : rigidbody.velocity.y;
-//			float y =  Mathf.Min(2,newVel/ (MAX_VELOCITY_FOR_STRETCH - 1) + 1);
 			float step = speedToSwitchLanes * Time.deltaTime;
-			transform.position = Vector3.MoveTowards (transform.position, positionMovingTo, step);
-			moving = transform.position != positionMovingTo;
+			distanceTraveled += step;
+			Vector3 newPosition = Vector3.MoveTowards (transform.position, positionMovingTo, step);
+			Vector3 newerPosition = new Vector3 (newPosition.x, getYValue(Mathf.Abs (distanceTraveled))+ baseYValue, newPosition.z);
+			transform.position = newerPosition;
+			moving = transform.position.x != positionMovingTo.x;
 			if (!moving) {
 				rigidbody.isKinematic = false;
 			}
@@ -37,7 +45,8 @@ public class PlayerScript : MonoBehaviour {
 	}
 
 	public void moveToPosition(Vector3 position){
-		
+		distanceTraveled = 0;
+		baseYValue = transform.position.y;
 		positionMovingTo = position;
 		moving = true;
 		rigidbody.isKinematic = true;
