@@ -53,11 +53,15 @@ public class GameScript : MonoBehaviour {
 	private bool isLaneEnabled = true;
 
 
+	//this is used to hack out the call getting called twice. sorry.
+	private GameObject lastExitedGameObject;
+
+
 	// Use this for initialization
 	void Start () {
-		Messenger.AddListener ("exitObstacle", exitedCollider);
+		Messenger.AddListener<GameObject> ("exitObstacle", exitedCollider);
 		Messenger.AddListener<GameObject> ("disappear", disappearObstacle);
-		Messenger.AddListener ("enteredObstacle", enteredCollider);
+		Messenger.AddListener<GameObject> ("enteredObstacle", enteredCollider);
 		Messenger.AddListener ("clearOutLane", clearOutLane);
 		Messenger.AddListener ("ranOutOfHealth", ranOutOfHealth);
 		Messenger.AddListener("landed", landed);
@@ -178,6 +182,7 @@ public class GameScript : MonoBehaviour {
 		currentPlatformLevel++;
 		platformProgression++;
 		soundEffectScript.playLevelProgression (platformProgression);
+
 		barCounterController.addBar ();
 		scoreController.addPlatform ();
 		
@@ -231,6 +236,7 @@ public class GameScript : MonoBehaviour {
 		soundEffectScript.playError ();
 		playerRigidbody.velocity = new Vector2(0.0f,0.0f);
 		Messenger.Broadcast<float> ("removeHealth", .3f);
+		Messenger.Broadcast<int> ("setMultiplier", 1);
 		player.transform.position = currentPlatform.transform.position;
 	}
 
@@ -239,15 +245,20 @@ public class GameScript : MonoBehaviour {
 		script.Disappear ();
 	}
 
-	private void exitedCollider(){
+	private void exitedCollider(GameObject collider){
+		if (collider.Equals (lastExitedGameObject))
+			return;
+		lastExitedGameObject = collider;
+		print ("Exited");
 		disableMovement = false;
 		obstaclesPassed++;
 //		Messenger.Broadcast<int,int> ("addScore", currentLaneId,score);
+		Messenger.Broadcast<int> ("increaseMultiplier", 1);
 		Messenger.Broadcast<Vector3,int> ("playScoreBurst", player.transform.position,score);
 		Messenger.Broadcast<float,bool> ("addHealth", .05f,false);
 		Messenger.Broadcast<int> ("setRow", obstaclesPassed);
 	}
-	private void enteredCollider(){
+	private void enteredCollider(GameObject collider){
 		disableMovement = true;
 	}
 
