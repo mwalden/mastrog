@@ -7,7 +7,12 @@ public class EntranceExitScript : MonoBehaviour {
 
 	void OnTriggerEnter2D(Collider2D coll){
 		
-		if (coll.gameObject.tag == "Player")
+		if (coll.gameObject.tag == "Player") {
 			Messenger.Broadcast (broadcastMessage);
+			if (broadcastMessage.Equals ("exitObstacle")) {
+				Messenger.Broadcast ("disappear",gameObject.transform.parent.gameObject);
+			}
+		}
 	}
+
 }

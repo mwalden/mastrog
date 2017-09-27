@@ -56,6 +56,7 @@ public class GameScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		Messenger.AddListener ("exitObstacle", exitedCollider);
+		Messenger.AddListener<GameObject> ("disappear", disappearObstacle);
 		Messenger.AddListener ("enteredObstacle", enteredCollider);
 		Messenger.AddListener ("clearOutLane", clearOutLane);
 		Messenger.AddListener ("ranOutOfHealth", ranOutOfHealth);
@@ -231,6 +232,11 @@ public class GameScript : MonoBehaviour {
 		playerRigidbody.velocity = new Vector2(0.0f,0.0f);
 		Messenger.Broadcast<float> ("removeHealth", .3f);
 		player.transform.position = currentPlatform.transform.position;
+	}
+
+	private void disappearObstacle(GameObject obstacle){
+		ObsticleScript script = obstacle.GetComponentInChildren<ObsticleScript> ();
+		script.Disappear ();
 	}
 
 	private void exitedCollider(){

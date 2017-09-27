@@ -260,7 +260,7 @@
       "backgroundImage": "dinosaur",
       "title": "HackDay",
       "numberOfLanes": 4,
-      "startingLane": 1,
+      "startingLane": 0,
       "numberOfLevels": 4,
       "obstacleNames": [
         "square",
@@ -297,7 +297,7 @@
             "speed": 100
           },
           {
-            "name": "circle",
+            "name": "circularExpander",
             "speed": 100
           },
           {
@@ -315,7 +315,7 @@
             "speed": 100
           },
           {
-            "name": "circle",
+            "name": "bounceBackAndForth",
             "speed": 100
           },
           {

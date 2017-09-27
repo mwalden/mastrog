@@ -15,7 +15,7 @@ public class LevelBuilder : MonoBehaviour {
 	public float offset = 2.5f;
 	private int maxLevelBuilt;
 	private int lockedDownLane = -1;
-
+	private Vector3 startScale = new Vector3 (1, 1, 1);
 	public int obstacleArrayMarker = 0;
 	public Dictionary<string,List<GameObject>> obstaclePool = new Dictionary<string,List<GameObject>>();
 	List<GameObject> obstaclesInUse = new List<GameObject>();
@@ -75,6 +75,7 @@ public class LevelBuilder : MonoBehaviour {
 
 	private void putItemBackInPool(GameObject go){
 		List<GameObject> objects = obstaclePool [go.name];
+		go.transform.localScale = startScale;
 		EnableDisableScript script = go.GetComponent<EnableDisableScript> ();
 		if (script != null)
 			script.enableObstacle ();
