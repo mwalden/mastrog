@@ -134,13 +134,13 @@ public class GameScript : MonoBehaviour {
 		if (Input.GetKeyUp (KeyCode.C)) {
 			levelBuilder.cleanUpObstacles (platformProgression);
 		}
-		if (Input.GetKeyUp(KeyCode.LeftArrow) && currentLaneId > 0 && !playerScript.isMoving() && !jumping){
+		if (Input.GetKeyUp(KeyCode.LeftArrow) && currentLaneId > 0 && !playerScript.isMoving() && !jumping && !cameraScript.moving ){
 			setCurrentLaneId (currentLaneId - 1);
 			cameraAndPlayer (true);
 			platformProgression = 0;
 			barCounterController.emptyBars ();
 		}
-		if (Input.GetKeyUp(KeyCode.RightArrow)&& currentLaneId + 1 < currentGameLevel.numberOfLanes && !playerScript.isMoving() && !jumping){
+		if (Input.GetKeyUp(KeyCode.RightArrow)&& currentLaneId + 1 < currentGameLevel.numberOfLanes && !playerScript.isMoving() && !cameraScript.moving && !jumping){
 			setCurrentLaneId (currentLaneId + 1);
 			cameraAndPlayer (false);
 			platformProgression = 0;

@@ -26,8 +26,9 @@ public class CameraScript : MonoBehaviour {
 	}
 
 	public void moveCameraToPosition(Vector3 position){
-		if (moving)
+		if (moving) {
 			return;	
+		}
 		
 		positionMovingTo = position;
 		moving = true;
