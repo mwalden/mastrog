@@ -1,12 +1,12 @@
 {
   "powerboxes": [
     {
-      "name": "bonusPoints",
+      "name": "maxMultiplier",
       "goodBox": true,
       "waitForTitle": true
     },
     {
-      "name": "bonusPoints",
+      "name": "resetMultiplier",
       "goodBox": false,
       "waitForTitle": true
     }

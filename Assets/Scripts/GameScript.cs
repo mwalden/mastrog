@@ -52,9 +52,11 @@ public class GameScript : MonoBehaviour {
 	private int obstaclesPassed;
 	private bool isLaneEnabled = true;
 
-
 	//this is used to hack out the call getting called twice. sorry.
 	private GameObject lastExitedGameObject;
+
+	//when we hit a powerbox, we dont want negative affects taken on teh player.
+	private bool keepPlayerSafeAfterPowerBox;
 
 
 	// Use this for initialization
@@ -67,6 +69,7 @@ public class GameScript : MonoBehaviour {
 		Messenger.AddListener("landed", landed);
 		Messenger.AddListener("jumped", jumped);
 		Messenger.AddListener<bool> ("isLaneEnabled", laneEnabled);
+		Messenger.AddListener ("hitPowerBox", hitPowerBox);
 		cam = Camera.main;
 		scoreController = new ScoreController ();
 		timerController = new TimerController (() => TimesUp ());
@@ -74,6 +77,7 @@ public class GameScript : MonoBehaviour {
 		bounds = CameraExtensions.OrthographicBounds (cam);
 		audioScript = GameObject.FindGameObjectWithTag ("AudioController").GetComponent<AudioScript> ();
 		soundEffectScript = GameObject.FindGameObjectWithTag ("SoundEffectsController").GetComponent<SoundEffectsScript> ();
+
 		currentGameLevel = LevelManager.Instance.getCurrentLevelDetail ();
 		timerController.beginTimer(currentGameLevel.lengthInSeconds * 1000);
 		#if UNITY_ANDROID
@@ -231,13 +235,17 @@ public class GameScript : MonoBehaviour {
 	}
 
 	public void resetPlayer(){
-		scoreController.removeScore (score);
-		scoreController.addError ();
-		soundEffectScript.playError ();
-		playerRigidbody.velocity = new Vector2(0.0f,0.0f);
-		Messenger.Broadcast<float> ("removeHealth", .3f);
-		Messenger.Broadcast<int> ("setMultiplier", 1);
 		player.transform.position = currentPlatform.transform.position;
+		playerRigidbody.velocity = new Vector2 (0.0f, 0.0f);
+		if (keepPlayerSafeAfterPowerBox) {
+			keepPlayerSafeAfterPowerBox = false;
+		} else {
+			scoreController.removeScore (score);
+			scoreController.addError ();
+			soundEffectScript.playError ();
+			Messenger.Broadcast<float> ("removeHealth", .3f);
+			Messenger.Broadcast<int> ("setMultiplier", 1);
+		}
 	}
 
 	private void disappearObstacle(GameObject obstacle){
@@ -253,7 +261,7 @@ public class GameScript : MonoBehaviour {
 		disableMovement = false;
 		obstaclesPassed++;
 //		Messenger.Broadcast<int,int> ("addScore", currentLaneId,score);
-		Messenger.Broadcast<int> ("increaseMultiplier", 1);
+//		Messenger.Broadcast<int> ("increaseMultiplier", 1);
 		Messenger.Broadcast<Vector3,int> ("playScoreBurst", player.transform.position,score);
 		Messenger.Broadcast<float,bool> ("addHealth", .05f,false);
 		Messenger.Broadcast<int> ("setRow", obstaclesPassed);
@@ -275,5 +283,9 @@ public class GameScript : MonoBehaviour {
 
 	void jumped(){
 		jumping = true;
+	}
+
+	void hitPowerBox(){
+		keepPlayerSafeAfterPowerBox = true;
 	}
 }

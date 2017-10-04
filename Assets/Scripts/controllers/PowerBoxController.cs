@@ -37,6 +37,16 @@ public class PowerBoxController : MonoBehaviour {
 
 	BoxOpenedEffect currentEffect;
 
+	void maxMultiplier(){
+		powerBoxTitle.text = "Max out multiplier!";
+		Messenger.Broadcast<int> ("setMultiplier", 4);
+	}
+
+	void resetMultiplier(){
+		powerBoxTitle.text = "Resetting multiplier!";
+		Messenger.Broadcast<int> ("setMultiplier", 1);
+	}
+
 	void bonusPoints(){
 		powerBoxTitle.text = "Bonus Points!";
 		Messenger.Broadcast<Vector3,int> ("playBurstIgnoreLaneEnbled", lastPosition,1000);
@@ -94,7 +104,9 @@ public class PowerBoxController : MonoBehaviour {
 			{ "wavey", () => wavey() },
 			{ "drainHealth", () => fasterBleeding() },
 			{ "speedUpRotations",() => speedUpRotations()},
-			{ "bonusPoints",() => bonusPoints()}
+			{ "bonusPoints",() => bonusPoints()},
+			{ "maxMultiplier", () => maxMultiplier()},
+			{ "resetMultiplier", () => resetMultiplier()}
 		};
 		List<Powerbox> powerboxes = LevelManager.Instance.getPowerBoxInfo ();
 		int goodCount = 0;
@@ -148,6 +160,7 @@ public class PowerBoxController : MonoBehaviour {
 	}
 
 	void boxOpened(Vector3 position){
+		Messenger.Broadcast ("hitPowerBox");
 		lastPosition = position;
 		Destroy (burst);
 		burst = (Instantiate (burstPrefab, position, Quaternion.identity) as GameObject).GetComponent<ParticleSystem>();		

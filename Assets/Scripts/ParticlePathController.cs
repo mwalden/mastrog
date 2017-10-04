@@ -12,6 +12,7 @@ public class ParticlePathController : MonoBehaviour {
 	public Vector3 lastCameraPosition;
 	private bool isLaneEnabled = true;
 	private int score = 0;
+	private bool needToIncreaseMultiplier;
 
 	void Start () {
 		camera = Camera.main;
@@ -46,6 +47,11 @@ public class ParticlePathController : MonoBehaviour {
 
 		}
 		ps.SetParticles(pArr, count);
+		if (count == 0 && needToIncreaseMultiplier) {
+			Messenger.Broadcast ("defferedIncreaseMultiplier");
+			needToIncreaseMultiplier = false;
+		}
+			
 	}
 
 	public void playBurstIgnoreLaneEnbled(Vector3 position,int score){
@@ -59,6 +65,7 @@ public class ParticlePathController : MonoBehaviour {
 	public void playBurst(Vector3 position,int score){
 		if (!isLaneEnabled)
 			return;
+		needToIncreaseMultiplier = true;
 		this.score = score;
 		ps.transform.position = position;
 		moveParticles = false;

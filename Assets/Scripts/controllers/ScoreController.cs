@@ -19,20 +19,23 @@ public class ScoreController{
 	public ScoreController (){
 		completedLevel = true;
 		level = LevelManager.Instance.getCurrentLevelDetail ();
+		Messenger.AddListener ("defferedIncreaseMultiplier",defferedIncreaseMultiplier);
 		Messenger.AddListener<bool> ("isLaneEnabled", laneEnabled);
-		Messenger.AddListener<int> ("increaseMultiplier", increaseMultiplier);
+//		Messenger.AddListener<int> ("increaseMultiplier", increaseMultiplier);
 		Messenger.AddListener<int> ("setMultiplier", setMultiplier);
 		Messenger.AddListener<int,int>("addScore", addScore);
 		Messenger.AddListener<int>("addScoreIgnoreLaneEnabled", addScoreIgnoreLaneEnabled);
 	}
+	public void defferedIncreaseMultiplier(){
+		increaseMultiplier (1);
+	}
+
 	public void setMultiplier(int value){
 		multiplier = value;
 		Messenger.Broadcast<int> ("setMultiplierText", multiplier);
 	}
 
 	public void increaseMultiplier(int value){
-		if (!isLaneEnabled)
-			return;
 		if (value + multiplier >= MAX_MULTIPLIER_VALUE) {
 			setMultiplier (MAX_MULTIPLIER_VALUE);
 			return;
