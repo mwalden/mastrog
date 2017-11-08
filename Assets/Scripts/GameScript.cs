@@ -257,11 +257,8 @@ public class GameScript : MonoBehaviour {
 		if (collider.Equals (lastExitedGameObject))
 			return;
 		lastExitedGameObject = collider;
-		print ("Exited");
 		disableMovement = false;
 		obstaclesPassed++;
-//		Messenger.Broadcast<int,int> ("addScore", currentLaneId,score);
-//		Messenger.Broadcast<int> ("increaseMultiplier", 1);
 		Messenger.Broadcast<Vector3,int> ("playScoreBurst", player.transform.position,score);
 		Messenger.Broadcast<float,bool> ("addHealth", .05f,false);
 		Messenger.Broadcast<int> ("setRow", obstaclesPassed);

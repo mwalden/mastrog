@@ -275,8 +275,8 @@
       "rows": [
         [
           {
-            "name": "circle",
-            "speed": 100
+            "name": "circularExpander",
+            "speed": 10
           },
           {
             "name": "circle",
@@ -293,8 +293,8 @@
         ],
         [
           {
-            "name": "circle",
-            "speed": 100
+            "name": "circularExpander",
+            "speed": 10
           },
           {
             "name": "circularExpander",
@@ -311,7 +311,7 @@
         ],
         [
           {
-            "name": "scalingsquare",
+            "name": "circularExpander",
             "speed": 100
           },
           {
@@ -329,7 +329,7 @@
         ],
         [
           {
-            "name": "circle",
+            "name": "circularExpander",
             "speed": 100
           },
           {
