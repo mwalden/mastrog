@@ -275,7 +275,7 @@
       "rows": [
         [
           {
-            "name": "circularExpander",
+            "name": "circle",
             "speed": 10
           },
           {
@@ -287,17 +287,17 @@
             "speed": 100
           },
           {
-            "name": "circularExpander",
+            "name": "circle",
             "speed": 100
           }
         ],
         [
           {
-            "name": "circularExpander",
+            "name": "circle",
             "speed": 10
           },
           {
-            "name": "circularExpander",
+            "name": "circle",
             "speed": 100
           },
           {
@@ -311,7 +311,7 @@
         ],
         [
           {
-            "name": "circularExpander",
+            "name": "circle",
             "speed": 100
           },
           {
@@ -319,7 +319,7 @@
             "speed": 100
           },
           {
-            "name": "circularExpander",
+            "name": "circle",
             "speed": 100
           },
           {
@@ -329,7 +329,7 @@
         ],
         [
           {
-            "name": "circularExpander",
+            "name": "circle",
             "speed": 100
           },
           {
