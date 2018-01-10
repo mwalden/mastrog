@@ -11,13 +11,13 @@ public class BackgroundColorScript	 : MonoBehaviour {
 
 	void Start()
 	{
-		camera = GetComponent<Camera>();
-		camera.clearFlags = CameraClearFlags.SolidColor;
+//		camera = GetComponent<Camera>();
+//		camera.clearFlags = CameraClearFlags.SolidColor;
 	}
 
 	void Update()
 	{
 		float t = Mathf.PingPong(Time.time, duration) / duration;
-		camera.backgroundColor = Color.Lerp(color1, color2, t);
+//		camera.backgroundColor = Color.Lerp(color1, color2, t);
 	}
 }

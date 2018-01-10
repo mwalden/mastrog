@@ -1,19 +1,29 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class BackgroundTransformer : MonoBehaviour {
 
-	public bool rotateX;
-	public bool rotateY;
-	public bool rotateZ;
 
-	public float speed;
+	public GameObject[] backgrounds;
+	private GameObject currentBackground;
 
-	// Update is called once per frame
-	void Update () {
-		float newX = (rotateX)?speed*Time.deltaTime:0;
-		float newY = (rotateY)?speed*Time.deltaTime:0;
-		float newZ = (rotateZ)?speed*Time.deltaTime:0;
-		transform.Rotate(new Vector3(newX,newY,newZ));
+	void Start(){
+		Messenger.AddListener< string >( "enableBackground", EnableBackground );
 	}
+
+	void EnableBackground(string background){
+		print ("Got " + background);
+		if (currentBackground != null)
+			currentBackground.SetActive (false);
+		foreach(GameObject g in backgrounds){
+			if (g.name.Equals (background)) {
+				print("Found " + background);
+				currentBackground = g;
+				currentBackground.SetActive (true);
+			}
+		}
+
+	}
+
 }

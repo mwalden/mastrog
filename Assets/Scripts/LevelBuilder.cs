@@ -57,6 +57,7 @@ public class LevelBuilder : MonoBehaviour {
 		player.tag = "Player";
 		gameScript.setStartingLane (startingLane);
 		Messenger.Broadcast<int>("initializeLanes",level.numberOfLanes);
+		Messenger.Broadcast<string>("enableBackground",level.gameBackground);
 	}
 
 	private void initilizeObjectPool(){

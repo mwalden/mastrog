@@ -12,6 +12,7 @@ public class Powerbox
 public class LevelDetail
 {
 	public int id{ get; set;}
+	public string gameBackground { get; set; }
 	public string folderName { get; set; }
 	public float powerBoxChance { get; set; }
 	public string preview { get; set; }
